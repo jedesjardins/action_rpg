@@ -1,0 +1,256 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://resources/textures/base_human.png" type="Texture" id=1]
+[ext_resource path="res://infra/entity/base_physics_body.gd" type="Script" id=2]
+[ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=3]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "stand"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, 5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk_down"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5, 3 ), Vector2( -5, 5 ), Vector2( -5, 5 ), Vector2( -5, 5 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk_down_left"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 5, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5, 3 ), Vector2( -5, 2 ), Vector2( -4, 1 ), Vector2( -5, 2 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_down_right"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 8, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5, 4 ), Vector2( -4, 5 ), Vector2( -3, 5 ), Vector2( -4, 5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_up"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 21, 23, 21 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 5, 4 ), Vector2( 5, 4 ), Vector2( 5, 1 ), Vector2( 5, 4 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_up_left"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 15, 17, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6, 2 ), Vector2( 5, 2 ), Vector2( 4, 1 ), Vector2( 5, 2 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_up_right"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 18, 20, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6, 3 ), Vector2( 5, 4 ), Vector2( 4, 3 ), Vector2( 5, 4 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5, 9 )
+
+[node name="base_human" type="KinematicBody2D"]
+collision_mask = 9
+script = ExtResource( 2 )
+appearance_path = NodePath("Sprite")
+hitbox_path = NodePath("Hitbox")
+hand_path = NodePath("Hand")
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 3
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stand = SubResource( 2 )
+anims/walk_down = SubResource( 3 )
+anims/walk_down_left = SubResource( 4 )
+anims/walk_down_right = SubResource( 5 )
+anims/walk_up = SubResource( 6 )
+anims/walk_up_left = SubResource( 7 )
+anims/walk_up_right = SubResource( 8 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 9 )
+
+[node name="Hand" type="Node2D" parent="."]
+position = Vector2( -5, 4 )
+
+[node name="Sprite" type="Sprite" parent="Hand"]
+texture = ExtResource( 3 )
+hframes = 8
+frame = 1

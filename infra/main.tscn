@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://infra/main.gd" type="Script" id=1]
+[ext_resource path="res://inst/scenes/basic_scene/basic_scene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://infra/StateManager.gd" type="Script" id=3]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+max_size = Vector2( 768, 768 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 768, 768 )
+hdr = false
+disable_3d = true
+
+[node name="StateManager" type="Node2D" parent="Viewport"]
+script = ExtResource( 3 )
+
+[node name="running_scene" parent="Viewport/StateManager" instance=ExtResource( 2 )]
+
+[node name="ViewportSprite" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
+texture = SubResource( 1 )
+centered = false
+flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
