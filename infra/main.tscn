@@ -19,7 +19,7 @@ disable_3d = true
 [node name="StateManager" type="Node2D" parent="Viewport"]
 script = ExtResource( 3 )
 
-[node name="running_scene" parent="Viewport/StateManager" instance=ExtResource( 2 )]
+[node name="basic_scene" parent="Viewport/StateManager" instance=ExtResource( 2 )]
 
 [node name="ViewportSprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )
