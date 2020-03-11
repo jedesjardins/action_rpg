@@ -1,8 +1,9 @@
+tool
 extends BaseBehavior
 
 #var item: Node
 var interact_map = {}
-var next_interacting_area: Node
+var next_interacting_script: Node
 
 func _ready():
 	pass
@@ -29,9 +30,11 @@ func get_velocity():
 	return velocity
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("ui_accept") and next_interacting_area:
-		print("Interact!!")
-		
+	if Engine.is_editor_hint():
+		return
+	
+	if Input.is_action_just_pressed("ui_accept") and next_interacting_script:
+		next_interacting_script.interact()
 	
 	var velocity = get_velocity()
 
@@ -97,22 +100,22 @@ func _physics_process(_delta):
 func handle_physics_collision(_info: KinematicCollision2D):
 	pass
 
-func add_interact_area(area):
-	print("Added area: ", area.get_path(), " to player interaction list")
-	interact_map[area.get_path()] = area
-	next_interacting_area = area
-	print("Next interacting Area ", next_interacting_area)
+func add_interact_script(script):
+#	print("Added area: ", script.get_path(), " to player interaction list")
+	interact_map[script.get_path()] = script
+	next_interacting_script = script
+#	print("Next interacting script ", next_interacting_script)
 
-func remove_interact_area(area):
-	print("Removed area: ", area.get_path(), " from player interaction list")
-	interact_map[area.get_path()] = null
-	if next_interacting_area == area:
+func remove_interact_script(script):
+#	print("Removed area: ", script.get_path(), " from player interaction list")
+	interact_map[script.get_path()] = null
+	if next_interacting_script == script:
 		if interact_map.keys().size() > 0:
-			next_interacting_area = interact_map[interact_map.keys()[0]]
+			next_interacting_script = interact_map[interact_map.keys()[0]]
 		else:
-			next_interacting_area = null
+			next_interacting_script = null
 
-	print("Next interacting Area ", next_interacting_area)
+#	print("Next interacting Area ", next_interacting_script)
 
 func get_interacting_body():
 	return 

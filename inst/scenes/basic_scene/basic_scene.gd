@@ -5,6 +5,7 @@ var Player: BaseEntity
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Player = $"BaseEntity"
+	Player.physics_body.add_to_group("player", true)
 		
 	var remote_transform = RemoteTransform2D.new()
 	Player.physics_body.add_child(remote_transform)

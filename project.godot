@@ -29,17 +29,29 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/global_functions.gd"
 }, {
+"base": "TriggerScript",
+"class": "InteractScript",
+"language": "GDScript",
+"path": "res://infra/scripts/base_interact.gd"
+}, {
 "base": "BaseBehavior",
 "class": "InteractingAIBehavior",
 "language": "GDScript",
 "path": "res://infra/entity/interacting_ai.gd"
+}, {
+"base": "Node",
+"class": "TriggerScript",
+"language": "GDScript",
+"path": "res://infra/scripts/base_trigger.gd"
 } ]
 _global_script_class_icons={
 "BaseBehavior": "",
 "BaseEntity": "",
 "BasePhysicsBody": "",
 "Helpers": "",
-"InteractingAIBehavior": ""
+"InteractScript": "",
+"InteractingAIBehavior": "",
+"TriggerScript": ""
 }
 
 [application]

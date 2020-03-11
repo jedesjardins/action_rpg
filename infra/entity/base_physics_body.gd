@@ -1,3 +1,4 @@
+tool
 extends KinematicBody2D
 
 class_name BasePhysicsBody
@@ -43,13 +44,13 @@ func get_hitbox() -> Node:
 	return hitbox
 
 func has_hurtbox() -> bool:
-	return false
+	return hurtbox != null
 
 func get_hurtbox() -> Node:
-	return null
+	return hurtbox
 
 func has_appearance() -> bool:
-	return false
+	return appearance != null
 
 func get_appearance() -> Node:
-	return null
+	return appearance

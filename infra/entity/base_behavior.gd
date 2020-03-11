@@ -1,3 +1,4 @@
+tool
 extends Node
 
 class_name BaseBehavior
@@ -10,5 +11,5 @@ func _ready():
 func get_physics_body() -> Node:
 	return physics_body
 
-func set_physics_body(var node: Node):
+func set_physics_body(node: BasePhysicsBody):
 	physics_body = node
