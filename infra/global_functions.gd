@@ -2,6 +2,17 @@ extends Node
 
 class_name Helpers
 
+enum Direction{
+	DOWN,
+	DOWN_RIGHT,
+	RIGHT,
+	UP_RIGHT,
+	UP,
+	UP_LEFT,
+	LEFT,
+	DOWN_LEFT
+}
+
 static func get_relative_path_from(start: Node, end: Node) -> String:
 	#var start_path_length = start.get_
 	pass

@@ -102,16 +102,16 @@ func handle_physics_collision(_info: KinematicCollision2D):
 
 func add_interact_script(script):
 #	print("Added area: ", script.get_path(), " to player interaction list")
-	interact_map[script.get_path()] = script
+	interact_map[script] = true
 	next_interacting_script = script
 #	print("Next interacting script ", next_interacting_script)
 
 func remove_interact_script(script):
 #	print("Removed area: ", script.get_path(), " from player interaction list")
-	interact_map[script.get_path()] = null
+	interact_map.erase(script)
 	if next_interacting_script == script:
 		if interact_map.keys().size() > 0:
-			next_interacting_script = interact_map[interact_map.keys()[0]]
+			next_interacting_script = interact_map.keys()[0]
 		else:
 			next_interacting_script = null
 

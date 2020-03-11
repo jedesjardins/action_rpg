@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
 [ext_resource path="res://infra/entity/base_entity.gd" type="Script" id=3]
 [ext_resource path="res://resources/textures/nine-patch.png" type="Texture" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
-[ext_resource path="res://inst/scenes/basic_scene/trigger.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://infra/entity/interacting_ai.gd" type="Script" id=8]
 [ext_resource path="res://inst/scenes/basic_scene/basic_scene.gd" type="Script" id=9]
@@ -191,23 +190,6 @@ extents = Vector2( 19, 18 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 13, 13 )
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="Animation" id=11]
-tracks/0/type = "value"
-tracks/0/path = NodePath("../BaseEntity/base_human:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ) ]
-}
-
 [node name="basic_scene" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -234,11 +216,11 @@ appearance_path = NodePath("../../../basic_scene/BaseEntity/base_human/Sprite")
 hitbox_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hitbox")
 hand_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hand")
 
-[node name="PlayerBehavior" type="Node" parent="BaseEntity"]
+[node name="PlayerBehavior" type="Node2D" parent="BaseEntity"]
 script = ExtResource( 11 )
 
 [node name="BaseEntity2" type="Node2D" parent="."]
-position = Vector2( 471, 315 )
+position = Vector2( 421, 381 )
 script = ExtResource( 3 )
 physics_body_path = NodePath("../../basic_scene/BaseEntity2/base_human")
 behavior_body_path = NodePath("../../basic_scene/BaseEntity2/InteractingAIBehavior")
@@ -251,16 +233,28 @@ hand_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Hand")
 
 [node name="Trigger" type="Area2D" parent="BaseEntity2/base_human"]
 collision_layer = 8
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEntity2/base_human/Trigger"]
 shape = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="InteractingAIBehavior" type="Node" parent="BaseEntity2"]
+[node name="InteractingAIBehavior" type="Node2D" parent="BaseEntity2"]
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 interact_script_path = NodePath("InteractScript")
 
-[node name="InteractScript" type="Node" parent="BaseEntity2/InteractingAIBehavior"]
+[node name="InteractScript" type="Node2D" parent="BaseEntity2/InteractingAIBehavior"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Cactus" parent="." instance=ExtResource( 7 )]
 position = Vector2( 334, 302 )
@@ -271,37 +265,6 @@ script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus/Trigger"]
 shape = SubResource( 9 )
-
-[node name="Huh" type="Area2D" parent="." groups=[
-"trigger",
-]]
-position = Vector2( 464, 383 )
-collision_layer = 8
-collision_mask = 2
-script = ExtResource( 6 )
-
-[node name="ColorRect" type="ColorRect" parent="Huh"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Huh"]
-shape = SubResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Huh"]
-anims/MoveLeft = SubResource( 11 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
