@@ -39,6 +39,7 @@ func interact():
 		yield(timer, "timeout")
 		textbox.queue_free()
 		timer.queue_free()
+		emit_signal("completed")
 		return
 	
 	textbox.show_text("What now? This is really long text, what", "will happen?")
@@ -46,6 +47,8 @@ func interact():
 	yield(textbox, "text_shown")
 	
 	textbox.queue_free()
+	
+	emit_signal("completed")
 
 # custom textbox trigger
 func textbox_trigger():

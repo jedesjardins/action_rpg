@@ -6,9 +6,6 @@ class_name TriggerScript
 var trigger_node: Area2D
 var ignored_node: Node
 
-func _ready():
-	pass
-
 # called when the trigger is entered
 func trigger_entered(body):
 	if body != ignored_node:

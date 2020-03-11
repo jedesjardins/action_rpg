@@ -3,11 +3,14 @@ extends TriggerScript
 
 class_name InteractScript
 
+signal completed
+
 func _ready():
 	pass
 
 func interact():
 	print("Base interact called")
+	emit_signal("completed")
 
 func trigger_entered(body):
 	if body.is_in_group("player") and body != ignored_node:

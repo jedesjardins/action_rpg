@@ -4,6 +4,7 @@ extends BaseBehavior
 #var item: Node
 var interact_map = {}
 var next_interacting_script: Node
+var can_interact = true
 
 func _ready():
 	pass
@@ -33,8 +34,8 @@ func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
 	
-	if Input.is_action_just_pressed("ui_accept") and next_interacting_script:
-		next_interacting_script.interact()
+	if Input.is_action_just_pressed("ui_accept") and next_interacting_script and can_interact:
+		enable_interaction_after(next_interacting_script)
 	
 	var velocity = get_velocity()
 
@@ -117,5 +118,9 @@ func remove_interact_script(script):
 
 #	print("Next interacting Area ", next_interacting_script)
 
-func get_interacting_body():
-	return 
+func enable_interaction_after(script):
+	can_interact = false
+	script.interact()
+	yield(script, "completed")
+	print("Completed")
+	can_interact = true
