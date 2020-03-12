@@ -23,7 +23,6 @@ func window_resize():
 	$"Viewport".set_size_override(true, sub_viewport_size)
 	$"ViewportSprite".scale = rounded_scale_vec
 
-
 func _input(event):
 	if(event is InputEventKey):
 		if(event.is_pressed() and event.scancode == KEY_ESCAPE):

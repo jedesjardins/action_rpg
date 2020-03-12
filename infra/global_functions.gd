@@ -2,7 +2,7 @@ extends Node
 
 class_name Helpers
 
-enum Direction{
+enum Direction {
 	DOWN,
 	DOWN_RIGHT,
 	RIGHT,

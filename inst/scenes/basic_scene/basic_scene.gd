@@ -17,6 +17,8 @@ func _ready():
 	err = Player.physics_body.hitbox.connect("body_entered", self, "player_entered_hurtbox_body")
 	if err != OK:
 		print("Problem")
+	
+	Player.behavior_body.hold_item($"Sprite")
 
 func player_entered_hurtbox_area(area):
 	print("player_entered_hurtbox_area ", area.get_path())

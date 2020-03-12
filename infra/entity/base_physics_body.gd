@@ -18,6 +18,9 @@ var hurtbox: Node
 export var hand_path: NodePath
 var hand: Node
 
+var direction: int
+var action: int
+
 func _ready():
 	if trigger_path:
 		trigger = get_node(trigger_path)

@@ -51,15 +51,3 @@ func _get_configuration_warning():
 		return "One of behavior_body_path or behavior_body_scene must be set."
 	
 	return ""
-
-func hold_item(var item_node: Node):
-	var hand = physics_body.get_node("Hand")
-	
-	if hand:
-		# set item_node to track physics_body hand
-		var remote_transform = RemoteTransform2D.new()
-		hand.add_child(remote_transform)
-		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
-		
-		# if item_node has a collider
-		# 	add this entities collider to be ignored??? (which entity will it collide with???)

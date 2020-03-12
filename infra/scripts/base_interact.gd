@@ -3,8 +3,6 @@ extends TriggerScript
 
 class_name InteractScript
 
-signal completed
-
 func _ready():
 	pass
 

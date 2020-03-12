@@ -47,8 +47,6 @@ func interact():
 	yield(textbox, "text_shown")
 	
 	textbox.queue_free()
-	
-	emit_signal("completed")
 
 # custom textbox trigger
 func textbox_trigger():
