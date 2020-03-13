@@ -56,11 +56,36 @@ These are nodes with only one child
 
 #### Fail
 
-This node will always return `FAILED` unless it's child returns `ERR_BUSY`
+This node will always return `FAILED`, unless it's child returns `ERR_BUSY`, in which case it returns `ERR_BUSY`
 
 #### Suceed
 
-This node will always return `OK` unless it's child returns `ERR_BUSY`
+This node will always return `OK`, unless it's child returns `ERR_BUSY`, in which case it returns `ERR_BUSY`
+
+#### Not
+
+This node will return `OK` if it's child returns `FAILED` and vice versa, unless it's child returns `ERR_BUSY`, in which case it returns `ERR_BUSY`
+
+#### Repeat
+
+This node will return `ERR_BUSY` if it's child returns `OK` or `ERR_BUSY`, it returns `OK` if it's child returns `OK`
+
+This is a good node for simulating a while loop when it has a single Sequence child. Something like this:
+
+```
+while(Condition A and Condition B ...):
+	run Behavior
+```
+turns into:
+```
+Repeat
+| Sequence
+| | Condition A
+| | Condition B
+| | ...
+| | Behavior Node
+```
+where you can put the conditions at the beginning of the sequence. If any Condition fails, the sequence fails and never runs the Behavior Node, but if all the conditions pass, and the behavior node passes, then Repeat will return `ERR_BUSY` and so next `tick` will run the "loop" again.
 
 # Project Files Structure
 
