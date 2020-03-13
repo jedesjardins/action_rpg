@@ -4,6 +4,52 @@ At the moment, this repository is just my foray into making an action rpg game. 
 
 # Interesting Tidbits
 
+## This game is Pixel Perfect! (ish)
+
+There are many guides out there claiming to be able to draw a pixel perfect game at multiple resolutions, but many of these seem just downright wrong.
+
+One solution is to set the window stretch_mode to 2D and then get the root viewport and set_override_size to the new resolution (scaled down). But I have some problems with this.
+1. First, the pixels ARE a uniform size if the scale from your target resolution to the actual resolution is an integer. If it isn't an integer however you get non-uniform pixel sizes, much like if you just set the stretch_mode to Viewport and resized.
+2. This method allows entites whose positions are decimals to be drawn on non-pixel boundaries i.e. NOT PIXEL PERFECT
+
+My solution:
+1. Have a single main scene which is ALWAYS RUNNING
+2. This main scene has a child Viewport at a predefined "max_size" (the largest renderable area you are willing to show)
+3. The main scene also has a child Sprite who renders the Viewport Texture
+4. Any "running scenes" must be instanced under the viewport(remember the main scene always must be the root scene)
+5. Upon resize, draw from a scaled up sub-section of the viewport in the Sprite using a script on the root node like this:
+```
+onready var root = get_tree().get_root()
+export(Vector2) var max_size
+
+func _ready():
+
+	root.connect("size_changed", self, "window_resize")
+	window_resize()
+
+func window_resize():
+	var window_size = OS.get_window_size()
+	root.set_size_override(true, window_size)
+
+	var float_scale = window_size / max_size
+
+	var rounded_scale = max(ceil(float_scale.x), ceil(float_scale.y))
+
+	var rounded_scale_vec = Vector2(rounded_scale, rounded_scale)
+
+	var sub_viewport_size = window_size / rounded_scale_vec
+
+	$"Viewport".set_size_override(true, sub_viewport_size)
+	$"ViewportSprite".scale = rounded_scale_vec
+```
+
+This ensures that you are always drawing a sub section of max_size, and the pixels on screen are uniformly sized, and everything is drawn on pixel boundaries.
+
+Trade-Offs:
+* The "ish" in Pixel Perfect (ish) comes from the fact that if there isn't a perfect integer scale between the target resolution and actual resolution, it will clip off part of the edge pixels on one side. For example, if your screen is 99 pixels wide, but you want to draw a 10 pixel wide image, the scale should obviously be about 10x, but the actual scale is 9.9x. This method still selects 10x, so you're drawing your 10px wide image at 100 px, but it clips off .1px along the right side. But this way all the other pixels are a uniform size.
+* you can't use change_scene or whatever anymore, oh well. Write your own change scene which swaps the scene under the Viewport.
+* if you still allow sprites to have float positions, moving the camera around can cause them to jitter back and forth, fix this by ensuring sprites always have an integer position.
+
 ## BaseEntity
 
 I figure that most entities in the game, like the player, NPC's enemies, etc. will all have some sort of physics body, (in Godot a KinematicBody2D or StaticBody2D, etc), and Behavior (maybe a Behavior Tree, or an in-game cut scene Script that is triggered when the player gets close)
