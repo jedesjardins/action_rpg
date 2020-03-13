@@ -19,6 +19,7 @@ func _ready():
 		print("Problem")
 	
 	Player.behavior_body.hold_item($"Sprite")
+	$"BaseEntity2".behavior_body.blackboard.target_entity = Player.physics_body
 
 func player_entered_hurtbox_area(area):
 	print("player_entered_hurtbox_area ", area.get_path())

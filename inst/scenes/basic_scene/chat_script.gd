@@ -14,8 +14,11 @@ func trigger_exited(body):
 		$"..".get_physics_body().get_appearance().unhighlight()
 		body.get_parent().behavior_body.remove_interact_script(self)
 
+func is_interacting() -> bool:
+	return has_node("TextBox")
+
 func interact():
-	if has_node("TextBox"):
+	if is_interacting():
 		return
 	
 	player_exited_trigger = false
@@ -39,7 +42,6 @@ func interact():
 		yield(timer, "timeout")
 		textbox.queue_free()
 		timer.queue_free()
-		emit_signal("completed")
 		return
 	
 	textbox.show_text("What now? This is really long text, what", "will happen?")

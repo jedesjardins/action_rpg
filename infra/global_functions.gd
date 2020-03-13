@@ -13,6 +13,9 @@ enum Direction {
 	DOWN_LEFT
 }
 
+static func get_walk_speed():
+	return 36
+
 static func get_relative_path_from(start: Node, end: Node) -> String:
 	#var start_path_length = start.get_
 	pass

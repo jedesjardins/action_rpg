@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
@@ -10,9 +10,21 @@
 [ext_resource path="res://infra/entity/interacting_ai.gd" type="Script" id=8]
 [ext_resource path="res://inst/scenes/basic_scene/basic_scene.gd" type="Script" id=9]
 [ext_resource path="res://inst/scenes/basic_scene/cactus_trigger.gd" type="Script" id=10]
+[ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=11]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=12]
 [ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=13]
+[ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=14]
+[ext_resource path="res://infra/bt/leaves/is_interacting.gd" type="Script" id=15]
+[ext_resource path="res://infra/bt/leaves/look_at_entity.gd" type="Script" id=16]
+[ext_resource path="res://infra/bt/composites/selector.gd" type="Script" id=17]
+[ext_resource path="res://infra/bt/leaves/choose_direction.gd" type="Script" id=18]
+[ext_resource path="res://infra/bt/leaves/move_in_direction.gd" type="Script" id=20]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=21]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=23]
+[ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=24]
+[ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=25]
+[ext_resource path="res://infra/bt/leaves/check_timer.gd" type="Script" id=26]
+[ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=27]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -215,9 +227,7 @@ behavior_body_path = NodePath("PlayerBehavior")
 [node name="base_human" parent="BaseEntity" instance=ExtResource( 2 )]
 collision_mask = 1
 appearance_path = NodePath("../../../basic_scene/BaseEntity/base_human/Sprite")
-trigger_path = NodePath("")
 hitbox_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hitbox")
-hurtbox_path = NodePath("")
 hand_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hand")
 
 [node name="PlayerBehavior" parent="BaseEntity" instance=ExtResource( 21 )]
@@ -232,7 +242,6 @@ behavior_body_path = NodePath("../../basic_scene/BaseEntity2/InteractingAIBehavi
 appearance_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Sprite")
 trigger_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Trigger")
 hitbox_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Hitbox")
-hurtbox_path = NodePath("")
 hand_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Hand")
 
 [node name="Trigger" type="Area2D" parent="BaseEntity2/base_human"]
@@ -259,6 +268,62 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="BehaviorTree" type="Node" parent="BaseEntity2/InteractingAIBehavior"]
+script = ExtResource( 11 )
+
+[node name="Selector" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree"]
+script = ExtResource( 17 )
+
+[node name="Interact - Sequence" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector"]
+script = ExtResource( 14 )
+
+[node name="IsInteracting" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Interact - Sequence"]
+script = ExtResource( 15 )
+
+[node name="LookAtEntity" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Interact - Sequence"]
+script = ExtResource( 16 )
+
+[node name="Stroll - Sequence" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector"]
+script = ExtResource( 14 )
+
+[node name="ChooseDirection" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 18 )
+
+[node name="SetTimer" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 27 )
+time = 0.3
+
+[node name="MoveInCurrentDirection - Repeat" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 25 )
+
+[node name="Sequence" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat"]
+script = ExtResource( 14 )
+
+[node name="Not" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
+script = ExtResource( 24 )
+
+[node name="IsInteracting" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence/Not"]
+script = ExtResource( 15 )
+
+[node name="CheckTimer" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
+script = ExtResource( 26 )
+
+[node name="MoveInDirection" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
+script = ExtResource( 20 )
+
+[node name="Idle" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 23 )
+
+[node name="SetTimer2" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 27 )
+time = 2.0
+
+[node name="Repeat" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
+script = ExtResource( 25 )
+
+[node name="CheckTimer" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/Repeat"]
+script = ExtResource( 26 )
 
 [node name="Cactus" parent="." instance=ExtResource( 7 )]
 position = Vector2( 334, 302 )

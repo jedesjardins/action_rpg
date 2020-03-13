@@ -3,17 +3,26 @@ extends TriggerScript
 
 class_name InteractScript
 
-func _ready():
-	pass
-
 func interact():
-	print("Base interact called")
-	emit_signal("completed")
+	assert(false)
 
-func trigger_entered(body):
-	if body.is_in_group("player") and body != ignored_node:
-		print("InteractScript trigger_entered called")
+func is_interacting() -> bool:
+	assert(false)
 
-func trigger_exited(body):
-	if body.is_in_group("player") and body != ignored_node:
-		print("InteractScript trigger_exited called")
+	return false
+
+func trigger_entered(_body):
+	assert(false)
+	
+	# example of how one might interact with the player
+#	if body.is_in_group("player") and body != ignored_node:
+#		$"..".get_physics_body().get_appearance().highlight()
+#		body.get_parent().behavior_body.add_interact_script(self)
+
+func trigger_exited(_body):
+	assert(false)
+
+#	if body.is_in_group("player") and body != ignored_node:
+#		player_exited_trigger = true
+#		$"..".get_physics_body().get_appearance().unhighlight()
+#		body.get_parent().behavior_body.remove_interact_script(self)

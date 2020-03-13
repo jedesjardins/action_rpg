@@ -1,7 +1,6 @@
 extends BTNode
 
 func tick(blackboard: Dictionary) -> int:
-	
 	assert(blackboard.has("physics_body"))
 	assert(blackboard.has("velocity"))
 	assert(blackboard.has("direction"))

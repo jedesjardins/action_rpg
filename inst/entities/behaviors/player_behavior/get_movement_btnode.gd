@@ -11,7 +11,7 @@ func get_velocity():
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
 
-	velocity = velocity.normalized() * 36
+	velocity = velocity.normalized() * Helpers.get_walk_speed()
 
 	return velocity
 

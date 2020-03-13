@@ -4,12 +4,19 @@ extends BTNode
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("physics_body"))
 	assert(blackboard.has("direction"))
+	assert(blackboard.has("direction_string"))
 	
-	blackboard.physics_body.get_node("AnimationPlayer").play("stand")
+	var direction = blackboard.direction
+	
+	blackboard.physics_body.get_node("AnimationPlayer").play("idle_" + blackboard.direction_string[direction])
 	
 	if blackboard.has("item"):
-		blackboard.item.set_direction(Helpers.Direction.DOWN)
+		blackboard.item.set_direction(direction)
 		var z = blackboard.physics_body.get_global_transform_with_canvas().get_origin().y
-		blackboard.item.z_index = z + 1
-	
+
+		if direction < 4:
+			blackboard.item.z_index = z + 1
+		else:
+			blackboard.item.z_index = z - 2 #?????
+
 	return OK
