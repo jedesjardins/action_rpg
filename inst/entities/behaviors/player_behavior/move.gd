@@ -1,5 +1,7 @@
 extends BTNode
 
+onready var leftover_delta_velocity = Vector2(0, 0)
+
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("physics_body"))
 	assert(blackboard.has("velocity"))
@@ -9,6 +11,17 @@ func tick(blackboard: Dictionary) -> int:
 	var animation_player = physics_body.get_node("AnimationPlayer")
 	
 	var velocity = blackboard.velocity
+	
+	#velocity += leftover_velocity
+	
+	#leftover_velocity = velocity - velocity.floor()
+	
+	#velocity = velocity.floor()
+	
+	#print("Starting Position: ", physics_body.get_global_transform_with_canvas().get_origin())
+	
+	#print("Velocity: ", velocity)
+	
 	var direction = blackboard.direction
 	
 	if velocity.length() > 0:
@@ -18,7 +31,15 @@ func tick(blackboard: Dictionary) -> int:
 			animation_player.advance(0)
 			animation_player.play(next_animation)
 	
-	physics_body.move_and_slide(velocity)
+	var delta_velocity = velocity * blackboard.delta
+
+	delta_velocity += leftover_delta_velocity
+	
+	leftover_delta_velocity = delta_velocity - delta_velocity.floor()
+	
+	delta_velocity = delta_velocity.floor()
+	
+	physics_body.move_and_collide(delta_velocity)
 	
 	var z = physics_body.get_global_transform_with_canvas().get_origin().y
 
@@ -32,5 +53,7 @@ func tick(blackboard: Dictionary) -> int:
 		else:
 			modifier = -1
 		blackboard.item.z_index = z + modifier
+	
+	#print("Ending Position: ", physics_body.get_global_transform_with_canvas().get_origin())
 	
 	return OK
