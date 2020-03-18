@@ -8,7 +8,10 @@ func tick(blackboard: Dictionary) -> int:
 	
 	var direction = blackboard.direction
 	
-	blackboard.physics_body.get_node("AnimationPlayer").play("idle_" + blackboard.direction_string[direction])
+	var animation_player = blackboard.physics_body.get_node("AnimationPlayer")
+	var next_animation = "idle_" + blackboard.direction_string[direction]
+	if next_animation != animation_player.current_animation:
+		animation_player.play(next_animation)
 	
 	if blackboard.has("item"):
 		blackboard.item.set_direction(direction)

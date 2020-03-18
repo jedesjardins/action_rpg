@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/get_movement_btnode.gd" type="Script" id=2]
@@ -8,6 +8,18 @@
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/move.gd" type="Script" id=7]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/interact.gd" type="Script" id=8]
+[ext_resource path="res://infra/bt/bt_node.gd" type="Script" id=9]
+[ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=10]
+[ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=11]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/is_action_just_pressed.gd" type="Script" id=12]
+[ext_resource path="res://infra/bt/decorators/fail.gd" type="Script" id=13]
+[ext_resource path="res://infra/bt/leaves/check_timer.gd" type="Script" id=14]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/start_attack_anim.gd" type="Script" id=15]
+[ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=16]
+[ext_resource path="res://infra/bt/leaves/current_animation_is.gd" type="Script" id=17]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/is_action_pressed.gd" type="Script" id=18]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/set_is_charging.gd" type="Script" id=19]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/check_is_charging.gd" type="Script" id=20]
 
 [node name="PlayerBehavior" type="Node2D"]
 script = ExtResource( 3 )
@@ -15,23 +27,140 @@ script = ExtResource( 3 )
 [node name="BehaviorTree" type="Node" parent="."]
 script = ExtResource( 1 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree"]
-script = ExtResource( 6 )
-
-[node name="Interact" type="Node" parent="BehaviorTree/Sequence"]
-script = ExtResource( 8 )
-
-[node name="Selector - Move or Idle" type="Node" parent="BehaviorTree/Sequence"]
+[node name="Selector" type="Node" parent="BehaviorTree"]
 script = ExtResource( 4 )
 
-[node name="Sequence - Move" type="Node" parent="BehaviorTree/Sequence/Selector - Move or Idle"]
+[node name="Attack - Sequence" type="Node" parent="BehaviorTree/Selector"]
 script = ExtResource( 6 )
 
-[node name="get_movement" type="Node" parent="BehaviorTree/Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="IsActionJustPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 12 )
+action = "ui_select"
+
+[node name="StartAttackAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 15 )
+
+[node name="SetTimer" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 16 )
+time = 0.1
+
+[node name="SetIsChargingTrue" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 19 )
+value = true
+
+[node name="ChargingWindow - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 11 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat"]
+script = ExtResource( 6 )
+
+[node name="CheckTimer" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence"]
+script = ExtResource( 14 )
+
+[node name="CurrentAnimationIs" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence"]
+script = ExtResource( 17 )
+animation = "idle_down"
+
+[node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence"]
+script = ExtResource( 4 )
+
+[node name="IsActionPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
+script = ExtResource( 18 )
+action = "ui_select"
+
+[node name="Fail" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
+script = ExtResource( 13 )
+
+[node name="SetIsChargingFalse" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargingWindow - Repeat/Sequence/Selector/Fail"]
+script = ExtResource( 19 )
+
+[node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+script = ExtResource( 4 )
+
+[node name="Charge - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector"]
+script = ExtResource( 6 )
+
+[node name="CheckIsCharging" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence"]
+script = ExtResource( 20 )
+
+[node name="StopAttackAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence"]
+script = ExtResource( 9 )
+
+[node name="StartChargeAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence"]
+script = ExtResource( 9 )
+
+[node name="While Charging - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence"]
+script = ExtResource( 11 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence/While Charging - Repeat"]
+script = ExtResource( 6 )
+
+[node name="IsActionPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence/While Charging - Repeat/Sequence"]
+script = ExtResource( 18 )
+action = "ui_select"
+
+[node name="Charge" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence/While Charging - Repeat/Sequence"]
+script = ExtResource( 9 )
+
+[node name="StartChargeAttackAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/Charge - Sequence"]
+script = ExtResource( 9 )
+
+[node name="NormalAttack - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector"]
+script = ExtResource( 11 )
+
+[node name="IfAttacking - Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat"]
+script = ExtResource( 4 )
+
+[node name="QueueCombo - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector"]
+script = ExtResource( 6 )
+
+[node name="IsAttacking" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/QueueCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="NearEndOfAttack" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/QueueCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="WantsToCombo" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/QueueCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="QueueCombo" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/QueueCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="EndAttack - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector"]
+script = ExtResource( 6 )
+
+[node name="Not" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/EndAttack - Sequence"]
+script = ExtResource( 10 )
+
+[node name="IsAttacking" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/EndAttack - Sequence/Not"]
+script = ExtResource( 9 )
+
+[node name="StartCombo - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/EndAttack - Sequence"]
+script = ExtResource( 6 )
+
+[node name="IsComboQueued" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/EndAttack - Sequence/StartCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="StartComboAttack" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/NormalAttack - Repeat/IfAttacking - Selector/EndAttack - Sequence/StartCombo - Sequence"]
+script = ExtResource( 9 )
+
+[node name="MoveOrIdle - Sequence" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 6 )
+
+[node name="Interact" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+script = ExtResource( 8 )
+
+[node name="Selector - Move or Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+script = ExtResource( 4 )
+
+[node name="Sequence - Move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
+script = ExtResource( 6 )
+
+[node name="get_movement" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 2 )
 
-[node name="move" type="Node" parent="BehaviorTree/Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 7 )
 
-[node name="Idle" type="Node" parent="BehaviorTree/Sequence/Selector - Move or Idle"]
+[node name="Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
 script = ExtResource( 5 )

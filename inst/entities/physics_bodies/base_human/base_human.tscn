@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://resources/textures/base_human.png" type="Texture" id=1]
 [ext_resource path="res://infra/entity/base_physics_body.gd" type="Script" id=2]
@@ -8,8 +8,23 @@
 extents = Vector2( 6, 8 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "idle_down"
-loop = true
+resource_name = "attack"
+length = 6.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 6, 18, 21, 15, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -32,13 +47,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( -5, 5 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle_down_left"
-loop = true
+[sub_resource type="Animation" id=4]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -61,13 +74,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( -5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle_down_right"
-loop = true
+[sub_resource type="Animation" id=5]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -90,13 +101,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( -4, 5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle_up"
-loop = true
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -118,13 +127,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 5, 4 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "idle_up_left"
-loop = true
+[sub_resource type="Animation" id=7]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -147,13 +154,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "idle_up_right"
-loop = true
+[sub_resource type="Animation" id=8]
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -176,11 +181,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 5, 4 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -208,7 +213,7 @@ tracks/1/keys = {
 "values": [ Vector2( -5, 3 ), Vector2( -5, 5 ), Vector2( -5, 5 ), Vector2( -5, 5 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -236,7 +241,7 @@ tracks/1/keys = {
 "values": [ Vector2( -5, 3 ), Vector2( -5, 2 ), Vector2( -4, 1 ), Vector2( -5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -264,7 +269,7 @@ tracks/1/keys = {
 "values": [ Vector2( -5, 4 ), Vector2( -4, 5 ), Vector2( -3, 5 ), Vector2( -4, 5 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -292,7 +297,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 4 ), Vector2( 5, 4 ), Vector2( 5, 1 ), Vector2( 5, 4 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -320,7 +325,7 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 2 ), Vector2( 5, 2 ), Vector2( 4, 1 ), Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -348,7 +353,7 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 3 ), Vector2( 5, 4 ), Vector2( 4, 3 ), Vector2( 5, 4 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 5, 9 )
 
 [node name="base_human" type="KinematicBody2D"]
@@ -362,7 +367,7 @@ hand_path = NodePath("Hand")
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 3
-frame = 21
+frame = 3
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -370,25 +375,26 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle_down = SubResource( 2 )
-anims/idle_down_left = SubResource( 3 )
-anims/idle_down_right = SubResource( 4 )
-anims/idle_up = SubResource( 5 )
-anims/idle_up_left = SubResource( 6 )
-anims/idle_up_right = SubResource( 7 )
-anims/walk_down = SubResource( 8 )
-anims/walk_down_left = SubResource( 9 )
-anims/walk_down_right = SubResource( 10 )
-anims/walk_up = SubResource( 11 )
-anims/walk_up_left = SubResource( 12 )
-anims/walk_up_right = SubResource( 13 )
+anims/attack = SubResource( 2 )
+anims/idle_down = SubResource( 3 )
+anims/idle_down_left = SubResource( 4 )
+anims/idle_down_right = SubResource( 5 )
+anims/idle_up = SubResource( 6 )
+anims/idle_up_left = SubResource( 7 )
+anims/idle_up_right = SubResource( 8 )
+anims/walk_down = SubResource( 9 )
+anims/walk_down_left = SubResource( 10 )
+anims/walk_down_right = SubResource( 11 )
+anims/walk_up = SubResource( 12 )
+anims/walk_up_left = SubResource( 13 )
+anims/walk_up_right = SubResource( 14 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( 5, 4 )
+position = Vector2( -5, 2 )

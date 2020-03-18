@@ -12,16 +12,6 @@ func tick(blackboard: Dictionary) -> int:
 	
 	var velocity = blackboard.velocity
 	
-	#velocity += leftover_velocity
-	
-	#leftover_velocity = velocity - velocity.floor()
-	
-	#velocity = velocity.floor()
-	
-	#print("Starting Position: ", physics_body.get_global_transform_with_canvas().get_origin())
-	
-	#print("Velocity: ", velocity)
-	
 	var direction = blackboard.direction
 	
 	if velocity.length() > 0:
@@ -53,7 +43,5 @@ func tick(blackboard: Dictionary) -> int:
 		else:
 			modifier = -1
 		blackboard.item.z_index = z + modifier
-	
-	#print("Ending Position: ", physics_body.get_global_transform_with_canvas().get_origin())
 	
 	return OK
