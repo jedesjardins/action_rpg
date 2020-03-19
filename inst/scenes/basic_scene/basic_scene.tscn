@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
@@ -18,7 +18,8 @@
 [ext_resource path="res://infra/bt/leaves/look_at_entity.gd" type="Script" id=16]
 [ext_resource path="res://infra/bt/composites/selector.gd" type="Script" id=17]
 [ext_resource path="res://infra/bt/leaves/choose_direction.gd" type="Script" id=18]
-[ext_resource path="res://infra/bt/leaves/move_in_direction.gd" type="Script" id=20]
+[ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=19]
+[ext_resource path="res://infra/bt/leaves/get_velocity_for_direction.gd" type="Script" id=20]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=21]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=23]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=24]
@@ -306,8 +307,11 @@ script = ExtResource( 15 )
 [node name="CheckTimer" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
 script = ExtResource( 26 )
 
-[node name="MoveInDirection" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
+[node name="GetVelocityForDirection" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
 script = ExtResource( 20 )
+
+[node name="Move" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence/MoveInCurrentDirection - Repeat/Sequence"]
+script = ExtResource( 19 )
 
 [node name="Idle" type="Node" parent="BaseEntity2/InteractingAIBehavior/BehaviorTree/Selector/Stroll - Sequence"]
 script = ExtResource( 23 )

@@ -35,15 +35,7 @@ func tick(blackboard: Dictionary) -> int:
 	if not animation_player.current_animation == next_animation:
 		animation_player.advance(0)
 		animation_player.play(next_animation)
-
-	var delta_velocity = get_velocity(direction) * Helpers.get_walk_speed() * blackboard.delta
-
-	delta_velocity += leftover_delta_velocity
 	
-	leftover_delta_velocity = delta_velocity - delta_velocity.floor()
-	
-	delta_velocity = delta_velocity.floor()
-	
-	physics_body.move_and_collide(delta_velocity)
+	blackboard.velocity = get_velocity(direction) * Helpers.get_walk_speed()
 	
 	return OK
