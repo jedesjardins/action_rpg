@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/entity/interacting_ai.gd"
 }, {
+"base": "Node2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://infra/scripts/test_class.gd"
+}, {
 "base": "Decorator",
 "class": "Not",
 "language": "GDScript",
@@ -118,6 +123,7 @@ _global_script_class_icons={
 "Helpers": "",
 "InteractScript": "",
 "InteractingAIBehavior": "",
+"Item": "",
 "Not": "",
 "Repeat": "",
 "Selector": "",

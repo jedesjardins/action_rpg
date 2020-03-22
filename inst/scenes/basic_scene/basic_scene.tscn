@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=19]
 [ext_resource path="res://infra/bt/leaves/get_velocity_for_direction.gd" type="Script" id=20]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=21]
+[ext_resource path="res://infra/scripts/test_class.gd" type="Script" id=22]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=23]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=24]
 [ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=25]
@@ -222,6 +223,8 @@ tile_data = PoolIntArray( 917521, 6, 0, 917522, 3, 0, 917523, 3, 0, 917524, 3, 0
 [node name="BaseEntity" type="Node2D" parent="."]
 position = Vector2( 386, 381 )
 script = ExtResource( 3 )
+physics_body_scene = null
+behavior_body_scene = null
 physics_body_path = NodePath("../../basic_scene/BaseEntity/base_human")
 behavior_body_path = NodePath("PlayerBehavior")
 
@@ -236,6 +239,8 @@ hand_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hand")
 [node name="BaseEntity2" type="Node2D" parent="."]
 position = Vector2( 421, 381 )
 script = ExtResource( 3 )
+physics_body_scene = null
+behavior_body_scene = null
 physics_body_path = NodePath("../../basic_scene/BaseEntity2/base_human")
 behavior_body_path = NodePath("../../basic_scene/BaseEntity2/InteractingAIBehavior")
 
@@ -262,6 +267,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+ai_script_path = NodePath("")
 interact_script_path = NodePath("InteractScript")
 
 [node name="InteractScript" type="Node2D" parent="BaseEntity2/InteractingAIBehavior"]
@@ -418,3 +424,7 @@ theme = ExtResource( 12 )
 text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
 !\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}"
+
+[node name="Item" type="Node2D" parent="."]
+script = ExtResource( 22 )
+json_path = "res://data/test_item.json"

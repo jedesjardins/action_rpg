@@ -1,0 +1,25 @@
+{
+	"item_scene": "res://sword.tscn",
+
+	"item_name": "sword",	
+
+	"attacks": {
+		"stab": {
+			"warmup": {
+				"item_animation": "stab_warmup",
+				"entity_animation": "stab_warmup",
+				"duration": 1
+			},
+			"main": {
+				"item_animation": "stab",
+				"entity_animation": "stab",
+				"duration": 1
+			},
+			"cooldown": {
+				"item_animation": "stab_cooldown",
+				"entity_animation": "stab_cooldown",
+				"duration": 1
+			}
+		}
+	}
+}
