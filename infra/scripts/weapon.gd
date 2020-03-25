@@ -69,7 +69,8 @@ func _ready():
 # TODO: set_ignore(entity.hurtbox)
 func held_by(entity: Node):
 	set_ignore(entity)
-	hitbox_ignored_node = entity
+	print(entity.hurtbox.get_path())
+	hitbox_ignored_node = entity.hurtbox
 	trigger.get_node("CollisionShape2D").disabled = true
 
 func drop():
@@ -97,7 +98,9 @@ func set_direction(direction: int): # pass in direction enum
 			sprite.frame = 7
 
 func interact(interactor):
-	interactor.hold_item(self)
+	assert(interactor.get_entity() != null)
+	
+	interactor.get_entity().hold_item(self)
 	sprite.unhighlight()
 
 func is_interacting() -> bool:
@@ -107,10 +110,14 @@ func trigger_entered(body):
 	print("Weapon Trigger Entered")
 	# Change this to if body can hold items
 	if body.is_in_group("player") and body != ignored_node:
+		assert(body.behavior != null)
+		
 		sprite.highlight()
 		body.behavior.add_interact_script(self)
 
 func trigger_exited(body):
 	if body.is_in_group("player") and body != ignored_node:
+		assert(body.behavior != null)
+		
 		sprite.unhighlight()
 		body.behavior.remove_interact_script(self)

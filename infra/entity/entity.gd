@@ -64,3 +64,24 @@ func has_appearance() -> bool:
 
 func get_appearance() -> Node:
 	return appearance
+
+func hold_item(var item_node: Weapon):
+	assert(item_node)
+	
+	if has_node("Hand"):
+		
+		var hand = get_node("Hand")
+		
+		# delete the old transform if there was one
+		if hand.has_node("item_transform"):
+			hand.get_node("item_transform").queue_free()
+
+		if behavior and behavior.get("blackboard") != null:
+			behavior.blackboard.item = item_node
+		
+		var remote_transform = RemoteTransform2D.new()
+		remote_transform.name = "item_transform"
+		hand.add_child(remote_transform, true)
+		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
+		
+		item_node.held_by(self)
