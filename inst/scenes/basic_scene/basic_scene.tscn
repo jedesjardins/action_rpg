@@ -1,18 +1,16 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
 [ext_resource path="res://infra/entity/base_entity.gd" type="Script" id=3]
 [ext_resource path="res://resources/textures/nine-patch.png" type="Texture" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
-[ext_resource path="res://infra/entity/held_item.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://infra/entity/interacting_ai.gd" type="Script" id=8]
 [ext_resource path="res://inst/scenes/basic_scene/basic_scene.gd" type="Script" id=9]
 [ext_resource path="res://inst/scenes/basic_scene/cactus_trigger.gd" type="Script" id=10]
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=11]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=12]
-[ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=13]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/is_interacting.gd" type="Script" id=15]
 [ext_resource path="res://infra/bt/leaves/look_at_entity.gd" type="Script" id=16]
@@ -21,7 +19,7 @@
 [ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=19]
 [ext_resource path="res://infra/bt/leaves/get_velocity_for_direction.gd" type="Script" id=20]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=21]
-[ext_resource path="res://infra/scripts/test_class.gd" type="Script" id=22]
+[ext_resource path="res://infra/scripts/weapon.gd" type="Script" id=22]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=23]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=24]
 [ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=25]
@@ -223,15 +221,12 @@ tile_data = PoolIntArray( 917521, 6, 0, 917522, 3, 0, 917523, 3, 0, 917524, 3, 0
 [node name="BaseEntity" type="Node2D" parent="."]
 position = Vector2( 386, 381 )
 script = ExtResource( 3 )
-physics_body_scene = null
-behavior_body_scene = null
 physics_body_path = NodePath("../../basic_scene/BaseEntity/base_human")
 behavior_body_path = NodePath("PlayerBehavior")
 
 [node name="base_human" parent="BaseEntity" instance=ExtResource( 2 )]
 collision_mask = 1
 appearance_path = NodePath("../../../basic_scene/BaseEntity/base_human/Sprite")
-hitbox_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hitbox")
 hand_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hand")
 
 [node name="PlayerBehavior" parent="BaseEntity" instance=ExtResource( 21 )]
@@ -239,15 +234,12 @@ hand_path = NodePath("../../../basic_scene/BaseEntity/base_human/Hand")
 [node name="BaseEntity2" type="Node2D" parent="."]
 position = Vector2( 421, 381 )
 script = ExtResource( 3 )
-physics_body_scene = null
-behavior_body_scene = null
 physics_body_path = NodePath("../../basic_scene/BaseEntity2/base_human")
 behavior_body_path = NodePath("../../basic_scene/BaseEntity2/InteractingAIBehavior")
 
 [node name="base_human" parent="BaseEntity2" instance=ExtResource( 2 )]
 appearance_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Sprite")
 trigger_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Trigger")
-hitbox_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Hitbox")
 hand_path = NodePath("../../../basic_scene/BaseEntity2/base_human/Hand")
 
 [node name="Trigger" type="Area2D" parent="BaseEntity2/base_human"]
@@ -267,7 +259,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
-ai_script_path = NodePath("")
 interact_script_path = NodePath("InteractScript")
 
 [node name="InteractScript" type="Node2D" parent="BaseEntity2/InteractingAIBehavior"]
@@ -351,13 +342,6 @@ script = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus/Trigger"]
 shape = SubResource( 9 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 414, 328 )
-texture = ExtResource( 13 )
-hframes = 8
-script = ExtResource( 6 )
-sprite_path = NodePath(".")
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="OldMarginContainer" type="MarginContainer" parent="HUD"]
@@ -425,6 +409,7 @@ text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
 !\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}"
 
-[node name="Item" type="Node2D" parent="."]
+[node name="Weapon" type="Node2D" parent="."]
+position = Vector2( 339, 362 )
 script = ExtResource( 22 )
 json_path = "res://data/test_item.json"

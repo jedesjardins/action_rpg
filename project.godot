@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorators/fail.gd"
 }, {
-"base": "Node2D",
-"class": "HeldItem",
-"language": "GDScript",
-"path": "res://infra/entity/held_item.gd"
-}, {
 "base": "Node",
 "class": "Helpers",
 "language": "GDScript",
@@ -73,11 +68,6 @@ _global_script_classes=[ {
 "class": "InteractingAIBehavior",
 "language": "GDScript",
 "path": "res://infra/entity/interacting_ai.gd"
-}, {
-"base": "Node2D",
-"class": "Item",
-"language": "GDScript",
-"path": "res://infra/scripts/test_class.gd"
 }, {
 "base": "Decorator",
 "class": "Not",
@@ -104,10 +94,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorators/suceed.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "TriggerScript",
 "language": "GDScript",
 "path": "res://infra/scripts/base_trigger.gd"
+}, {
+"base": "InteractScript",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://infra/scripts/weapon.gd"
 } ]
 _global_script_class_icons={
 "AnimationChain": "",
@@ -119,17 +114,16 @@ _global_script_class_icons={
 "Composite": "",
 "Decorator": "",
 "Fail": "",
-"HeldItem": "",
 "Helpers": "",
 "InteractScript": "",
 "InteractingAIBehavior": "",
-"Item": "",
 "Not": "",
 "Repeat": "",
 "Selector": "",
 "Sequence": "",
 "Suceed": "",
-"TriggerScript": ""
+"TriggerScript": "",
+"Weapon": ""
 }
 
 [application]
@@ -178,6 +172,11 @@ right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
 

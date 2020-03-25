@@ -17,7 +17,7 @@ func trigger_exited(body):
 func is_interacting() -> bool:
 	return has_node("TextBox")
 
-func interact():
+func interact(_initiator):
 	if is_interacting():
 		return
 	

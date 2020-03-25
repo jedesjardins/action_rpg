@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # to be used under a behavior node of an entity.
 class_name TriggerScript

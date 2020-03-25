@@ -22,6 +22,7 @@ func _ready():
 
 	blackboard.interacting = false
 	blackboard.interact_map = interact_map
+	blackboard.interactor = self
 
 func set_physics_body(physics_body: BasePhysicsBody):
 	.set_physics_body(physics_body) # call inherited function
@@ -36,20 +37,24 @@ func _physics_process(delta):
 	
 	$"BehaviorTree".tick(blackboard)
 
-func hold_item(var item_node: HeldItem):
+func hold_item(var item_node: Weapon):
+	assert(item_node)
+	
 	if physics_body.has_node("Hand"):
-
+		
 		var hand = physics_body.get_node("Hand")
-
+		
+		# delete the old transform if there was one
 		if hand.has_node("item_transform"):
 			hand.get_node("item_transform").queue_free()
 
-		if item_node:
-			blackboard.item = item_node
-			var remote_transform = RemoteTransform2D.new()
-			remote_transform.name = "item_transform"
-			hand.add_child(remote_transform, true)
-			remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
+		blackboard.item = item_node
+		var remote_transform = RemoteTransform2D.new()
+		remote_transform.name = "item_transform"
+		hand.add_child(remote_transform, true)
+		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
+		
+		item_node.held_by(self)
 
 func add_interact_script(script):
 	interact_map[script] = true

@@ -1,22 +1,22 @@
 {
-	"item_scene": "res://sword.tscn",
+	"item_scene": "res://inst/items/sword.tscn",
 
 	"item_name": "sword",	
 
 	"attacks": {
 		"stab": {
 			"warmup": {
-				"item_animation": "stab_warmup",
+				"item_animation": "stab_disabled",
 				"entity_animation": "stab_warmup",
 				"duration": 1
 			},
 			"main": {
-				"item_animation": "stab",
+				"item_animation": "stab_enabled",
 				"entity_animation": "stab",
 				"duration": 1
 			},
 			"cooldown": {
-				"item_animation": "stab_cooldown",
+				"item_animation": "stab_disabled",
 				"entity_animation": "stab_cooldown",
 				"duration": 1
 			}

@@ -11,18 +11,18 @@ func _ready():
 	Player.physics_body.add_child(remote_transform)
 	remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, $"Camera2D")
 	
-	var err = Player.physics_body.hitbox.connect("area_entered", self, "player_entered_hurtbox_area")
+	var err = Player.physics_body.hurtbox.connect("area_entered", self, "player_entered_hitbox_area")
 	if err != OK:
 		print("Problem")
-	err = Player.physics_body.hitbox.connect("body_entered", self, "player_entered_hurtbox_body")
+	err = Player.physics_body.hurtbox.connect("body_entered", self, "player_entered_hitbox_body")
 	if err != OK:
 		print("Problem")
 	
-	Player.behavior_body.hold_item($"Sprite")
+#	Player.behavior_body.hold_item($"Sprite")
 	$"BaseEntity2".behavior_body.blackboard.target_entity = Player.physics_body
 
-func player_entered_hurtbox_area(area):
-	print("player_entered_hurtbox_area ", area.get_path())
+func player_entered_hitbox_area(area):
+	print("player_entered_hitbox_area ", area.get_path())
 	
-func player_entered_hurtbox_body(body):
-	print("player_entered_hurtbox_body ", body.get_path())
+func player_entered_hitbox_body(body):
+	print("player_entered_hitbox_body ", body.get_path())

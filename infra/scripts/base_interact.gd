@@ -3,7 +3,7 @@ extends TriggerScript
 
 class_name InteractScript
 
-func interact():
+func interact(_initiator):
 	assert(false)
 
 func is_interacting() -> bool:
