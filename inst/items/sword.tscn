@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/sprite_script.gd" type="Script" id=2]
-[ext_resource path="res://inst/items/sword.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.5, 4 )
@@ -781,7 +780,6 @@ tracks/3/keys = {
 [node name="Sword" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource( 3 )
 
 [node name="RectCollisionShape" type="CollisionShape2D" parent="."]
 visible = false
