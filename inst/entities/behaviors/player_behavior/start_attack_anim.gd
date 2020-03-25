@@ -1,9 +1,9 @@
 extends BTNode
 
 func tick(bb: Dictionary) -> int:
-	assert(bb.has("physics_body"))
+	assert(bb.has("entity"))
 	
-	var animation_player = bb.physics_body.get_node("AnimationPlayer")
+	var animation_player = bb.entity.get_node("AnimationPlayer")
 	var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
 	
 	if not bb.has("animation_chain"):

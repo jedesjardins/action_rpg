@@ -22,11 +22,11 @@ func get_velocity(direction: int):
 			return Vector2(-1, 1).normalized()
 
 func tick(blackboard: Dictionary) -> int:
-	assert(blackboard.has("physics_body"))
+	assert(blackboard.has("entity"))
 	assert(blackboard.has("direction"))
 	
-	var physics_body = blackboard.physics_body
-	var animation_player = physics_body.get_node("AnimationPlayer")
+	var entity = blackboard.entity
+	var animation_player = entity.get_node("AnimationPlayer")
 	
 	var direction = blackboard.direction
 	

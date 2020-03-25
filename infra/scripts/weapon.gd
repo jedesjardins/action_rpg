@@ -66,10 +66,10 @@ func _ready():
 		attack_animations[key] = aa
 	
 	
-
-func held_by(physics_body: Node):
-	set_ignore(physics_body)
-	hitbox_ignored_node = physics_body
+# TODO: set_ignore(entity.hurtbox)
+func held_by(entity: Node):
+	set_ignore(entity)
+	hitbox_ignored_node = entity
 	trigger.get_node("CollisionShape2D").disabled = true
 
 func drop():
@@ -108,9 +108,9 @@ func trigger_entered(body):
 	# Change this to if body can hold items
 	if body.is_in_group("player") and body != ignored_node:
 		sprite.highlight()
-		body.get_parent().behavior_body.add_interact_script(self)
+		body.behavior.add_interact_script(self)
 
 func trigger_exited(body):
 	if body.is_in_group("player") and body != ignored_node:
 		sprite.unhighlight()
-		body.get_parent().behavior_body.remove_interact_script(self)
+		body.behavior.remove_interact_script(self)

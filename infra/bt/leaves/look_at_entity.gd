@@ -2,12 +2,12 @@ extends BTNode
 
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("target_entity"))
-	assert(blackboard.has("physics_body"))
+	assert(blackboard.has("entity"))
 	
-	var target_physics_body = blackboard.target_entity
-	var physics_body = blackboard.physics_body
+	var target_entity = blackboard.target_entity
+	var entity = blackboard.entity
 	
-	var difference_vector = target_physics_body.get_global_position() - physics_body.get_global_position()
+	var difference_vector = target_entity.get_global_position() - entity.get_global_position()
 	
 	# get angle from this entity to target entity, where "down" is zero,
 	# and counter_clockwise is positive
@@ -15,6 +15,6 @@ func tick(blackboard: Dictionary) -> int:
 	
 	var direction = int(floor(angle/45))
 	
-	physics_body.get_node("AnimationPlayer").play("idle_"+blackboard.direction_string[direction])
+	entity.get_node("AnimationPlayer").play("idle_"+blackboard.direction_string[direction])
 	
 	return OK

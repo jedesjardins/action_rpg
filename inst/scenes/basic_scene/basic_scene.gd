@@ -1,25 +1,25 @@
 extends Node2D
 
-var Player: BaseEntity
+var player: Entity
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Player = $"BaseEntity"
-	Player.physics_body.add_to_group("player", true)
+	player = $"base_human"
+	player.add_to_group("player", true)
 		
 	var remote_transform = RemoteTransform2D.new()
-	Player.physics_body.add_child(remote_transform)
+	player.add_child(remote_transform)
 	remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, $"Camera2D")
 	
-	var err = Player.physics_body.hurtbox.connect("area_entered", self, "player_entered_hitbox_area")
+	var err = player.hurtbox.connect("area_entered", self, "player_entered_hitbox_area")
 	if err != OK:
 		print("Problem")
-	err = Player.physics_body.hurtbox.connect("body_entered", self, "player_entered_hitbox_body")
+	err = player.hurtbox.connect("body_entered", self, "player_entered_hitbox_body")
 	if err != OK:
 		print("Problem")
 	
-#	Player.behavior_body.hold_item($"Sprite")
-	$"BaseEntity2".behavior_body.blackboard.target_entity = Player.physics_body
+#	player.behavior.hold_item($"Sprite")
+	$"base_human2".behavior.blackboard.target_entity = player
 
 func player_entered_hitbox_area(area):
 	print("player_entered_hitbox_area ", area.get_path())

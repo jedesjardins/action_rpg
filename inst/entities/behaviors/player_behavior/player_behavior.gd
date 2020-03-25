@@ -24,9 +24,9 @@ func _ready():
 	blackboard.interact_map = interact_map
 	blackboard.interactor = self
 
-func set_physics_body(physics_body: BasePhysicsBody):
-	.set_physics_body(physics_body) # call inherited function
-	blackboard.physics_body = physics_body
+func set_entity(node: Node):
+	.set_entity(node) # call inherited function
+	blackboard.entity = node
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -40,9 +40,9 @@ func _physics_process(delta):
 func hold_item(var item_node: Weapon):
 	assert(item_node)
 	
-	if physics_body.has_node("Hand"):
+	if entity.has_node("Hand"):
 		
-		var hand = physics_body.get_node("Hand")
+		var hand = entity.get_node("Hand")
 		
 		# delete the old transform if there was one
 		if hand.has_node("item_transform"):

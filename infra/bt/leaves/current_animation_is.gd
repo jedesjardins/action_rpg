@@ -3,9 +3,9 @@ extends BTNode
 export var animation: String
 
 func tick(bb: Dictionary) -> int:
-	assert(bb.has("physics_body"))
+	assert(bb.has("entity"))
 	
-	if bb.physics_body.get_node("AnimationPlayer").current_animation == animation:
+	if bb.entity.get_node("AnimationPlayer").current_animation == animation:
 		return OK
 	
 	return FAILED

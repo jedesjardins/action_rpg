@@ -16,7 +16,7 @@ func trigger_entered(_body):
 	
 	# example of how one might interact with the player
 #	if body.is_in_group("player") and body != ignored_node:
-#		$"..".get_physics_body().get_appearance().highlight()
+#		$"..".get_entity().get_appearance().highlight()
 #		body.get_parent().behavior_body.add_interact_script(self)
 
 func trigger_exited(_body):
@@ -24,5 +24,5 @@ func trigger_exited(_body):
 
 #	if body.is_in_group("player") and body != ignored_node:
 #		player_exited_trigger = true
-#		$"..".get_physics_body().get_appearance().unhighlight()
+#		$"..".get_entity().get_appearance().unhighlight()
 #		body.get_parent().behavior_body.remove_interact_script(self)

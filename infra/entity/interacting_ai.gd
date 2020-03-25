@@ -12,7 +12,7 @@ var blackboard: Dictionary
 
 func _ready():
 	#ai_script = get_node(ai_script_path)
-	#ai_script.set_physics_body(get_physics_body())
+	#ai_script.set_entity(get_entity())
 	interact_script = get_node(interact_script_path)
 	blackboard.interact_script = interact_script
 	blackboard.direction_string = {
@@ -35,13 +35,12 @@ func _physics_process(delta):
 	
 	$"BehaviorTree".tick(blackboard)
 
-func set_physics_body(physics_body: BasePhysicsBody):
-	.set_physics_body(physics_body) # call inherited function
-	blackboard.physics_body = physics_body
-	
-	var interaction_trigger = physics_body.get_trigger()
-	interact_script.set_ignore(physics_body)
-	interact_script.set_trigger(interaction_trigger)
+func set_entity(node: Node):
+	.set_entity(node) # call inherited function
+	blackboard.entity = node
+
+	interact_script.set_ignore(entity)
+	interact_script.set_trigger(entity.get_trigger())
 
 func _get_configuration_warning():
 #	if not ai_script_path:

@@ -3,12 +3,12 @@ extends BTNode
 onready var leftover_delta_velocity = Vector2(0, 0)
 
 func tick(blackboard: Dictionary) -> int:
-	assert(blackboard.has("physics_body"))
+	assert(blackboard.has("entity"))
 	assert(blackboard.has("velocity"))
 	assert(blackboard.has("direction"))
 	
-	var physics_body = blackboard.physics_body
-	var animation_player = physics_body.get_node("AnimationPlayer")
+	var entity = blackboard.entity
+	var animation_player = entity.get_node("AnimationPlayer")
 	
 	var velocity = blackboard.velocity
 	
@@ -29,11 +29,11 @@ func tick(blackboard: Dictionary) -> int:
 	
 	delta_velocity = delta_velocity.floor()
 	
-	physics_body.move_and_collide(delta_velocity)
+	entity.move_and_collide(delta_velocity)
 	
-	var z = physics_body.get_global_transform_with_canvas().get_origin().y
+	var z = entity.get_global_transform_with_canvas().get_origin().y
 
-	physics_body.get_node("Sprite").z_index = z
+	entity.get_node("Sprite").z_index = z
 	
 	if blackboard.has("item"):
 		blackboard.item.set_direction(direction)
