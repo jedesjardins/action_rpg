@@ -85,3 +85,17 @@ func hold_item(var item_node: Weapon):
 		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
 		
 		item_node.held_by(self)
+
+func drop_item():
+	if has_node("Hand"):
+		var hand = get_node("Hand")
+		if hand.has_node("item_transform"):
+			print("Freed the Item RemoteTransform2D")
+			var item_transform = hand.get_node("item_transform")
+			
+			hand.remove_child(item_transform)
+			item_transform.queue_free()
+	
+	if behavior.blackboard.has("item"):
+		behavior.blackboard.item.drop()
+		behavior.blackboard.erase("item")

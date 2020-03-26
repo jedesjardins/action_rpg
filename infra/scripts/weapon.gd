@@ -104,6 +104,12 @@ func held_by(entity: Node):
 func drop():
 	set_ignore(null)
 	hitbox_ignored_node = null
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(1)
+	yield(timer, "timeout")
+	remove_child(timer)
+	timer.queue_free()
 	trigger.get_node("CollisionShape2D").disabled = false
 
 func set_direction(direction: int): # pass in direction enum

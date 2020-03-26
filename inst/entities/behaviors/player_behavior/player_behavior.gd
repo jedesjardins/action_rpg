@@ -35,6 +35,9 @@ func _physics_process(delta):
 	blackboard.delta = delta
 	blackboard.next_interact_script = next_interact_script
 	
+	if Input.is_key_pressed(KEY_Q):
+		entity.drop_item()
+	
 	$"BehaviorTree".tick(blackboard)
 
 func add_interact_script(script):
