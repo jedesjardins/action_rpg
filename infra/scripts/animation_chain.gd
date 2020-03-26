@@ -22,29 +22,23 @@ func interrupt(new_animation: String):
 		is_interrupted = true
 		is_playing = false
 
-func run(animations: PoolStringArray, time_scales = null):
+func run(animations: PoolStringArray, durations):
 	assert(not is_playing)
+	assert(durations != null)
 	
 	is_playing = true
 	is_interrupted = false
-	
-	if not time_scales:
-		time_scales = []
-		time_scales.resize(animations.size())
-		for time_scale in time_scales:
-			time_scale = 1
-		
-		print(time_scales) 
 	
 	if animation_player.current_animation == animations[0]:
 		animation_player.seek(0, true)
 	
 	for i in range(animations.size()):
 		var animation_name = animations[i]
-		
 		current_animation = animation_name
 		
-		animation_player.play(animation_name, -1, time_scales[i])
+		var time_scale = animation_player.get_animation(animation_name).length / durations[i]
+		
+		animation_player.play(animation_name, -1, time_scale)
 		
 		yield(animation_player, "animation_finished")
 		

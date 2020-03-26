@@ -7,18 +7,18 @@
 		"stab": {
 			"warmup": {
 				"item_animation": "stab_disabled",
-				"entity_animation": "stab_warmup",
-				"duration": 1
+				"entity_animation": "attack_warm_up",
+				"duration": 0.1
 			},
 			"main": {
 				"item_animation": "stab_enabled",
-				"entity_animation": "stab",
-				"duration": 1
+				"entity_animation": "attack",
+				"duration": 0.3
 			},
 			"cooldown": {
 				"item_animation": "stab_disabled",
-				"entity_animation": "stab_cooldown",
-				"duration": 1
+				"entity_animation": "idle",
+				"duration": 0.2
 			}
 		}
 	}

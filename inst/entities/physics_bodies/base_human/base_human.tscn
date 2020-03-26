@@ -8,7 +8,7 @@
 extents = Vector2( 6, 8 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "attack"
+resource_name = "attack_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -35,6 +35,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "attack_warm_up_down"
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -404,6 +405,7 @@ hand_path = NodePath("Hand")
 texture = ExtResource( 1 )
 vframes = 9
 hframes = 3
+frame = 24
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -411,8 +413,8 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
-anims/attack_warm_up = SubResource( 3 )
+anims/attack_down = SubResource( 2 )
+anims/attack_warm_up_down = SubResource( 3 )
 anims/idle_down = SubResource( 4 )
 anims/idle_down_left = SubResource( 5 )
 anims/idle_down_right = SubResource( 6 )
@@ -434,4 +436,4 @@ collision_mask = 2
 shape = SubResource( 16 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -5, 2 )
+position = Vector2( -5, 3 )
