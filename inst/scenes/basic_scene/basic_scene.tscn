@@ -396,6 +396,6 @@ abcdefghijklmnopqrstuvwxyz
 !\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}"
 
 [node name="Weapon" type="Node2D" parent="."]
-position = Vector2( 339, 362 )
+position = Vector2( 409, 358 )
 script = ExtResource( 22 )
 json_path = "res://data/test_item.json"

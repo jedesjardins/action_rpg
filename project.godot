@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/behavior_tree.gd"
 }, {
+"base": "Area2D",
+"class": "ChildArea",
+"language": "GDScript",
+"path": "res://infra/scripts/child_area.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ChildPhysicsBody",
+"language": "GDScript",
+"path": "res://infra/entity/child_physics_body.gd"
+}, {
 "base": "BTNode",
 "class": "Composite",
 "language": "GDScript",
@@ -39,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorator.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "ChildPhysicsBody",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://infra/entity/entity.gd"
@@ -104,6 +114,8 @@ _global_script_class_icons={
 "BTNode": "",
 "BaseBehavior": "",
 "BehaviorTree": "",
+"ChildArea": "",
+"ChildPhysicsBody": "",
 "Composite": "",
 "Decorator": "",
 "Entity": "",

@@ -1,16 +1,18 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/sprite_script.gd" type="Script" id=2]
+[ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.5, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( -2.5, -0.5, -7, -5, -7, -7, -5, -7, -0.5, -2.5 )
+points = PoolVector2Array( 2.5, -0.5, 7, -5, 7, -7, 5, -7, 0.5, -2.5 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "stab_disabled_down"
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -24,7 +26,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -36,7 +38,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -48,8 +50,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "stab_disabled_down_left"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -63,7 +64,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -75,7 +76,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -87,8 +88,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "stab_disabled_down_right"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -102,7 +102,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -114,7 +114,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -126,8 +126,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "stab_disabled_left"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -141,7 +140,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -153,7 +152,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -165,8 +164,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "stab_disabled_right"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -180,7 +178,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -192,7 +190,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -204,8 +202,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "stab_disabled_up"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -219,7 +216,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -231,7 +228,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -243,8 +240,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "stab_disabled_up_left"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -258,7 +254,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -270,46 +266,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "stab_disabled_up_right"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:disabled")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -332,10 +289,48 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:position")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -347,7 +342,7 @@ tracks/1/keys = {
 "values": [ Vector2( -0.5, 5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RectCollisionShape:shape:extents")
+tracks/2/path = NodePath("Hitbox/RectCollisionShape:shape:extents")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -359,7 +354,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1.5, 4 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RectCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -371,7 +366,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PolygonCollisionShape:disabled")
+tracks/4/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -383,8 +378,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "stab_enabled_down_left"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -398,7 +392,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -410,7 +404,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:shape:points")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:shape:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -422,7 +416,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( -2.5, 0.5, -7, 5, -7, 7, -5, 7, -0.5, 2.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PolygonCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -434,8 +428,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "stab_enabled_down_right"
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -449,7 +442,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -461,7 +454,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:shape:points")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:shape:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -473,7 +466,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( 2.5, 0.5, 7, 5, 7, 7, 5, 7, 0.5, 2.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PolygonCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -485,8 +478,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "stab_enabled_left"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -500,7 +492,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:position")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -512,7 +504,7 @@ tracks/1/keys = {
 "values": [ Vector2( -5, -0.5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RectCollisionShape:shape:extents")
+tracks/2/path = NodePath("Hitbox/RectCollisionShape:shape:extents")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -524,7 +516,7 @@ tracks/2/keys = {
 "values": [ Vector2( 4, 1.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RectCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -536,70 +528,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PolygonCollisionShape:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=15]
-resource_name = "stab_enabled_right"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 5, 0.5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("RectCollisionShape:shape:extents")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 4, 1.5 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("RectCollisionShape:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("PolygonCollisionShape:disabled")
+tracks/4/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -622,10 +551,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4 ]
+"values": [ 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:position")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -634,10 +563,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0.5, -5 ) ]
+"values": [ Vector2( 5, 0.5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("RectCollisionShape:shape:extents")
+tracks/2/path = NodePath("Hitbox/RectCollisionShape:shape:extents")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -646,10 +575,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 1.5, 4 ) ]
+"values": [ Vector2( 4, 1.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("RectCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -661,7 +590,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PolygonCollisionShape:disabled")
+tracks/4/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -674,7 +603,68 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=17]
-resource_name = "stab_enabled_up_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0.5, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/RectCollisionShape:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1.5, 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox/RectCollisionShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=18]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -688,7 +678,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -700,7 +690,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:shape:points")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:shape:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -712,7 +702,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( -2.5, -0.5, -7, -5, -7, -7, -5, -7, -0.5, -2.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PolygonCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -724,8 +714,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=18]
-resource_name = "stab_enabled_up_right"
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -739,7 +728,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RectCollisionShape:disabled")
+tracks/1/path = NodePath("Hitbox/RectCollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -751,7 +740,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PolygonCollisionShape:shape:points")
+tracks/2/path = NodePath("Hitbox/PolygonCollisionShape:shape:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -763,7 +752,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( 2.5, -0.5, 7, -5, 7, -7, 5, -7, 0.5, -2.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PolygonCollisionShape:disabled")
+tracks/3/path = NodePath("Hitbox/PolygonCollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -775,49 +764,50 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=19]
+[node name="Sword" type="Node2D"]
 
-[node name="Sword" type="Area2D"]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
+script = ExtResource( 3 )
 
-[node name="RectCollisionShape" type="CollisionShape2D" parent="."]
-visible = false
+[node name="RectCollisionShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( -0.5, 5 )
 shape = SubResource( 1 )
 disabled = true
 
-[node name="PolygonCollisionShape" type="CollisionShape2D" parent="."]
-visible = false
+[node name="PolygonCollisionShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )
 disabled = true
+
+[node name="Trigger" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 9
-frame = 8
+frame = 2
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/stab_disabled_down = SubResource( 3 )
-anims/stab_disabled_down_left = SubResource( 4 )
-anims/stab_disabled_down_right = SubResource( 5 )
-anims/stab_disabled_left = SubResource( 6 )
-anims/stab_disabled_right = SubResource( 7 )
-anims/stab_disabled_up = SubResource( 8 )
-anims/stab_disabled_up_left = SubResource( 9 )
-anims/stab_disabled_up_right = SubResource( 10 )
-anims/stab_enabled_down = SubResource( 11 )
-anims/stab_enabled_down_left = SubResource( 12 )
-anims/stab_enabled_down_right = SubResource( 13 )
-anims/stab_enabled_left = SubResource( 14 )
-anims/stab_enabled_right = SubResource( 15 )
-anims/stab_enabled_up = SubResource( 16 )
-anims/stab_enabled_up_left = SubResource( 17 )
-anims/stab_enabled_up_right = SubResource( 18 )
-
-[node name="Trigger" type="Area2D" parent="."]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-shape = SubResource( 19 )
+anims/stab_disabled_down = SubResource( 4 )
+anims/stab_disabled_down_left = SubResource( 5 )
+anims/stab_disabled_down_right = SubResource( 6 )
+anims/stab_disabled_left = SubResource( 7 )
+anims/stab_disabled_right = SubResource( 8 )
+anims/stab_disabled_up = SubResource( 9 )
+anims/stab_disabled_up_left = SubResource( 10 )
+anims/stab_disabled_up_right = SubResource( 11 )
+anims/stab_enabled_down = SubResource( 12 )
+anims/stab_enabled_down_left = SubResource( 13 )
+anims/stab_enabled_down_right = SubResource( 14 )
+anims/stab_enabled_left = SubResource( 15 )
+anims/stab_enabled_right = SubResource( 16 )
+anims/stab_enabled_up = SubResource( 17 )
+anims/stab_enabled_up_left = SubResource( 18 )
+anims/stab_enabled_up_right = SubResource( 19 )

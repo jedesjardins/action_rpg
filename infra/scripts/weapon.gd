@@ -55,22 +55,17 @@ func _ready():
 	# get the trigger from the item scene
 	assert(instanced_item.has_node("Trigger"))
 	trigger = instanced_item.get_node("Trigger")
-	
-	# connect the item trigger to be able to be picked up
-	var err = trigger.connect("body_entered", self, "trigger_entered")
-	if err != OK:
-		print("Error initializing Weapon class")
-	
-	err = trigger.connect("body_exited", self, "trigger_exited")
-	if err != OK:
-		print("Error initializing Weapon class")
+	trigger.parent = self
+	var _err = trigger.connect("body_entered", self, "trigger_entered")
+	_err = trigger.connect("body_exited", self, "trigger_exited")
 	
 	# connect the items hitbox to a deal damage function
 	# right now assume the root of the item is an Area2D
-	assert(instanced_item is Area2D)
-	hitbox = instanced_item
-	err = hitbox.connect("body_entered", self, "hit_body")
-	err = hitbox.connect("area_entered", self, "hit_area")
+	assert(instanced_item.has_node("Hitbox"))
+	hitbox = instanced_item.get_node("Hitbox")
+	hitbox.parent = self
+	_err = hitbox.connect("body_entered", self, "hit_body")
+	_err = hitbox.connect("area_entered", self, "hit_area")
 	
 	# parse the attack definitions (animations and durations)
 	assert(parsed_dict.has("attacks"))
@@ -80,7 +75,8 @@ func _ready():
 		attack_animations[key] = aa
 
 func hit_body(_body):
-	print("Should hit_body even be called???")
+	pass
+	# should hit_body even be called?
 
 func hit_area(area):
 	var hitbox_bit = 1
@@ -90,27 +86,33 @@ func hit_area(area):
 		return
 	
 	if area.get_collision_layer_bit(hurtbox_bit):
-		print("Dealing damage to ", area.get_path())
+		pass
+		# Deals damage to hurtbox owner
 	elif area.get_collision_layer_bit(hitbox_bit):
-		print("Clashing with other hitbox ", area.get_path())
+		pass
+		# weapon clash (stun lock mechanic here?)
 
 # TODO: set_ignore(entity.hurtbox)
 func held_by(entity: Node):
 	# set the trigger to ignore the entity
 	set_ignore(entity)
-	hitbox_ignored_node = entity.hurtbox
 	trigger.get_node("CollisionShape2D").disabled = true
+	
+	hitbox_ignored_node = entity.hurtbox
 
 func drop():
-	set_ignore(null)
-	hitbox_ignored_node = null
 	var timer = Timer.new()
 	add_child(timer)
 	timer.start(1)
 	yield(timer, "timeout")
 	remove_child(timer)
 	timer.queue_free()
+	
+	# wait until timer finished
+	set_ignore(null)
 	trigger.get_node("CollisionShape2D").disabled = false
+	
+	hitbox_ignored_node = null
 
 func set_direction(direction: int): # pass in direction enum
 	match direction:
@@ -141,17 +143,20 @@ func is_interacting() -> bool:
 	return false
 
 func trigger_entered(body):
-	print("Weapon Trigger Entered")
-	# Change this to if body can hold items
-	if body.is_in_group("player") and body != ignored_node:
-		assert(body.behavior != null)
-		
-		sprite.highlight()
-		body.behavior.add_interact_script(self)
+	if body is ChildPhysicsBody:
+		body.emit_signal("entered_area", self, sprite)
+	
+#	if body is Entity and body.has_behavior() and body != ignored_node and body.behavior.has_method("add_interact_script"):
+#		if body.is_in_group("player"):
+#			sprite.highlight()
+#
+#		body.behavior.add_interact_script(self)
 
 func trigger_exited(body):
-	if body.is_in_group("player") and body != ignored_node:
-		assert(body.behavior != null)
-		
-		sprite.unhighlight()
-		body.behavior.remove_interact_script(self)
+	if body is ChildPhysicsBody:
+		body.emit_signal("exited_area", self)
+#	if body is Entity and body.has_behavior() and body != ignored_node and body.behavior.has_method("remove_interact_script"):
+#		if body.is_in_group("player"):
+#			sprite.unhighlight()
+#
+#		body.behavior.remove_interact_script(self)

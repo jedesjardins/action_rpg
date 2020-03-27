@@ -4,15 +4,21 @@ extends InteractScript
 var player_exited_trigger = false
 
 func trigger_entered(entity):
-	if entity.is_in_group("player") and entity != ignored_node and entity.behavior != null:
-		$"..".get_entity().get_appearance().highlight()
-		entity.behavior.add_interact_script(self)
+	if entity.is_in_group("player"):
+		entity.emit_signal("entered_area", self, $"..".get_entity().get_appearance())
+	
+#	if entity.is_in_group("player") and entity != ignored_node and entity.behavior != null:
+#		$"..".get_entity().get_appearance().highlight()
+#		entity.behavior.add_interact_script(self)
 
 func trigger_exited(entity):
-	if entity.is_in_group("player") and entity != ignored_node and entity.behavior != null:
-		player_exited_trigger = true
-		$"..".get_entity().get_appearance().unhighlight()
-		entity.behavior.remove_interact_script(self)
+	if entity.is_in_group("player"):
+		entity.emit_signal("exited_area", self)
+	
+#	if entity.is_in_group("player") and entity != ignored_node and entity.behavior != null:
+#		player_exited_trigger = true
+#		$"..".get_entity().get_appearance().unhighlight()
+#		entity.behavior.remove_interact_script(self)
 
 func is_interacting() -> bool:
 	return has_node("TextBox")

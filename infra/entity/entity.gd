@@ -1,5 +1,5 @@
 tool
-extends KinematicBody2D
+extends ChildPhysicsBody # extends KinematicBody2D
 
 class_name Entity
 
@@ -33,9 +33,13 @@ func _ready():
 	
 	if hitbox_path:
 		hitbox = get_node(hitbox_path)
+		assert(hitbox is ChildArea)
+		hitbox.parent = self
 	
 	if hurtbox_path:
 		hurtbox = get_node(hurtbox_path)
+		assert(hurtbox is ChildArea)
+		hurtbox.parent = self
 	
 	if behavior_path:
 		behavior = get_node(behavior_path)
@@ -65,6 +69,12 @@ func has_appearance() -> bool:
 func get_appearance() -> Node:
 	return appearance
 
+func has_behavior() -> bool:
+	return behavior != null
+
+func get_behavior() -> Node:
+	return behavior
+
 func hold_item(var item_node: Weapon):
 	assert(item_node)
 	
@@ -76,8 +86,8 @@ func hold_item(var item_node: Weapon):
 		if hand.has_node("item_transform"):
 			hand.get_node("item_transform").queue_free()
 
-		if behavior and behavior.get("blackboard") != null:
-			behavior.blackboard.item = item_node
+		if behavior:
+			behavior.set_item(item_node)
 		
 		var remote_transform = RemoteTransform2D.new()
 		remote_transform.name = "item_transform"
@@ -90,12 +100,13 @@ func drop_item():
 	if has_node("Hand"):
 		var hand = get_node("Hand")
 		if hand.has_node("item_transform"):
-			print("Freed the Item RemoteTransform2D")
+			print("Freeing the Item RemoteTransform2D")
 			var item_transform = hand.get_node("item_transform")
 			
 			hand.remove_child(item_transform)
 			item_transform.queue_free()
 	
-	if behavior.blackboard.has("item"):
-		behavior.blackboard.item.drop()
-		behavior.blackboard.erase("item")
+	var held_item = behavior.get_item()
+	if held_item:
+		held_item.drop()
+		behavior.set_item(null)
