@@ -27,6 +27,7 @@ export var json_path: String
 var attack_animations: Dictionary
 
 var sprite: Sprite
+var animation_player: AnimationPlayer
 var hitbox: Area2D
 var trigger: Area2D
 var hitbox_ignored_node: Node
@@ -51,6 +52,10 @@ func _ready():
 	# get the sprite from the item scene
 	assert(instanced_item.has_node("Sprite"))
 	sprite = instanced_item.get_node("Sprite")
+	
+		# get the sprite from the item scene
+	assert(instanced_item.has_node("AnimationPlayer"))
+	animation_player = instanced_item.get_node("AnimationPlayer")
 	
 	# get the trigger from the item scene
 	assert(instanced_item.has_node("Trigger"))
@@ -101,6 +106,8 @@ func held_by(entity: Node):
 	hitbox_ignored_node = entity.hurtbox
 
 func drop():
+	animation_player.play("drop")
+	
 	var timer = Timer.new()
 	add_child(timer)
 	timer.start(1)
