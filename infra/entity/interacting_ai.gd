@@ -36,11 +36,16 @@ func _physics_process(delta):
 	$"BehaviorTree".tick(blackboard)
 
 func set_entity(node: Node):
+	if entity != null:
+		entity.disconnect("entered_area", self, "entered_area")
+		entity.disconnect("exited_area", self, "exited_area")
+	
 	.set_entity(node) # call inherited function
 	blackboard.entity = node
 
 	interact_script.set_ignore(entity)
 	interact_script.set_trigger(entity.get_trigger())
+	var _err = entity.hurtbox.connect("area_entered", self, "damaged")
 
 func _get_configuration_warning():
 #	if not ai_script_path:
@@ -50,3 +55,6 @@ func _get_configuration_warning():
 		return "InteractingAIBehavior needs the interact_script_path to be specified"
 
 	return ""
+
+func damaged(_area):
+	entity.get_appearance().flash()
