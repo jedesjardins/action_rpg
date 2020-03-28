@@ -13,13 +13,8 @@ func tick(blackboard: Dictionary) -> int:
 	if next_animation != animation_player.current_animation:
 		animation_player.play(next_animation)
 	
-	if blackboard.has("item"):
-		blackboard.item.set_direction(direction)
-		var z = blackboard.entity.get_global_transform_with_canvas().get_origin().y
-
-		if direction < 4:
-			blackboard.item.z_index = z + 1
-		else:
-			blackboard.item.z_index = z - 2 #?????
-
+	var z = blackboard.entity.get_global_transform_with_canvas().get_origin().y
+	
+	blackboard.entity.get_node("Sprite").z_index = z
+	
 	return OK

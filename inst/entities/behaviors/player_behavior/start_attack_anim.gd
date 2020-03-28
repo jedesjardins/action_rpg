@@ -12,24 +12,9 @@ func tick(bb: Dictionary) -> int:
 		bb.item_animation_chain = AnimationChain.new(item_animation_player)
 	
 	# start attack animation here
-	var attack = bb.item.attack_animations["stab"]
-	var entity_animation_list = [
-		attack.warmup_animation.entity_animation + "_down",
-		attack.main_animation.entity_animation + "_down",
-		attack.cooldown_animation.entity_animation + "_down"
-	]
-	var item_animation_list = [
-		attack.warmup_animation.item_animation + "_down",
-		attack.main_animation.item_animation + "_down",
-		attack.cooldown_animation.item_animation + "_down"
-	]
-	var duration = [
-		attack.warmup_animation.duration,
-		attack.main_animation.duration,
-		attack.cooldown_animation.duration
-	]
+	var attack = bb.item.attacks["stab"]
 	
-	bb.entity_animation_chain.run(entity_animation_list, duration)
-	bb.item_animation_chain.run(item_animation_list, duration)
+	bb.entity_animation_chain.run(attack.entity_animations, attack.durations, "_down")
+	bb.item_animation_chain.run(attack.item_animations, attack.durations, "_down")
 	
 	return OK

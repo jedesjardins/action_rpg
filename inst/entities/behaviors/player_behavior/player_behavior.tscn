@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/get_movement.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://inst/entities/behaviors/player_behavior/check_is_charging.gd" type="Script" id=20]
 [ext_resource path="res://infra/bt/leaves/is_animation_chain_playing.gd" type="Script" id=21]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/is_item_held.gd" type="Script" id=22]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/update_item.gd" type="Script" id=23]
 
 [node name="PlayerBehavior" type="Node2D"]
 script = ExtResource( 3 )
@@ -105,6 +106,9 @@ script = ExtResource( 7 )
 
 [node name="Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
 script = ExtResource( 5 )
+
+[node name="UpdateItem" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+script = ExtResource( 23 )
 
 [node name="AttackOrCharge - Selector" type="Node" parent="."]
 script = ExtResource( 4 )

@@ -3,28 +3,8 @@ extends InteractScript
 
 class_name Weapon
 
-class AnimationStage:
-	var item_animation: String
-	var entity_animation: String
-	var duration: float
-	
-	func _init(d: Dictionary):
-		item_animation = d.item_animation
-		entity_animation = d.entity_animation
-		duration = d.duration
-
-class AttackAnimation:
-	var warmup_animation: AnimationStage
-	var main_animation: AnimationStage
-	var cooldown_animation: AnimationStage
-	
-	func _init(d: Dictionary):
-		warmup_animation = AnimationStage.new(d.warmup)
-		main_animation = AnimationStage.new(d.main)
-		cooldown_animation = AnimationStage.new(d.cooldown)
-
 export var json_path: String
-var attack_animations: Dictionary
+var attacks: Dictionary
 
 var sprite: Sprite
 var animation_player: AnimationPlayer
@@ -42,6 +22,10 @@ func _ready():
 	assert(parse_result.error == OK)
 	
 	var parsed_dict = parse_result.result
+	
+	# read attacks
+	assert(parsed_dict.has("attacks"))
+	attacks = parsed_dict.attacks
 	
 	# instance the scene located at item_scene
 	assert(parsed_dict.has("item_scene"))
@@ -71,13 +55,7 @@ func _ready():
 	hitbox.parent = self
 	_err = hitbox.connect("body_entered", self, "hit_body")
 	_err = hitbox.connect("area_entered", self, "hit_area")
-	
-	# parse the attack definitions (animations and durations)
-	assert(parsed_dict.has("attacks"))
-	var attacks = parsed_dict.attacks
-	for key in parsed_dict.attacks.keys():
-		var aa = AttackAnimation.new(attacks[key])
-		attack_animations[key] = aa
+
 
 func hit_body(_body):
 	pass
@@ -152,18 +130,7 @@ func is_interacting() -> bool:
 func trigger_entered(body):
 	if body is ChildPhysicsBody:
 		body.emit_signal("entered_area", self, sprite)
-	
-#	if body is Entity and body.has_behavior() and body != ignored_node and body.behavior.has_method("add_interact_script"):
-#		if body.is_in_group("player"):
-#			sprite.highlight()
-#
-#		body.behavior.add_interact_script(self)
 
 func trigger_exited(body):
 	if body is ChildPhysicsBody:
 		body.emit_signal("exited_area", self)
-#	if body is Entity and body.has_behavior() and body != ignored_node and body.behavior.has_method("remove_interact_script"):
-#		if body.is_in_group("player"):
-#			sprite.unhighlight()
-#
-#		body.behavior.remove_interact_script(self)

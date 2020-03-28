@@ -22,7 +22,7 @@ func interrupt(new_animation: String):
 		is_interrupted = true
 		is_playing = false
 
-func run(animations: PoolStringArray, durations):
+func run(animations: PoolStringArray, durations: PoolRealArray, direction):
 	assert(not is_playing)
 	assert(durations != null)
 	
@@ -33,7 +33,7 @@ func run(animations: PoolStringArray, durations):
 		animation_player.seek(0, true)
 	
 	for i in range(animations.size()):
-		var animation_name = animations[i]
+		var animation_name = animations[i] + direction
 		current_animation = animation_name
 		
 		var time_scale = animation_player.get_animation(animation_name).length / durations[i]
