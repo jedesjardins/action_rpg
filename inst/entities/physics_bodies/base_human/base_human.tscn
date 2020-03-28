@@ -406,7 +406,7 @@ hand_path = NodePath("Hand")
 texture = ExtResource( 1 )
 vframes = 9
 hframes = 3
-frame = 24
+frame = 26
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -438,4 +438,4 @@ script = ExtResource( 3 )
 shape = SubResource( 16 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -5, 3 )
+position = Vector2( -5, 5 )

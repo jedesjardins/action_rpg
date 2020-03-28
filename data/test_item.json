@@ -7,7 +7,9 @@
 		"stab": {
 			"item_animations": ["stab_disabled", "stab_enabled", "stab_disabled"],
 			"entity_animations": ["attack_warm_up", "attack", "idle"],
-			"durations": [0.1, 0.3, 0.2]
+			"durations": [0.1, 0.3, 0.2],
+			"type": "combo",
+			"info": "type can be singular/charge/combo"
 		}
 	}
 }

@@ -70,3 +70,9 @@ static func run_animation_chain(animation_player, anim_list: Array, anim_duratio
 		yield(animation_player, "animation_finished")
 		
 		print("Animation_Player current: ", animation_player.current_animation, " expected: ", animation_name)
+
+static func play_animation_duration(ap: AnimationPlayer, animation_name: String, duration: float):
+	var time_scale = ap.get_animation(animation_name).length / duration
+	
+	ap.play(animation_name, -1, time_scale)
+	ap.advance(0)
