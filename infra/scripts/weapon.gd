@@ -5,6 +5,7 @@ class_name Weapon
 
 export var json_path: String
 var attacks: Dictionary
+onready var charge_attack = ""
 
 var sprite: Sprite
 var animation_player: AnimationPlayer
@@ -26,6 +27,9 @@ func _ready():
 	# read attacks
 	assert(parsed_dict.has("attacks"))
 	attacks = parsed_dict.attacks
+	
+	if parsed_dict.has("charge_attack"):
+		charge_attack = attacks[parsed_dict.charge_attack]
 	
 	# instance the scene located at item_scene
 	assert(parsed_dict.has("item_scene"))
