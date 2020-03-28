@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=1]
-[ext_resource path="res://inst/entities/behaviors/player_behavior/get_movement.gd" type="Script" id=2]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/get_velocity.gd" type="Script" id=2]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.gd" type="Script" id=3]
 [ext_resource path="res://infra/bt/composites/selector.gd" type="Script" id=4]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=5]
@@ -23,6 +23,7 @@
 [ext_resource path="res://infra/bt/leaves/is_animation_chain_playing.gd" type="Script" id=21]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/is_item_held.gd" type="Script" id=22]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/update_item.gd" type="Script" id=23]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/get_direction.gd" type="Script" id=24]
 
 [node name="PlayerBehavior" type="Node2D"]
 script = ExtResource( 3 )
@@ -98,10 +99,13 @@ script = ExtResource( 4 )
 [node name="Sequence - Move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
 script = ExtResource( 6 )
 
-[node name="get_movement" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="GetVelocity" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 2 )
 
-[node name="move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="GetDirection" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+script = ExtResource( 24 )
+
+[node name="Move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 7 )
 
 [node name="Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
