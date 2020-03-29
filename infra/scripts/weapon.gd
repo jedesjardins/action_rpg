@@ -103,25 +103,6 @@ func drop():
 	
 	hitbox_ignored_node = null
 
-func set_direction(direction: int): # pass in direction enum
-	match direction:
-		Helpers.Direction.DOWN:
-			sprite.frame = 0
-		Helpers.Direction.DOWN_RIGHT:
-			sprite.frame = 1
-		Helpers.Direction.RIGHT:
-			sprite.frame = 2
-		Helpers.Direction.UP_RIGHT:
-			sprite.frame = 3
-		Helpers.Direction.UP:
-			sprite.frame = 4
-		Helpers.Direction.UP_LEFT:
-			sprite.frame = 5
-		Helpers.Direction.LEFT:
-			sprite.frame = 6
-		Helpers.Direction.DOWN_LEFT:
-			sprite.frame = 7
-
 func interact(interactor):
 	assert(interactor.get_entity() != null)
 	

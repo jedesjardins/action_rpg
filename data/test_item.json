@@ -5,7 +5,7 @@
 
 	"attacks": {
 		"stab": {
-			"item_animations": ["stab_disabled", "stab_enabled", "stab_disabled"],
+			"item_animations": ["held", "held", "held"],
 			"entity_animations": ["attack_warm_up", "attack", "idle"],
 			"durations": [0.1, 0.3, 0.2],
 			"type": "combo",

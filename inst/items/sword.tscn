@@ -5,7 +5,7 @@
 [ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.5, 4 )
+extents = Vector2( 4, 1.5 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 2.5, -0.5, 7, -5, 7, -7, 5, -7, 0.5, -2.5 )
@@ -51,7 +51,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=21]
+resource_name = "held_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -89,7 +90,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=22]
+resource_name = "held_down_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -127,7 +129,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=23]
+resource_name = "held_down_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -165,7 +168,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=24]
+resource_name = "held_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -203,7 +207,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=25]
+resource_name = "held_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -241,7 +246,8 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=26]
+resource_name = "held_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -280,6 +286,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=11]
+resource_name = "held_up_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -318,6 +325,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=12]
+resource_name = "held_up_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -811,7 +819,7 @@ collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="RectCollisionShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -0.5, 5 )
+position = Vector2( 5, 0.5 )
 shape = SubResource( 1 )
 disabled = true
 
@@ -829,19 +837,19 @@ shape = SubResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 9
-frame = 8
+frame = 3
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drop = SubResource( 4 )
-anims/stab_disabled_down = SubResource( 5 )
-anims/stab_disabled_down_left = SubResource( 6 )
-anims/stab_disabled_down_right = SubResource( 7 )
-anims/stab_disabled_left = SubResource( 8 )
-anims/stab_disabled_right = SubResource( 9 )
-anims/stab_disabled_up = SubResource( 10 )
-anims/stab_disabled_up_left = SubResource( 11 )
-anims/stab_disabled_up_right = SubResource( 12 )
+anims/held_down = SubResource( 21 )
+anims/held_down_left = SubResource( 22 )
+anims/held_down_right = SubResource( 23 )
+anims/held_left = SubResource( 24 )
+anims/held_right = SubResource( 25 )
+anims/held_up = SubResource( 26 )
+anims/held_up_left = SubResource( 11 )
+anims/held_up_right = SubResource( 12 )
 anims/stab_enabled_down = SubResource( 13 )
 anims/stab_enabled_down_left = SubResource( 14 )
 anims/stab_enabled_down_right = SubResource( 15 )

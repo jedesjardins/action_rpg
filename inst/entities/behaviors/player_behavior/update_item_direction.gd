@@ -5,6 +5,7 @@ func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("direction"))
 	
 	if blackboard.has("item"):
-		blackboard.item.set_direction(blackboard.direction)
+		var ap = blackboard.item.get_children()[0].get_node("AnimationPlayer")
+		ap.play("held_" + blackboard.direction_string[blackboard.direction])
 
 	return OK
