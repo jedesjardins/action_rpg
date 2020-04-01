@@ -48,7 +48,7 @@ func _ready():
 	# get the trigger from the item scene
 	assert(instanced_item.has_node("Trigger"))
 	trigger = instanced_item.get_node("Trigger")
-	trigger.parent = self
+	trigger.logical_parent = self
 	var _err = trigger.connect("body_entered", self, "trigger_entered")
 	_err = trigger.connect("body_exited", self, "trigger_exited")
 	
@@ -56,7 +56,7 @@ func _ready():
 	# right now assume the root of the item is an Area2D
 	assert(instanced_item.has_node("Hitbox"))
 	hitbox = instanced_item.get_node("Hitbox")
-	hitbox.parent = self
+	hitbox.logical_parent = self
 	_err = hitbox.connect("body_entered", self, "hit_body")
 	_err = hitbox.connect("area_entered", self, "hit_area")
 

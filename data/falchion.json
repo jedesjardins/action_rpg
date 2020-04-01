@@ -1,0 +1,15 @@
+{
+	"item_scene": "res://inst/items/falchion.tscn",
+
+	"item_name": "falchion",
+
+	"attacks": {
+		"stab": {
+			"item_animations": ["slash_warmup", "slash", "slash_cooldown"],
+			"entity_animations": ["attack_warm_up", "attack", "idle"],
+			"durations": [0.1, 0.1, 0.1],
+			"type": "combo",
+			"info": "type can be singular/charge/combo"
+		}
+	}
+}

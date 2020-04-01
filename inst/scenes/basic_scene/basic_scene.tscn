@@ -399,4 +399,9 @@ abcdefghijklmnopqrstuvwxyz
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 409, 358 )
 script = ExtResource( 22 )
-json_path = "res://data/test_item.json"
+json_path = "res://data/dumb_sword.json"
+
+[node name="Weapon2" type="Node2D" parent="."]
+position = Vector2( 325, 371 )
+script = ExtResource( 22 )
+json_path = "res://data/falchion.json"

@@ -34,12 +34,12 @@ func _ready():
 	if hitbox_path:
 		hitbox = get_node(hitbox_path)
 		assert(hitbox is ChildArea)
-		hitbox.parent = self
+		hitbox.logical_parent = self
 	
 	if hurtbox_path:
 		hurtbox = get_node(hurtbox_path)
 		assert(hurtbox is ChildArea)
-		hurtbox.parent = self
+		hurtbox.logical_parent = self
 	
 	if behavior_path:
 		behavior = get_node(behavior_path)
