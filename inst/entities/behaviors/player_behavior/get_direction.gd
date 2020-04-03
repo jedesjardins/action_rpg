@@ -18,9 +18,9 @@ func get_direction(blackboard):
 			return Helpers.Direction.DOWN
 	else:
 		if velocity.x < 0:
-			return Helpers.Direction.DOWN_LEFT
+			return Helpers.Direction.LEFT
 		elif velocity.x > 0:
-			return Helpers.Direction.DOWN_RIGHT
+			return Helpers.Direction.RIGHT
 		else:
 			return blackboard.direction
 

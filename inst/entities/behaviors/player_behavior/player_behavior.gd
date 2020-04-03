@@ -11,13 +11,13 @@ func _ready():
 	blackboard.direction = Helpers.Direction.DOWN
 	blackboard.direction_string = {
 		Helpers.Direction.DOWN: "down",
-		Helpers.Direction.DOWN_RIGHT: "down_right",
-		Helpers.Direction.RIGHT: "up_right",
-		Helpers.Direction.UP_RIGHT: "up_right",
+		Helpers.Direction.DOWN_RIGHT: "right",
+		Helpers.Direction.RIGHT: "right",
+		Helpers.Direction.UP_RIGHT: "right",
 		Helpers.Direction.UP: "up",
-		Helpers.Direction.UP_LEFT: "up_left",
-		Helpers.Direction.LEFT: "down_left",
-		Helpers.Direction.DOWN_LEFT: "down_left"
+		Helpers.Direction.UP_LEFT: "left",
+		Helpers.Direction.LEFT: "left",
+		Helpers.Direction.DOWN_LEFT: "left"
 	}
 
 	blackboard.interacting = false

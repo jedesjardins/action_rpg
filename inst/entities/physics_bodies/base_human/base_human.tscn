@@ -413,13 +413,13 @@ script = ExtResource( 3 )
 shape = SubResource( 2 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -5, 4 )
+position = Vector2( -5, 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 9
 hframes = 3
-frame = 26
+frame = 24
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
