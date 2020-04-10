@@ -113,6 +113,11 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://infra/scripts/weapon.gd"
+}, {
+"base": "Sprite",
+"class": "ZSprite",
+"language": "GDScript",
+"path": "res://infra/scripts/z_sprite.gd"
 } ]
 _global_script_class_icons={
 "AnimationChain": "",
@@ -135,7 +140,8 @@ _global_script_class_icons={
 "Sequence": "",
 "Suceed": "",
 "TriggerScript": "",
-"Weapon": ""
+"Weapon": "",
+"ZSprite": ""
 }
 
 [application]

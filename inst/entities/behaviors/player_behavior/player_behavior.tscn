@@ -162,6 +162,9 @@ action = "ui_select"
 [node name="BufferAttack" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 26 )
 
+[node name="UpdateItemZ" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
+script = ExtResource( 25 )
+
 [node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
 script = ExtResource( 4 )
 
