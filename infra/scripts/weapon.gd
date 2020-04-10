@@ -5,6 +5,7 @@ class_name Weapon
 
 export var json_path: String
 var attacks: Dictionary
+onready var first_attack = ""
 onready var charge_attack = ""
 
 var sprite: Sprite
@@ -27,6 +28,9 @@ func _ready():
 	# read attacks
 	assert(parsed_dict.has("attacks"))
 	attacks = parsed_dict.attacks
+	
+	assert(parsed_dict.has("first_attack"))
+	first_attack = parsed_dict.first_attack
 	
 	if parsed_dict.has("charge_attack"):
 		charge_attack = attacks[parsed_dict.charge_attack]

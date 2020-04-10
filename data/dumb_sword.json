@@ -11,5 +11,6 @@
 			"type": "combo",
 			"info": "type can be singular/charge/combo"
 		}
-	}
+	},
+	"first_attack": ""
 }
