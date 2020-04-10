@@ -14,15 +14,18 @@ func tick(bb: Dictionary) -> int:
 	# start attack animation here
 	var current_attack = bb.item.attacks["stab"]
 	var current_animation_index = 0
+	var direction_string = "_" + bb.direction_string[bb.direction]
+	
+	print(" ")
 	
 	Helpers.play_animation_duration(
 		animation_player,
-		current_attack.entity_animations[current_animation_index] + "_down",
+		current_attack.entity_animations[current_animation_index] + direction_string,
 		current_attack.durations[current_animation_index])
 	
 	Helpers.play_animation_duration(
 		item_animation_player,
-		current_attack.item_animations[current_animation_index] + "_down",
+		current_attack.item_animations[current_animation_index] + direction_string,
 		current_attack.durations[current_animation_index])
 	
 	bb.current_attack = current_attack
