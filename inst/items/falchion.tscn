@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/falchion.png" type="Texture" id=2]
@@ -574,198 +574,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=12]
-length = 0.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 1, 21, 15, 14 ), Rect2( 1, 35, 11, 19 ), Rect2( 0, 5, 20, 5 ), Rect2( 0, 10, 20, 11 ), Rect2( 1, 21, 15, 14 ), Rect2( 1, 35, 11, 19 ), Rect2( 0, 5, 20, 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( -1, -1 ), Vector2( -2, 0 ), Vector2( 2, 1 ), Vector2( 2, 0 ), Vector2( 1, -1 ), Vector2( 0, -2 ), Vector2( -1, 2 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:flip_v")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0.0, 90.0, 180.0 ]
-}
-
-[sub_resource type="Animation" id=13]
-length = 0.7
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 0, 5, 20, 5 ), Rect2( 0, 10, 20, 11 ), Rect2( 1, 21, 15, 14 ), Rect2( 1, 35, 11, 19 ), Rect2( 0, 5, 20, 5 ), Rect2( 0, 10, 20, 11 ), Rect2( 1, 21, 15, 14 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 2, 1 ), Vector2( 2, 0 ), Vector2( 1, -1 ), Vector2( 0, -2 ), Vector2( -1, 2 ), Vector2( 0, 2 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:flip_v")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 90.0, 180.0 ]
-}
-
-[sub_resource type="Animation" id=14]
-length = 0.7
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Rect2( 0, 5, 20, 5 ), Rect2( 0, 10, 20, 11 ), Rect2( 1, 21, 15, 14 ), Rect2( 1, 35, 11, 19 ), Rect2( 0, 5, 20, 5 ), Rect2( 0, 10, 20, 11 ), Rect2( 1, 21, 15, 14 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 1, -2 ), Vector2( 0, -2 ), Vector2( -1, -1 ), Vector2( -2, 0 ), Vector2( 2, 1 ), Vector2( 2, 0 ), Vector2( 1, -1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:flip_v")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.0, 90.0 ]
-}
-
-[sub_resource type="Animation" id=15]
-resource_name = "slash_cool_down_down"
+resource_name = "slash_cooldown_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -827,8 +636,8 @@ tracks/4/keys = {
 "values": [ 180.0 ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "slash_cool_down_left"
+[sub_resource type="Animation" id=13]
+resource_name = "slash_cooldown_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -890,8 +699,8 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=17]
-resource_name = "slash_cool_down_right"
+[sub_resource type="Animation" id=14]
+resource_name = "slash_cooldown_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -953,8 +762,8 @@ tracks/4/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=18]
-resource_name = "slash_cool_down_up"
+[sub_resource type="Animation" id=15]
+resource_name = "slash_cooldown_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1016,7 +825,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1078,7 +887,7 @@ tracks/4/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=17]
 resource_name = "slash_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1141,7 +950,7 @@ tracks/4/keys = {
 "values": [ 180.0 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=18]
 resource_name = "slash_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1204,7 +1013,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=19]
 resource_name = "slash_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1267,7 +1076,8 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=20]
+resource_name = "slash_warmup_down"
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1330,8 +1140,8 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=24]
-resource_name = "slash_warm_up_left"
+[sub_resource type="Animation" id=21]
+resource_name = "slash_warmup_left"
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1394,8 +1204,8 @@ tracks/4/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=25]
-resource_name = "slash_warm_up_right"
+[sub_resource type="Animation" id=22]
+resource_name = "slash_warmup_right"
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1458,7 +1268,8 @@ tracks/4/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=23]
+resource_name = "slash_warmup_up"
 step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1538,11 +1349,12 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -12, -2 )
+position = Vector2( 1, -1 )
+rotation = 1.5708
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 23, 5 )
+region_rect = Rect2( 1, 21, 15, 14 )
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1555,18 +1367,15 @@ anims/held_right = SubResource( 8 )
 anims/held_up = SubResource( 9 )
 anims/held_up_left = SubResource( 10 )
 anims/held_up_right = SubResource( 11 )
-anims/old_slash_down = SubResource( 12 )
-anims/old_slash_down_left = SubResource( 13 )
-anims/old_slash_down_right = SubResource( 14 )
-anims/slash_cool_down_down = SubResource( 15 )
-anims/slash_cool_down_left = SubResource( 16 )
-anims/slash_cool_down_right = SubResource( 17 )
-anims/slash_cool_down_up = SubResource( 18 )
-anims/slash_down = SubResource( 19 )
-anims/slash_left = SubResource( 20 )
-anims/slash_right = SubResource( 21 )
-anims/slash_up = SubResource( 22 )
-anims/slash_warm_up_down = SubResource( 23 )
-anims/slash_warm_up_left = SubResource( 24 )
-anims/slash_warm_up_right = SubResource( 25 )
-anims/slash_warm_up_up = SubResource( 26 )
+anims/slash_cooldown_down = SubResource( 12 )
+anims/slash_cooldown_left = SubResource( 13 )
+anims/slash_cooldown_right = SubResource( 14 )
+anims/slash_cooldown_up = SubResource( 15 )
+anims/slash_down = SubResource( 16 )
+anims/slash_left = SubResource( 17 )
+anims/slash_right = SubResource( 18 )
+anims/slash_up = SubResource( 19 )
+anims/slash_warmup_down = SubResource( 20 )
+anims/slash_warmup_left = SubResource( 21 )
+anims/slash_warmup_right = SubResource( 22 )
+anims/slash_warmup_up = SubResource( 23 )
