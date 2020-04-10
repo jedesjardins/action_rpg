@@ -309,7 +309,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "slash_cool_down_down"
+resource_name = "slash_cooldown_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -384,7 +384,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "slash_cool_down_left"
+resource_name = "slash_cooldown_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -459,6 +459,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=9]
+resource_name = "slash_cooldown_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -533,6 +534,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=10]
+resource_name = "slash_cooldown_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -908,6 +910,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=15]
+resource_name = "slash_warmup_down"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -983,7 +986,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=16]
-resource_name = "slash_warm_up_left"
+resource_name = "slash_warmup_left"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1059,6 +1062,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=17]
+resource_name = "slash_warmup_right"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1134,6 +1138,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=18]
+resource_name = "slash_warmup_up"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1543,18 +1548,18 @@ anims/idle_down = SubResource( 3 )
 anims/idle_left = SubResource( 4 )
 anims/idle_right = SubResource( 5 )
 anims/idle_up = SubResource( 6 )
-anims/slash_cool_down_down = SubResource( 7 )
-anims/slash_cool_down_left = SubResource( 8 )
-anims/slash_cool_down_right = SubResource( 9 )
-anims/slash_cool_down_up = SubResource( 10 )
+anims/slash_cooldown_down = SubResource( 7 )
+anims/slash_cooldown_left = SubResource( 8 )
+anims/slash_cooldown_right = SubResource( 9 )
+anims/slash_cooldown_up = SubResource( 10 )
 anims/slash_down = SubResource( 11 )
 anims/slash_left = SubResource( 12 )
 anims/slash_right = SubResource( 13 )
 anims/slash_up = SubResource( 14 )
-anims/slash_warm_up_down = SubResource( 15 )
-anims/slash_warm_up_left = SubResource( 16 )
-anims/slash_warm_up_right = SubResource( 17 )
-anims/slash_warm_up_up = SubResource( 18 )
+anims/slash_warmup_down = SubResource( 15 )
+anims/slash_warmup_left = SubResource( 16 )
+anims/slash_warmup_right = SubResource( 17 )
+anims/slash_warmup_up = SubResource( 18 )
 anims/walk_down = SubResource( 19 )
 anims/walk_left = SubResource( 20 )
 anims/walk_right = SubResource( 21 )
