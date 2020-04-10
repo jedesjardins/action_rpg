@@ -51,7 +51,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=5]
 resource_name = "held_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -90,7 +90,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=6]
 resource_name = "held_down_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -129,7 +129,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=7]
 resource_name = "held_down_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -168,7 +168,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=8]
 resource_name = "held_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -207,7 +207,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=9]
 resource_name = "held_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -246,7 +246,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=10]
 resource_name = "held_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -842,12 +842,12 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drop = SubResource( 4 )
-anims/held_down = SubResource( 21 )
-anims/held_down_left = SubResource( 22 )
-anims/held_down_right = SubResource( 23 )
-anims/held_left = SubResource( 24 )
-anims/held_right = SubResource( 25 )
-anims/held_up = SubResource( 26 )
+anims/held_down = SubResource( 5 )
+anims/held_down_left = SubResource( 6 )
+anims/held_down_right = SubResource( 7 )
+anims/held_left = SubResource( 8 )
+anims/held_right = SubResource( 9 )
+anims/held_up = SubResource( 10 )
 anims/held_up_left = SubResource( 11 )
 anims/held_up_right = SubResource( 12 )
 anims/stab_enabled_down = SubResource( 13 )

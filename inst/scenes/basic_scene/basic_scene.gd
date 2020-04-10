@@ -5,7 +5,7 @@ var player: Entity
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# add player to player group
-	player = $"base_human"
+	player = $"Knight"
 	player.add_to_group("player", true)
 	
 	# set camera to follow the player

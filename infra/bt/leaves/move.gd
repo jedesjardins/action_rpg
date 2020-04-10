@@ -19,7 +19,9 @@ func tick(blackboard: Dictionary) -> int:
 		
 		if not animation_player.current_animation == next_animation:
 			animation_player.advance(0)
-			animation_player.play(next_animation)
+			var time_scale = animation_player.get_animation(next_animation).length / 0.65
+			
+			animation_player.play(next_animation, -1, time_scale)
 	
 	var delta_velocity = velocity * blackboard.delta
 	
