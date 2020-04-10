@@ -1532,11 +1532,11 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -6, -18 )
+position = Vector2( -8, -18 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 135, 0, 13, 34 )
+region_rect = Rect2( 0, 0, 16, 35 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_down = SubResource( 3 )
@@ -1561,4 +1561,4 @@ anims/walk_right = SubResource( 21 )
 anims/walk_up = SubResource( 22 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( 4, 0 )
+position = Vector2( -6, 2 )
