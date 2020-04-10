@@ -1349,12 +1349,11 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, -1 )
-rotation = 1.5708
+position = Vector2( -12, -2 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 1, 21, 15, 14 )
+region_rect = Rect2( 0, 0, 23, 5 )
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
