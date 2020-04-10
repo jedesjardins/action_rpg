@@ -12,7 +12,7 @@ func tick(bb: Dictionary) -> int:
 #		bb.item_animation_chain = AnimationChain.new(item_animation_player)
 	
 	# start attack animation here
-	var current_attack = bb.item.attacks["stab"]
+	var current_attack = bb.item.attacks[bb.item.first_attack]
 	var current_animation_index = 0
 	var direction_string = "_" + bb.direction_string[bb.direction]
 	
