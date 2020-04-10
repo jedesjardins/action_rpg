@@ -44,6 +44,9 @@ func _ready():
 	if behavior_path:
 		behavior = get_node(behavior_path)
 		behavior.set_entity(self)
+	
+	if hand_path:
+		hand = get_node(hand_path)
 
 func has_trigger() -> bool:
 	return trigger != null
