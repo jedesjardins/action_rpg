@@ -7,6 +7,8 @@ var blackboard: Dictionary
 var interact_map: Dictionary
 var next_interact_script: Node
 
+export var health_path: NodePath
+
 func _ready():
 	blackboard.direction = Helpers.Direction.DOWN
 	blackboard.direction_string = {
@@ -28,11 +30,15 @@ func set_entity(node: Node):
 	if entity != null:
 		entity.disconnect("entered_area", self, "entered_area")
 		entity.disconnect("exited_area", self, "exited_area")
+		
+		if health_path and entity.has_hurtbox():
+			get_node(health_path).attach_hurtbox(entity.hurtbox)
 	
 	.set_entity(node) # call inherited function, sets entity
 	blackboard.entity = entity
 	
 	entity.hurtbox.connect("area_entered", self, "take_damage")
+	get_node(health_path).attach_hurtbox(entity.hurtbox)
 	
 	var _err = entity.connect("entered_area", self, "entered_area")
 	_err = entity.connect("exited_area", self, "exited_area")
@@ -94,8 +100,8 @@ func remove_interact_script(script):
 func take_damage(area):
 #	print("In take_damage from ", area.get_path())
 	
-	if area is ChildArea and area.parent != blackboard.item:
-		print("Taken damage from ", area.get_parent().get_path())
+	if area is ChildArea and area.logical_parent != blackboard.item:
+		print("Taken damage from ", area.get_logical_parent().get_path())
 
 func entered_area(area, sprite):
 	add_interact_script(area, sprite)
