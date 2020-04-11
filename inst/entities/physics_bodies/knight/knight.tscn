@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/knight.png" type="Texture" id=2]
 [ext_resource path="res://infra/entity/entity.gd" type="Script" id=3]
+[ext_resource path="res://infra/entity/hand.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 12 )
@@ -82,6 +83,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -6, 2 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle_left"
@@ -156,6 +169,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ Vector2( 5, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -232,6 +257,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -5, 4 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "idle_up"
@@ -304,8 +341,20 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 6, 2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -382,6 +431,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -13, -4 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "slash_cooldown_left"
@@ -456,6 +517,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ Vector2( 3, 5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -532,6 +605,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -2, 5 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "slash_cooldown_up"
@@ -607,6 +692,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( 10, -1 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.6
@@ -681,6 +778,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 4, 0 ), Vector2( -1, 5 ), Vector2( -5, 8 ), Vector2( -10, 4 ), Vector2( -12, -1 ), Vector2( -13, -4 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, 1 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -833,6 +942,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( 2, -1 ), Vector2( 7, 1 ), Vector2( 11, 1 ), Vector2( 5, 4 ), Vector2( 3, 5 ), Vector2( -2, 5 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, 1 ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.6
@@ -907,6 +1028,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -4, 0 ), Vector2( -3, -7 ), Vector2( 4, -15 ), Vector2( 7, -13 ), Vector2( 13, -9 ), Vector2( 10, -1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, -1 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -983,6 +1116,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( -2, 4 ), Vector2( 4, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, -1 ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -1136,6 +1281,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( 4, 2 ), Vector2( 2, -1 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
 
 [sub_resource type="Animation" id=18]
 resource_name = "slash_warmup_up"
@@ -1211,6 +1368,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 5, 0 ), Vector2( -4, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, 1 ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -1288,6 +1457,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -6, 1 ), Vector2( -5, 1 ), Vector2( -4, 1 ), Vector2( -5, 0 ), Vector2( -6, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=20]
 length = 1.2
@@ -1363,6 +1544,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 2 ), Vector2( 3, 2 ), Vector2( 5, 1 ), Vector2( 9, 0 ), Vector2( 6, -2 ), Vector2( 6, -1 ), Vector2( 2, 2 ), Vector2( -3, 1 ), Vector2( -6, 0 ), Vector2( -8, -3 ), Vector2( -6, 0 ), Vector2( -3, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -1440,6 +1633,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( -1, 5 ), Vector2( -2, 5 ), Vector2( -3, 4 ), Vector2( -10, 1 ), Vector2( -5, 2 ), Vector2( -3, 4 ), Vector2( -1, 5 ), Vector2( 3, 2 ), Vector2( 6, -2 ), Vector2( 9, -3 ), Vector2( 5, 2 ), Vector2( 2, 3 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=22]
 length = 1.2
@@ -1516,6 +1721,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ Vector2( 6, 3 ), Vector2( 6, 4 ), Vector2( 6, 3 ), Vector2( 3, 3 ), Vector2( 2, 1 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 3, 3 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
 
 [node name="Knight" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -1537,11 +1754,11 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -8, -18 )
+position = Vector2( -8, -19 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 35 )
+region_rect = Rect2( 0, 211, 15, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_down = SubResource( 3 )
@@ -1566,4 +1783,6 @@ anims/walk_right = SubResource( 21 )
 anims/walk_up = SubResource( 22 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -6, 2 )
+position = Vector2( 5, 1 )
+script = ExtResource( 4 )
+z_modifier = -1

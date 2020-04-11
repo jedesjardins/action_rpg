@@ -90,9 +90,12 @@ func held_by(entity: Node):
 	trigger.get_node("CollisionShape2D").disabled = true
 	
 	hitbox_ignored_node = entity.hurtbox
+	
+	sprite.set_process(false)
 
 func drop():
 	animation_player.play("drop")
+	sprite.set_process(true)
 	
 	var timer = Timer.new()
 	add_child(timer)

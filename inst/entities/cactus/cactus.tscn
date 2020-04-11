@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://inst/entities/cactus/hitbox.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/cactus.png" type="Texture" id=2]
+[ext_resource path="res://infra/scripts/z_sprite.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -11,6 +12,7 @@ extents = Vector2( 7, 7.5 )
 
 [node name="Cactus" type="Sprite"]
 texture = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2

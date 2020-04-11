@@ -7,10 +7,7 @@ func tick(blackboard: Dictionary) -> int:
 	
 	if blackboard.has("item"):
 		var z = blackboard.entity.get_global_transform_with_canvas().get_origin().y
-
-		if blackboard.direction < 4:
-			blackboard.item.z_index = z + 1
-		else:
-			blackboard.item.z_index = z - 1
+		
+		blackboard.item.sprite.z_index = z + blackboard.entity.hand.z_modifier
 
 	return OK
