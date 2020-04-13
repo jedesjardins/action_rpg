@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://inst/scenes/basic_scene/cactus_trigger.gd" type="Script" id=10]
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=11]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=12]
+[ext_resource path="res://inst/scenes/basic_scene/damage_box.gd" type="Script" id=13]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/is_interacting.gd" type="Script" id=15]
 [ext_resource path="res://infra/bt/leaves/look_at_entity.gd" type="Script" id=16]
@@ -419,6 +420,7 @@ json_path = "res://data/falchion.json"
 position = Vector2( 400, 400 )
 collision_layer = 2
 collision_mask = 4
+script = ExtResource( 13 )
 
 [node name="ColorRect" type="ColorRect" parent="Area2D"]
 anchor_left = 0.5

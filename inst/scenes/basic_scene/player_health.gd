@@ -15,6 +15,9 @@ func attach_hurtbox(hurtbox: Area2D):
 	if attached_hurtbox:
 		var _err = attached_hurtbox.connect("area_entered", self, "take_damage")
 
-func take_damage(_area):
-	health -= 1;
-	print("Took damage, health is now: ", health)
+func take_damage(area):
+	if area is Hitbox and area.damage_info != null:
+		health -= area.damage_info.damage;
+		print("Took damage, health is now: ", health)
+	else:
+		print("No DamageInfo to apply damage from")
