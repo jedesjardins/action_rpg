@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/falchion.png" type="Texture" id=2]
 [ext_resource path="res://infra/scripts/z_sprite.gd" type="Script" id=3]
+[ext_resource path="res://infra/scripts/hitbox.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -1336,7 +1337,7 @@ tracks/4/keys = {
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )

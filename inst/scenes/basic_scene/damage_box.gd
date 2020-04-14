@@ -1,4 +1,10 @@
 extends Hitbox
 
 func _ready():
-	damage_info.damage = 10
+	all_damage_infos = {
+		"block": {
+			"damage": 10
+		}
+	}
+	
+	set_damage_info("block")
