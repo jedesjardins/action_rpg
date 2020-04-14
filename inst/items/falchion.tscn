@@ -887,6 +887,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 90.0 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "slash" ],
+"method": "set_damage_info"
+} ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "slash_left"
@@ -949,6 +963,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 180.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "slash" ],
+"method": "set_damage_info"
+} ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -1013,6 +1041,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "slash" ],
+"method": "set_damage_info"
+} ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "slash_up"
@@ -1075,6 +1117,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -90.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "slash" ],
+"method": "set_damage_info"
+} ]
 }
 
 [sub_resource type="Animation" id=20]
