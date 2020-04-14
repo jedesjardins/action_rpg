@@ -13,5 +13,11 @@
 			"next_attack": "slash"
 		}
 	},
-	"first_attack": "slash"
+	"first_attack": "slash",
+	"damage_infos": {
+		"": {},
+		"slash": {
+			"damage": 10
+		}
+	}
 }

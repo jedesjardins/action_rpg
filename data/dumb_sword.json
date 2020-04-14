@@ -12,5 +12,8 @@
 			"info": "type can be singular/charge/combo"
 		}
 	},
-	"first_attack": ""
+	"first_attack": "",
+	"damage_infos": {
+		"": {}
+	}
 }
