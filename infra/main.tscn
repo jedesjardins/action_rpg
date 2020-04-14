@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://infra/main.gd" type="Script" id=1]
-[ext_resource path="res://inst/scenes/basic_scene/basic_scene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inst/scenes/main_menu_scene/main_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://infra/StateManager.gd" type="Script" id=3]
 
 [sub_resource type="ViewportTexture" id=1]
@@ -19,7 +19,7 @@ disable_3d = true
 [node name="StateManager" type="Node2D" parent="Viewport"]
 script = ExtResource( 3 )
 
-[node name="basic_scene" parent="Viewport/StateManager" instance=ExtResource( 2 )]
+[node name="main_menu" parent="Viewport/StateManager" instance=ExtResource( 2 )]
 
 [node name="ViewportSprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )

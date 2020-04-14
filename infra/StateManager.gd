@@ -45,6 +45,6 @@ func swap_scene(next_scene):
 	var current_scene = get_last_child()
 
 	if current_scene:
-		current_scene.free()
+		current_scene.queue_free()
 
 	add_child(next_scene)
