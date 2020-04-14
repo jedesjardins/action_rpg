@@ -22,40 +22,40 @@ func _ready():
 	file.open(json_path, 1)
 	var parse_result = JSON.parse(file.get_as_text())
 	assert(parse_result.error == OK)
-	
+
 	var parsed_dict = parse_result.result
-	
+
 	# read attacks
 	assert(parsed_dict.has("attacks"))
 	attacks = parsed_dict.attacks
-	
+
 	assert(parsed_dict.has("first_attack"))
 	first_attack = parsed_dict.first_attack
-	
+
 	if parsed_dict.has("charge_attack"):
 		charge_attack = attacks[parsed_dict.charge_attack]
-	
+
 	# instance the scene located at item_scene
 	assert(parsed_dict.has("item_scene"))
 	var item_scene = load(parsed_dict.item_scene)
 	var instanced_item = item_scene.instance()
 	add_child(instanced_item)
-	
+
 	# get the sprite from the item scene
 	assert(instanced_item.has_node("Sprite"))
 	sprite = instanced_item.get_node("Sprite")
-	
+
 		# get the sprite from the item scene
 	assert(instanced_item.has_node("AnimationPlayer"))
 	animation_player = instanced_item.get_node("AnimationPlayer")
-	
+
 	# get the trigger from the item scene
 	assert(instanced_item.has_node("Trigger"))
 	trigger = instanced_item.get_node("Trigger")
 	trigger.logical_parent = self
 	var _err = trigger.connect("body_entered", self, "trigger_entered")
 	_err = trigger.connect("body_exited", self, "trigger_exited")
-	
+
 	# connect the items hitbox to a deal damage function
 	# right now assume the root of the item is an Area2D
 	assert(instanced_item.has_node("Hitbox"))
@@ -63,7 +63,7 @@ func _ready():
 	hitbox.logical_parent = self
 	_err = hitbox.connect("body_entered", self, "hit_body")
 	_err = hitbox.connect("area_entered", self, "hit_area")
-	
+
 	assert(parsed_dict.has("damage_infos"))
 	hitbox.all_damage_infos = parsed_dict.damage_infos
 
@@ -75,10 +75,10 @@ func hit_body(_body):
 func hit_area(area):
 	var hitbox_bit = 1
 	var hurtbox_bit = 2
-	
+
 	if area == hitbox_ignored_node:
 		return
-	
+
 	if area.get_collision_layer_bit(hurtbox_bit):
 		pass
 		# Deals damage to hurtbox owner
@@ -91,31 +91,31 @@ func held_by(entity: Node):
 	# set the trigger to ignore the entity
 	set_ignore(entity)
 	trigger.get_node("CollisionShape2D").disabled = true
-	
+
 	hitbox_ignored_node = entity.hurtbox
-	
+
 	sprite.set_process(false)
 
 func drop():
 	animation_player.play("drop")
 	sprite.set_process(true)
-	
+
 	var timer = Timer.new()
 	add_child(timer)
 	timer.start(1)
 	yield(timer, "timeout")
 	remove_child(timer)
 	timer.queue_free()
-	
+
 	# wait until timer finished
 	set_ignore(null)
 	trigger.get_node("CollisionShape2D").disabled = false
-	
+
 	hitbox_ignored_node = null
 
 func interact(interactor):
 	assert(interactor.get_entity() != null)
-	
+
 	interactor.get_entity().hold_item(self)
 	sprite.unhighlight()
 

@@ -14,11 +14,11 @@ var running_child: BTNode
 func tick(blackboard: Dictionary) -> int:
 	var start_index = 0
 	var child_array = get_children()
-	
+
 	if running_child:
 		start_index = running_child.get_index()
 		running_child = null
-	
+
 	for i in range(start_index, child_array.size()):
 		var child = child_array[i]
 		assert(child is BTNode)
@@ -29,5 +29,5 @@ func tick(blackboard: Dictionary) -> int:
 			return ERR_BUSY
 		elif result == FAILED:
 			return FAILED
-	
+
 	return OK

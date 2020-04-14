@@ -27,7 +27,7 @@ func get_direction(blackboard):
 # Returns FAILED if the player isn't going to move
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("velocity"))
-	
+
 	blackboard.direction = get_direction(blackboard)
-	
+
 	return OK

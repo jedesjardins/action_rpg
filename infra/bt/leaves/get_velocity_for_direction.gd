@@ -24,18 +24,18 @@ func get_velocity(direction: int):
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("entity"))
 	assert(blackboard.has("direction"))
-	
+
 	var entity = blackboard.entity
 	var animation_player = entity.get_node("AnimationPlayer")
-	
+
 	var direction = blackboard.direction
-	
+
 	var next_animation = "walk_" + blackboard.direction_string[direction]
-	
+
 	if not animation_player.current_animation == next_animation:
 		animation_player.advance(0)
 		animation_player.play(next_animation)
-	
+
 	blackboard.velocity = get_velocity(direction) * Helpers.get_walk_speed()
-	
+
 	return OK

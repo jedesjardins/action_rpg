@@ -20,5 +20,5 @@ func tick(blackboard: Dictionary) -> int:
 	blackboard.velocity = get_velocity()
 	if blackboard.velocity.length() == 0:
 		return FAILED
-	
+
 	return OK

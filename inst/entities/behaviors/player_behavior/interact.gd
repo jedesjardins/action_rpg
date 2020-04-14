@@ -11,8 +11,8 @@ func enable_interaction_after(script, bb):
 
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("interactor"))
-	
+
 	if can_interact and Input.is_action_just_pressed("interact") and blackboard.next_interact_script:
 		enable_interaction_after(blackboard.next_interact_script, blackboard)
-	
+
 	return OK

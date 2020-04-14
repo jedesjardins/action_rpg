@@ -20,12 +20,12 @@ func set_trigger(node: Area2D):
 	if trigger_node:
 		trigger_node.disconnect("body_entered", self, "trigger_entered")
 		trigger_node.disconnect("body_exited", self, "trigger_exited")
-	
+
 	if node:
 		var err = node.connect("body_entered", self, "trigger_entered")
 		if err != OK:
 			print("Error ", err)
-	
+
 		err = node.connect("body_exited", self, "trigger_exited")
 		if err != OK:
 			print("Error ", err)

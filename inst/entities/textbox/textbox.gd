@@ -24,7 +24,7 @@ var state = TextState.NONE
 var trigger: FuncRef
 
 class Triggers:
-	
+
 	static func on_enter_pressed():
 		return Input.is_action_just_pressed('ui_accept')
 
@@ -33,24 +33,24 @@ signal text_shown
 func show_text(top: String, bottom: String):
 	assert(top.length() <= MAX_CHAR_LINE_WIDTH)
 	assert(bottom.length() <= MAX_CHAR_LINE_WIDTH)
-	
+
 	top_line_text = top
 	bottom_line_text = bottom
-	
+
 	top_line_split = top_line_text.split(" ", false)
 	bottom_line_split = bottom_line_text.split(" ", false)
-	
+
 	accumulated_time = 0
 	current_line = 0
 	current_split = 0
 	next_char = 0
-	
+
 	state = TextState.SHOWING_TEXT
-	
+
 	top_line_label.set_text("")
 	bottom_line_label.set_text("")
 	ellipsis_label.set_text("")
-	
+
 	set_process(true)
 
 func set_trigger(new_trigger: FuncRef):
@@ -60,18 +60,18 @@ func _ready():
 	top_line_label = $"MarginContainer/MarginContainer/VBoxContainer/TopLine"
 	bottom_line_label = $"MarginContainer/MarginContainer/VBoxContainer/BottomLine"
 	ellipsis_label = $"Ellipsis"
-	
+
 	show_text(top_line_text, bottom_line_text)
 	if not trigger:
 		trigger = funcref(Triggers, "on_enter_pressed")
-	
+
 func _get_configuration_warning():
 	if top_line_text.length() > MAX_CHAR_LINE_WIDTH:
 		return "The top line of text should be less than " + String(MAX_CHAR_LINE_WIDTH) + " characters long.\nIt is currently " + String(top_line_text.length())
-	
+
 	if bottom_line_text.length() > MAX_CHAR_LINE_WIDTH:
 		return "The bottom line of text should be less than " + String(MAX_CHAR_LINE_WIDTH) + " characters long.\nIt is currently " + String(bottom_line_text.length())
-	
+
 	return ""
 
 func get_current_line():
@@ -100,23 +100,23 @@ func advance_split() -> bool: # returns true if you should append a space
 
 func add_to_labels(string: String):
 	var current_label: Node
-	
+
 	if current_line == 0:
 		current_label = top_line_label
 	else:
 		current_label = bottom_line_label
-	
+
 	current_label.set_text(current_label.text + string)
 
 func reveal_text(delta):
 	accumulated_time += delta
-	
+
 	var text_speed_scale = 1 
 	if Input.is_action_pressed("ui_accept"):
 		text_speed_scale = 2
-	
+
 	var reveal_characters_float = accumulated_time * TEXT_SPEED * text_speed_scale
-	
+
 	if reveal_characters_float >= 1:
 		var reveal_characters = floor(reveal_characters_float)
 		accumulated_time -= reveal_characters / (TEXT_SPEED * text_speed_scale)

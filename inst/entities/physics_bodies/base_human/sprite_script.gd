@@ -28,13 +28,13 @@ func flash():
 	current_material.set_shader_param("flash_per_s", 5)
 	current_material.set_shader_param("elapsed_time", time)
 	set_material(current_material)
-	
+
 func _process(delta):
 	time += delta
 	current_material.set_shader_param("elapsed_time", time)
-	
+
 	if time > 1:
 		current_material = null
 		set_material(null)
 		set_process(false)
-	
+

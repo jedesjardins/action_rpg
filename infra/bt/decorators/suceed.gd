@@ -5,11 +5,11 @@ class_name Suceed
 
 func tick(blackboard: Dictionary) -> int:
 	assert(get_child_count() == 1)
-	
+
 	var result = get_children()[0].tick(blackboard)
-	
+
 	if result == ERR_BUSY:
 		return result
-	
+
 	return OK
 

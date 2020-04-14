@@ -33,13 +33,13 @@ func set_entity(node: Node):
 		
 		if health_path and entity.has_hurtbox():
 			get_node(health_path).attach_hurtbox(entity.hurtbox)
-	
+
 	.set_entity(node) # call inherited function, sets entity
 	blackboard.entity = entity
-	
+
 	entity.hurtbox.connect("area_entered", self, "take_damage")
 	get_node(health_path).attach_hurtbox(entity.hurtbox)
-	
+
 	var _err = entity.connect("entered_area", self, "entered_area")
 	_err = entity.connect("exited_area", self, "exited_area")
 
@@ -58,13 +58,13 @@ func get_item():
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
-	
+
 	blackboard.delta = delta
 	blackboard.next_interact_script = next_interact_script
-	
+
 	if Input.is_key_pressed(KEY_Q):
 		entity.drop_item()
-	
+
 	$"BehaviorTree".tick(blackboard)
 
 func add_interact_script(script, sprite):
@@ -73,7 +73,7 @@ func add_interact_script(script, sprite):
 		var last_sprite = interact_map[next_interact_script]
 		if last_sprite:
 			last_sprite.unhighlight()
-	
+
 	# add and highlight the next
 	interact_map[script] = sprite
 	next_interact_script = script
@@ -85,9 +85,9 @@ func remove_interact_script(script):
 		var sprite = interact_map[script]
 		if sprite:
 			sprite.unhighlight()
-	
+
 	var _script_existed = interact_map.erase(script)
-	
+
 	if next_interact_script == script:
 		if interact_map.keys().size() > 0:
 			next_interact_script = interact_map.keys()[0]
@@ -99,7 +99,7 @@ func remove_interact_script(script):
 
 func take_damage(area):
 #	print("In take_damage from ", area.get_path())
-	
+
 	if area is ChildArea and area.logical_parent != blackboard.get("item"):
 		print("Taken damage from ", area.get_logical_parent().get_path())
 

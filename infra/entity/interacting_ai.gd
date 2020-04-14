@@ -30,16 +30,16 @@ func _ready():
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
-	
+
 	blackboard.delta = delta
-	
+
 	$"BehaviorTree".tick(blackboard)
 
 func set_entity(node: Node):
 	if entity != null:
 		entity.disconnect("entered_area", self, "entered_area")
 		entity.disconnect("exited_area", self, "exited_area")
-	
+
 	.set_entity(node) # call inherited function
 	blackboard.entity = node
 

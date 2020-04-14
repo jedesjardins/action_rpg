@@ -13,7 +13,7 @@ func is_interacting() -> bool:
 
 func trigger_entered(_body):
 	assert(false)
-	
+
 	# example of how one might interact with the player
 #	if body.is_in_group("player") and body != ignored_node:
 #		$"..".get_entity().get_appearance().highlight()

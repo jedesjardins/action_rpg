@@ -27,24 +27,24 @@ var action: int
 func _ready():
 	if trigger_path:
 		trigger = get_node(trigger_path)
-	
+
 	if appearance_path:
 		appearance = get_node(appearance_path)
-	
+
 	if hitbox_path:
 		hitbox = get_node(hitbox_path)
 		assert(hitbox is ChildArea)
 		hitbox.logical_parent = self
-	
+
 	if hurtbox_path:
 		hurtbox = get_node(hurtbox_path)
 		assert(hurtbox is ChildArea)
 		hurtbox.logical_parent = self
-	
+
 	if behavior_path:
 		behavior = get_node(behavior_path)
 		behavior.set_entity(self)
-	
+
 	if hand_path:
 		hand = get_node(hand_path)
 
@@ -53,7 +53,7 @@ func has_trigger() -> bool:
 
 func get_trigger() -> Node:
 	return trigger
-	
+
 func has_hitbox() -> bool:
 	return hitbox != null
 
@@ -80,7 +80,7 @@ func get_behavior() -> Node:
 
 func hold_item(var item_node: Weapon):
 	assert(item_node)
-	
+
 	if has_node("Hand"):
 		
 		var hand = get_node("Hand")
@@ -108,7 +108,7 @@ func drop_item():
 			
 			hand.remove_child(item_transform)
 			item_transform.queue_free()
-	
+
 	var held_item = behavior.get_item()
 	if held_item:
 		held_item.drop()

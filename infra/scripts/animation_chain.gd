@@ -11,7 +11,7 @@ var current_animation
 
 func _init(ap: AnimationPlayer):
 	animation_player = ap
-	
+
 	var err = animation_player.connect("animation_started", self, "interrupt")
 	if err:
 		print("Error initializing AnimationChain")
@@ -25,13 +25,13 @@ func interrupt(new_animation: String):
 func run(animations: PoolStringArray, durations: PoolRealArray, direction):
 	assert(not is_playing)
 	assert(durations != null)
-	
+
 	is_playing = true
 	is_interrupted = false
-	
+
 	if animation_player.current_animation == animations[0]:
 		animation_player.seek(0, true)
-	
+
 	for i in range(animations.size()):
 		var animation_name = animations[i] + direction
 		current_animation = animation_name
@@ -47,6 +47,6 @@ func run(animations: PoolStringArray, durations: PoolRealArray, direction):
 			#is_playing = false
 			#emit_signal("finished")
 			return
-	
+
 	is_playing = false
 	emit_signal("finished")
