@@ -35,8 +35,3 @@ func _input(event):
 		event.speed /= current_scale
 
 	$"Viewport".input(event)
-
-func _unhandled_input(event):
-	if(event is InputEventKey):
-		if(event.is_pressed() and event.scancode == KEY_ESCAPE):
-			get_tree().quit()

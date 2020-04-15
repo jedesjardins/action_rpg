@@ -206,6 +206,7 @@ extents = Vector2( 19, 18 )
 extents = Vector2( 13, 13 )
 
 [node name="basic_scene" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

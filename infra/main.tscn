@@ -2,26 +2,31 @@
 
 [ext_resource path="res://infra/main.gd" type="Script" id=1]
 [ext_resource path="res://inst/scenes/main_menu_scene/main_menu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://infra/StateManager.gd" type="Script" id=3]
+[ext_resource path="res://infra/state_manager.gd" type="Script" id=3]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
 max_size = Vector2( 400, 400 )
 
 [node name="Viewport" type="Viewport" parent="."]
+pause_mode = 2
 size = Vector2( 768, 768 )
 hdr = false
 disable_3d = true
 
 [node name="StateManager" type="Node2D" parent="Viewport"]
+pause_mode = 2
 script = ExtResource( 3 )
 
-[node name="main_menu" parent="Viewport/StateManager" instance=ExtResource( 2 )]
+[node name="MainMenu" parent="Viewport/StateManager" instance=ExtResource( 2 )]
+pause_mode = 2
 
 [node name="ViewportSprite" type="Sprite" parent="."]
+pause_mode = 2
 position = Vector2( 0, 1 )
 texture = SubResource( 1 )
 centered = false
