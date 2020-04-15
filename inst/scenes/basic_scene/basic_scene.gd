@@ -15,3 +15,9 @@ func _ready():
 
 	# ai should "target" the player
 	$"base_human2".behavior.blackboard.target_entity = player
+
+func _input(event):
+	if(event is InputEventKey):
+		if(event.is_pressed() and event.scancode == KEY_ESCAPE):
+			var pause_scene = load("res://inst/scenes/pause_menu_scene/pause_menu.tscn").instance()
+			$"..".push_scene(pause_scene, true)
