@@ -42,8 +42,6 @@ func window_resize():
 	$"ViewportSprite".transform = viewport_transform
 
 func _input(event):
-	# TODO: events related to screen space must be translated to the sub viewport
-
 	if event is InputEventMouse:
 		var affine_inverse = viewport_transform.affine_inverse()
 		event.global_position = affine_inverse.xform(event.global_position)
@@ -54,3 +52,15 @@ func _input(event):
 			event.speed = affine_inverse.xform(event.speed)
 
 	$"Viewport".input(event)
+
+func _unhandled_input(event):
+	if event is InputEventMouse:
+		var affine_inverse = viewport_transform.affine_inverse()
+		event.global_position = affine_inverse.xform(event.global_position)
+		event.position = affine_inverse.xform(event.position)
+
+		if event is InputEventMouseMotion:
+			event.relative = affine_inverse.xform(event.relative)
+			event.speed = affine_inverse.xform(event.speed)
+
+	$"Viewport".unhandled_input(event)
