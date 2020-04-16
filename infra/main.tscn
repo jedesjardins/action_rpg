@@ -10,11 +10,11 @@ viewport_path = NodePath("Viewport")
 [node name="Node2D" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 1 )
-max_size = Vector2( 400, 400 )
+min_size = Vector2( 400, 400 )
 
 [node name="Viewport" type="Viewport" parent="."]
 pause_mode = 2
-size = Vector2( 768, 768 )
+size = Vector2( 800, 800 )
 hdr = false
 disable_3d = true
 

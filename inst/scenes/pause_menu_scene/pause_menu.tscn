@@ -35,7 +35,6 @@ custom_fonts/font = ExtResource( 2 )
 text = "Paused"
 
 [node name="ResumeButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-pause_mode = 1
 margin_top = 15.0
 margin_right = 60.0
 margin_bottom = 38.0
