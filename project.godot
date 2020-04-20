@@ -163,11 +163,11 @@ run/main_scene="res://infra/main.tscn"
 
 [display]
 
-window/size/width=800
-window/size/height=800
+window/size/width=400
+window/size/height=400
 window/size/always_on_top=true
-window/size/test_width=540
-window/size/test_height=960
+window/size/test_width=1366
+window/size/test_height=768
 
 [input]
 
