@@ -4,7 +4,6 @@ onready var focused = false
 
 func _ready():
 	var err = $"CanvasLayer/CenterContainer/VBoxContainer/ResumeButton".connect("button_down", self, "resume")
-	print(err)
 	err = $"CanvasLayer/CenterContainer/VBoxContainer/QuitButton".connect("button_down", self, "quit")
 
 func resume():
