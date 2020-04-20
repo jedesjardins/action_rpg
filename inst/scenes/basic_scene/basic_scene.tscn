@@ -3,7 +3,7 @@
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/textures/nine-patch.png" type="Texture" id=4]
+[ext_resource path="res://resources/textures/falchion_icon.png" type="Texture" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
 [ext_resource path="res://inst/scenes/basic_scene/player_health.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
@@ -225,7 +225,6 @@ position = Vector2( 384, 384 )
 behavior_path = NodePath("PlayerBehavior")
 
 [node name="PlayerBehavior" parent="Knight" instance=ExtResource( 21 )]
-position = Vector2( -8, -19 )
 health_path = NodePath("../Health")
 
 [node name="Health" type="Node" parent="Knight"]
@@ -337,73 +336,6 @@ script = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus/Trigger"]
 shape = SubResource( 9 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="OldMarginContainer" type="MarginContainer" parent="HUD"]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -140.0
-margin_top = -98.0
-margin_right = 140.0
-grow_horizontal = 2
-grow_vertical = 0
-custom_constants/margin_right = 0
-custom_constants/margin_top = 0
-custom_constants/margin_left = 0
-custom_constants/margin_bottom = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HUD/OldMarginContainer"]
-margin_right = 280.0
-margin_bottom = 98.0
-texture = ExtResource( 4 )
-patch_margin_left = 9
-patch_margin_top = 9
-patch_margin_right = 9
-patch_margin_bottom = 9
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/OldMarginContainer"]
-margin_right = 280.0
-margin_bottom = 98.0
-rect_clip_content = true
-custom_constants/margin_right = 9
-custom_constants/margin_top = 9
-custom_constants/margin_left = 9
-custom_constants/margin_bottom = 9
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/OldMarginContainer/MarginContainer"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 271.0
-margin_bottom = 89.0
-theme = ExtResource( 12 )
-
-[node name="TextLine" type="Label" parent="HUD/OldMarginContainer/MarginContainer/VBoxContainer"]
-margin_right = 262.0
-margin_bottom = 7.0
-theme = ExtResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Hello this is a texture box."
-
-[node name="Label" type="Label" parent="HUD/OldMarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 15.0
-margin_right = 262.0
-margin_bottom = 40.0
-theme = ExtResource( 12 )
-text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}"
-
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 409, 358 )
 script = ExtResource( 22 )
@@ -413,3 +345,49 @@ json_path = "res://data/dumb_sword.json"
 position = Vector2( 325, 371 )
 script = ExtResource( 22 )
 json_path = "res://data/falchion.json"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -61.0
+margin_right = 60.0
+grow_vertical = 0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 56.0
+margin_bottom = 57.0
+grow_vertical = 0
+theme = ExtResource( 12 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/PanelContainer"]
+margin_right = 52.0
+margin_bottom = 53.0
+grow_vertical = 0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/MarginContainer/PanelContainer/MarginContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 50.0
+margin_bottom = 51.0
+grow_vertical = 0
+rect_min_size = Vector2( 48, 48 )
+
+[node name="TextureRect" type="TextureRect" parent="HUD/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 4 )

@@ -1,4 +1,5 @@
 {
+	"icon": "res://inst/items/falchion_icon.tscn",
 	"item_scene": "res://inst/items/falchion.tscn",
 
 	"item_name": "falchion",
