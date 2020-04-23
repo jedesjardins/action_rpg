@@ -1,4 +1,5 @@
 {
+	"icon": "res://resources/textures/falchion_icon.png",
 	"item_scene": "res://inst/items/sword.tscn",
 
 	"item_name": "sword",

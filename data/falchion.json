@@ -1,5 +1,5 @@
 {
-	"icon": "res://inst/items/falchion_icon.tscn",
+	"icon": "res://resources/textures/falchion_icon.png",
 	"item_scene": "res://inst/items/falchion.tscn",
 
 	"item_name": "falchion",

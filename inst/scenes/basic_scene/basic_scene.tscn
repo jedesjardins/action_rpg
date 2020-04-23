@@ -3,7 +3,7 @@
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/textures/falchion_icon.png" type="Texture" id=4]
+[ext_resource path="res://inst/scenes/basic_scene/held_item_texture.gd" type="Script" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
 [ext_resource path="res://inst/scenes/basic_scene/player_health.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
@@ -377,9 +377,10 @@ script = ExtResource( 28 )
 [node name="ItemMarginContainer" type="MarginContainer" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -61.0
+margin_top = -60.0
 margin_right = 60.0
 grow_vertical = 0
+rect_min_size = Vector2( 60, 60 )
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -392,13 +393,13 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 56.0
-margin_bottom = 57.0
+margin_bottom = 56.0
 grow_vertical = 0
 theme = ExtResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/ItemMarginContainer/PanelContainer"]
 margin_right = 52.0
-margin_bottom = 53.0
+margin_bottom = 52.0
 grow_vertical = 0
 custom_constants/margin_right = 2
 custom_constants/margin_top = 2
@@ -409,11 +410,13 @@ custom_constants/margin_bottom = 2
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 50.0
-margin_bottom = 51.0
+margin_bottom = 50.0
 grow_vertical = 0
 rect_min_size = Vector2( 48, 48 )
 
 [node name="TextureRect" type="TextureRect" parent="HUD/ItemMarginContainer/PanelContainer/MarginContainer/CenterContainer"]
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 4 )
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 24.0
+margin_bottom = 24.0
+script = ExtResource( 4 )
