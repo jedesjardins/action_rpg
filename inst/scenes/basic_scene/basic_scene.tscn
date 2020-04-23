@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://inst/scenes/basic_scene/chat_script.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/base_human.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://inst/scenes/basic_scene/cactus_trigger.gd" type="Script" id=10]
 [ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=11]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=12]
+[ext_resource path="res://resources/fonts/LCD_Solid.fnt" type="BitmapFont" id=13]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/is_interacting.gd" type="Script" id=15]
 [ext_resource path="res://infra/bt/leaves/look_at_entity.gd" type="Script" id=16]
@@ -26,6 +27,7 @@
 [ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=25]
 [ext_resource path="res://infra/bt/leaves/check_timer.gd" type="Script" id=26]
 [ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=27]
+[ext_resource path="res://inst/scenes/basic_scene/health_bar.gd" type="Script" id=28]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -348,7 +350,31 @@ json_path = "res://data/falchion.json"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+[node name="StatusMarginContainer" type="MarginContainer" parent="HUD"]
+margin_right = 4.0
+margin_bottom = 4.0
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/StatusMarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 104.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 100, 12 )
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 13 )
+max_value = 100.0
+step = 1.0
+value = 100.0
+allow_greater = true
+percent_visible = false
+script = ExtResource( 28 )
+
+[node name="ItemMarginContainer" type="MarginContainer" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -61.0
@@ -362,7 +388,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="HUD/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HUD/ItemMarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 56.0
@@ -370,7 +396,7 @@ margin_bottom = 57.0
 grow_vertical = 0
 theme = ExtResource( 12 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/ItemMarginContainer/PanelContainer"]
 margin_right = 52.0
 margin_bottom = 53.0
 grow_vertical = 0
@@ -379,7 +405,7 @@ custom_constants/margin_top = 2
 custom_constants/margin_left = 2
 custom_constants/margin_bottom = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="HUD/MarginContainer/PanelContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="HUD/ItemMarginContainer/PanelContainer/MarginContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 50.0
@@ -387,7 +413,7 @@ margin_bottom = 51.0
 grow_vertical = 0
 rect_min_size = Vector2( 48, 48 )
 
-[node name="TextureRect" type="TextureRect" parent="HUD/MarginContainer/PanelContainer/MarginContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="HUD/ItemMarginContainer/PanelContainer/MarginContainer/CenterContainer"]
 margin_right = 48.0
 margin_bottom = 48.0
 texture = ExtResource( 4 )

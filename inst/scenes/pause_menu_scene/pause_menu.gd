@@ -3,8 +3,8 @@ extends Node2D
 onready var focused = false
 
 func _ready():
-	var err = $"CanvasLayer/CenterContainer/VBoxContainer/ResumeButton".connect("button_down", self, "resume")
-	err = $"CanvasLayer/CenterContainer/VBoxContainer/QuitButton".connect("button_down", self, "quit")
+	var _err = $"CanvasLayer/CenterContainer/VBoxContainer/ResumeButton".connect("button_down", self, "resume")
+	_err = $"CanvasLayer/CenterContainer/VBoxContainer/QuitButton".connect("button_down", self, "quit")
 
 func resume():
 	$"..".pop_scene()
