@@ -351,8 +351,8 @@ json_path = "res://data/falchion.json"
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StatusMarginContainer" type="MarginContainer" parent="HUD"]
-margin_right = 4.0
-margin_bottom = 4.0
+margin_right = 128.0
+margin_bottom = 16.0
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
 __meta__ = {
@@ -362,14 +362,14 @@ __meta__ = {
 [node name="ProgressBar" type="ProgressBar" parent="HUD/StatusMarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 104.0
+margin_right = 128.0
 margin_bottom = 16.0
-rect_min_size = Vector2( 100, 12 )
+rect_min_size = Vector2( 124, 12 )
 theme = ExtResource( 12 )
 custom_fonts/font = ExtResource( 13 )
-max_value = 100.0
+max_value = 99.0
 step = 1.0
-value = 100.0
+value = 99.0
 allow_greater = true
 percent_visible = false
 script = ExtResource( 28 )

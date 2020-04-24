@@ -60,6 +60,11 @@ _global_script_classes=[ {
 "path": "res://infra/bt/decorators/fail.gd"
 }, {
 "base": "Node2D",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://inst/scenes/game_scene/game_state.gd"
+}, {
+"base": "Node2D",
 "class": "Hand",
 "language": "GDScript",
 "path": "res://infra/entity/hand.gd"
@@ -140,6 +145,7 @@ _global_script_class_icons={
 "Decorator": "",
 "Entity": "",
 "Fail": "",
+"GameState": "",
 "Hand": "",
 "Helpers": "",
 "Hitbox": "",
@@ -166,8 +172,8 @@ run/main_scene="res://infra/main.tscn"
 window/size/width=400
 window/size/height=400
 window/size/always_on_top=true
-window/size/test_width=1366
-window/size/test_height=768
+window/size/test_width=800
+window/size/test_height=800
 
 [input]
 
