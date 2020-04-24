@@ -76,3 +76,14 @@ static func play_animation_duration(ap: AnimationPlayer, animation_name: String,
 
 	ap.play(animation_name, -1, time_scale)
 	ap.advance(0)
+
+static func get_root_path_of(node: Node) -> NodePath:
+	var node_path = node.get_path()
+	# There should be at least /root/Node2d/Viewport/StateManager/RootState
+	assert(node_path.get_name_count() >= 5)
+
+	var root_path = "/"
+	for i in range(0, 5):
+		root_path += node_path.get_name(i) + "/"
+
+	return root_path
