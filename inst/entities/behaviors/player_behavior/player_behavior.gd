@@ -2,6 +2,8 @@
 tool
 extends BaseBehavior
 
+signal hold
+
 var blackboard: Dictionary
 
 var interact_map: Dictionary
@@ -46,8 +48,10 @@ func set_entity(node: Node):
 func set_item(item):
 	if item == null:
 		var _ret = blackboard.erase("item")
+		emit_signal("hold", null)
 	else:
 		blackboard.item = item
+		emit_signal("hold", item)
 
 func get_item():
 	if blackboard.has("item"):

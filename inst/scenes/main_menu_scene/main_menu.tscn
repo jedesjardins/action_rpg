@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/fonts/LCD_Solid.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://inst/scenes/main_menu_scene/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://resources/textures/title.png" type="Texture" id=3]
+[ext_resource path="res://resources/main_theme.tres" type="Theme" id=4]
 
 [node name="MainMenu" type="Node2D"]
 pause_mode = 1
@@ -10,8 +12,9 @@ script = ExtResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchor_top = 3.57628e-09
-anchor_right = 1.0
+anchor_left = -0.00130208
+anchor_top = 3.88051e-09
+anchor_right = 0.998698
 anchor_bottom = 1.0
 margin_top = 0.999997
 __meta__ = {
@@ -19,34 +22,40 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
-margin_left = 348.0
-margin_top = 333.0
-margin_right = 420.0
-margin_bottom = 433.0
+margin_left = 33.0
+margin_top = 86.0
+margin_right = 366.0
+margin_bottom = 312.0
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_right = 72.0
-margin_bottom = 7.0
-custom_fonts/font = ExtResource( 1 )
-text = "Main Menu"
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 333.0
+margin_bottom = 145.0
+texture = ExtResource( 3 )
 
-[node name="NewGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_top = 15.0
-margin_right = 72.0
-margin_bottom = 38.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 149.0
+margin_right = 333.0
+margin_bottom = 226.0
+
+[node name="NewGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_right = 333.0
+margin_bottom = 23.0
+theme = ExtResource( 4 )
 custom_fonts/font = ExtResource( 1 )
 text = "New Game"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_top = 46.0
-margin_right = 72.0
-margin_bottom = 69.0
+[node name="OptionsButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 333.0
+margin_bottom = 50.0
+theme = ExtResource( 4 )
 custom_fonts/font = ExtResource( 1 )
 text = "Options"
 
-[node name="QuitGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_top = 77.0
-margin_right = 72.0
-margin_bottom = 100.0
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 333.0
+margin_bottom = 77.0
+theme = ExtResource( 4 )
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"

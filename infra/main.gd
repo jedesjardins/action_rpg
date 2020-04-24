@@ -38,7 +38,7 @@ func window_resize():
 
 	$"Viewport".set_size_override(true, viewport_size)
 
-	viewport_transform = Transform2D.IDENTITY.scaled(Vector2(current_scale, current_scale)).translated(current_position)
+	viewport_transform = Transform2D.IDENTITY.scaled(Vector2(current_scale, current_scale)).translated(current_position/current_scale)
 	$"ViewportSprite".transform = viewport_transform
 
 func _input(event):

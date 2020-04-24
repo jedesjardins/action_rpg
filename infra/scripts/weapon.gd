@@ -9,6 +9,7 @@ onready var first_attack = ""
 onready var charge_attack = ""
 
 var sprite: Sprite
+var icon: String
 var animation_player: AnimationPlayer
 var hitbox: Area2D
 var trigger: Area2D
@@ -24,6 +25,10 @@ func _ready():
 	assert(parse_result.error == OK)
 
 	var parsed_dict = parse_result.result
+
+	# read icon
+	assert(parsed_dict.has("icon") and parsed_dict.icon is String)
+	icon = parsed_dict.icon
 
 	# read attacks
 	assert(parsed_dict.has("attacks"))

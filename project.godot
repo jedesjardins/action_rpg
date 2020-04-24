@@ -163,15 +163,11 @@ run/main_scene="res://infra/main.tscn"
 
 [display]
 
-window/size/width=768
-window/size/height=768
+window/size/width=400
+window/size/height=400
 window/size/always_on_top=true
-window/size/test_width=540
-window/size/test_height=960
-
-[gui]
-
-theme/custom="res://resources/main_theme.tres"
+window/size/test_width=1366
+window/size/test_height=768
 
 [input]
 

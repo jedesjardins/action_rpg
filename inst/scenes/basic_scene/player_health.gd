@@ -4,6 +4,8 @@ extends Node
 onready var health = 100
 var attached_hurtbox: Area2D
 
+signal damaged
+
 func attach_hurtbox(hurtbox: Area2D):
 	# maybe add asserts to see if the hurtbox has the right layers set
 
@@ -19,5 +21,6 @@ func take_damage(area):
 	if area is Hitbox and area.cached_damage_info != null:
 		health -= area.cached_damage_info.damage;
 		print("Took damage, health is now: ", health)
+		emit_signal("damaged", health)
 	else:
 		print("No DamageInfo to apply damage from")
