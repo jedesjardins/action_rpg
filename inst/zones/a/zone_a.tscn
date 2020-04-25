@@ -1,67 +1,36 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://inst/zones/a/switch_zone.gd" type="Script" id=1]
+[ext_resource path="res://inst/zones/a/room_loader.gd" type="Script" id=1]
+[ext_resource path="res://infra/zone.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 200 )
+extents = Vector2( 200, 200 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 190, 5 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 19, 20 )
+extents = Vector2( 200, 200 )
 
 [node name="ZoneA" type="Node2D"]
+script = ExtResource( 2 )
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-margin_right = 400.0
-margin_bottom = 400.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 390.0
-margin_bottom = 390.0
-color = Color( 0.286275, 0.411765, 0.262745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 5, 200 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 395, 200 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 200, 5 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 200, 395 )
-shape = SubResource( 2 )
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-margin_left = 350.0
-margin_top = 180.0
-margin_right = 390.0
-margin_bottom = 220.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Area2D" type="Area2D" parent="ColorRect3"]
-collision_layer = 8
+[node name="RoomLoader" type="Area2D" parent="."]
+position = Vector2( 0, 1 )
 script = ExtResource( 1 )
+room_path = "res://inst/zones/a/rooms/room.tscn"
+visible_room_loaders = [ NodePath("../RoomLoader2") ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/Area2D"]
-position = Vector2( 20, 20 )
-shape = SubResource( 3 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader"]
+position = Vector2( 200, 200 )
+shape = SubResource( 1 )
+
+[node name="RoomLoader2" type="Area2D" parent="."]
+position = Vector2( 0, 400 )
+script = ExtResource( 1 )
+room_path = "res://inst/zones/a/rooms/room_two.tscn"
+visible_room_loaders = [ NodePath("../RoomLoader") ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader2"]
+position = Vector2( 200, 200 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}

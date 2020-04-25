@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorators/repeat.gd"
 }, {
+"base": "Area2D",
+"class": "RoomLoader",
+"language": "GDScript",
+"path": "res://inst/zones/a/room_loader.gd"
+}, {
 "base": "Composite",
 "class": "Selector",
 "language": "GDScript",
@@ -153,6 +158,7 @@ _global_script_class_icons={
 "InteractingAIBehavior": "",
 "Not": "",
 "Repeat": "",
+"RoomLoader": "",
 "Selector": "",
 "Sequence": "",
 "StateManager": "",

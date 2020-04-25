@@ -94,7 +94,6 @@ current = true
 [node name="Zones" type="Node2D" parent="."]
 
 [node name="ZoneA" parent="Zones" instance=ExtResource( 11 )]
-position = Vector2( -1, -1 )
 
 [node name="Entities" type="Node2D" parent="."]
 
