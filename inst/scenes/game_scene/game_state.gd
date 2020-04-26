@@ -10,6 +10,10 @@ func _ready():
 	player = $"Entities/Knight"
 	player.add_to_group("player", true)
 
+	# move the player to the current zone
+	player.get_parent().remove_child(player)
+	$"Zones/ZoneA".add_child(player)
+
 	# set camera to follow the player
 	var remote_transform = RemoteTransform2D.new()
 	player.add_child(remote_transform)
