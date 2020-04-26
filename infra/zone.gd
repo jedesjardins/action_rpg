@@ -1,16 +1,26 @@
+
+class_name Zone
 extends Node2D
 
-# children are Room Loaders
-# there needs to be the concept of a current room
+const CURRENT_ROOM = 0
+const LAST_ROOM = 1
 
 var visible_loaders: Dictionary
+var entities_current_rooms: Dictionary # maps entity path -> RoomLoader?
+var entities_in_rooms: Dictionary # maps Roomloader -> Array(Entity Path)
+
 
 func _ready():
 	for child in get_children():
 		if child is RoomLoader:
 			visible_loaders[child] = []
+			entities_in_rooms[child] = []
 			child.connect("make_active", self, "make_room_loader_active")
 			child.connect("make_inactive", self, "make_room_loader_inactive")
+
+#
+# Room Loading Functions
+#
 
 func make_room_loader_active(active_loader):
 	make_room_visible_from(active_loader, active_loader)
@@ -34,12 +44,77 @@ func make_room_loader_inactive(inactive_loader):
 
 		# remove inactive_loader from keep_alive list
 		# (by swapping with the back, then popping back)
-		var il_index = reference_list.find(inactive_loader)
-		if il_index != -1:
-			if il_index != reference_list.size() - 1:
-				reference_list[il_index] = reference_list[reference_list.size() - 1]
 
-			reference_list.pop_back()
+		Helpers.swap_and_pop_back(reference_list, inactive_loader)
+		if reference_list.size() == 0:
+			loader.call_deferred("unload_room")
+			unload_entities_in_room(loader)
 
-			if reference_list.size() == 0:
-				loader.call_deferred("unload_room")
+#
+# Entity Room functions
+#
+
+func add_entity_to_room(entity, roomloader):
+	var entity_path = entity.get_path()
+
+	# update the entities room pair
+	if not entities_current_rooms.has(entity_path):
+		# add the entity for the first time to roomloader
+		entities_current_rooms[entity_path] = [roomloader, null]
+	else:
+		# move the entity to the new room
+		var room_pair = entities_current_rooms[entity_path]
+
+		# don't double add an entity to the room (will duplicate it in it's entity list)
+		assert(room_pair[CURRENT_ROOM] != roomloader)
+
+		room_pair[LAST_ROOM] = room_pair[CURRENT_ROOM]
+		room_pair[CURRENT_ROOM] = roomloader
+
+	# update rooms entity list
+	entities_in_rooms[roomloader].push_back(entity_path)
+
+func remove_entity_from_room(entity, roomloader):
+	var entity_path = entity.get_path()
+
+	# entity must have had it's room_pair added to be removed (logical error)
+	assert(entities_current_rooms.has(entity_path))
+
+	var room_pair = entities_current_rooms[entity_path]
+
+	if room_pair[CURRENT_ROOM] == roomloader:
+		# make the last room the current room
+		room_pair[CURRENT_ROOM] = room_pair[LAST_ROOM]
+
+		if room_pair[CURRENT_ROOM] == null:
+			print("deleting entity that has left all rooms")
+			var _erase_result = entities_current_rooms.erase(entity_path)
+			entity.queue_free()
+
+	room_pair[LAST_ROOM] = null
+
+	# remove the entity from the rooms list of entities
+	var entities_in_room = entities_in_rooms[roomloader]
+	Helpers.swap_and_pop_back(entities_in_room, entity_path)
+
+func unload_entities_in_room(roomloader):
+	print("unload_entities_in_room ", roomloader, " ", roomloader.get_path())
+	var entities_in_current_room = entities_in_rooms[roomloader]
+
+	# for each entity in roomloader
+	for entity_path in entities_in_current_room:
+		print("\tremoving entity ", entity_path)
+		# delete the entity
+		var entity = get_node(entity_path)
+		entity.queue_free()
+
+		# for each other room this entity is in
+		for room in entities_current_rooms[entity_path]:
+			if room != roomloader and room != null: # since last_room can be null!
+				print("\t\tfrom ", room, " ", room.get_path())
+				# remove the entity from the other room too (it was on a border)
+				Helpers.swap_and_pop_back(entities_in_rooms[room], entity_path)
+
+	entities_in_current_room.clear()
+
+

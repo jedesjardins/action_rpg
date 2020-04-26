@@ -87,3 +87,23 @@ static func get_root_path_of(node: Node) -> NodePath:
 		root_path += node_path.get_name(i) + "/"
 
 	return root_path
+
+static func get_zone_path_of(node: Node) -> NodePath:
+	var node_path = node.get_path()
+	# There should be at least /root/Node2d/Viewport/StateManager/RootState/Zones/Zone
+	assert(node_path.get_name_count() >= 7)
+
+	var zone_path = "/"
+	for i in range(0, 7):
+		zone_path += node_path.get_name(i) + "/"
+
+	return zone_path
+
+static func swap_and_pop_back(array: Array, element):
+	var index = array.find(element)
+
+	if index != -1:
+		if index != array.size() - 1:
+			array[index] = array[array.size() - 1]
+
+		array.pop_back()

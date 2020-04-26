@@ -1,29 +1,39 @@
 tool
-extends Area2D
 
 class_name RoomLoader
-
-export(String, FILE) var room_path setget set_room_path
-export(Array, NodePath) var visible_room_loaders
-var room_node: Node
+extends Area2D
 
 signal make_active
 signal make_inactive
 
+export(String, FILE) var room_path setget set_room_path
+export(Array, NodePath) var visible_room_loaders
+
+var room_node: Node
+var zone: Node
+
 func _ready():
+	var zone_path = Helpers.get_zone_path_of(self)
+	print(zone_path)
+	zone = get_node(zone_path)
+
 	if Engine.is_editor_hint() and room_path != "":
 		load_room()
 
-	var _err = self.connect("body_entered", self, "make_active")
-	_err = self.connect("body_exited", self, "make_inactive")
+	var _err = self.connect("body_entered", self, "body_entered")
+	_err = self.connect("body_exited", self, "body_exited")
 
-func make_active(body):
+func body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("make_active", self)
+	else:
+		zone.add_entity_to_room(body, self)
 
-func make_inactive(body):
+func body_exited(body):
 	if body.is_in_group("player"):
 		emit_signal("make_inactive", self)
+	else:
+		zone.remove_entity_from_room(body, self)
 
 func room_is_loaded():
 	return room_node != null

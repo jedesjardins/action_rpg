@@ -1,18 +1,18 @@
 tool
 extends Node2D
 
-# spawns the entity at the scene loaded by spawns under the parent game state
+# spawns the entity instanced from "spawn_scene_path" under the parent zone
 class_name Spawner
 
 export(String, FILE) var spawn_scene_path
 var loaded_scene: Reference
 export(bool) var spawn_on_ready = true
 export(bool) var keep_loaded # load the scene at ready and keep it loaded
-var game_state: Node
+var zone: Node
 
 func _ready():
-	var game_state_path = Helpers.get_root_path_of(self)
-	game_state = get_node(game_state_path)
+	var zone_path = Helpers.get_zone_path_of(self)
+	zone = get_node(zone_path)
 
 	if spawn_on_ready or Engine.is_editor_hint():
 		var _spawned_node = spawn()
@@ -34,7 +34,7 @@ func spawn():
 	if Engine.is_editor_hint():
 		add_child(spawned_node)
 	else:
-		game_state.get_node("Entities").add_child(spawned_node)
+		zone.add_child(spawned_node)
 		spawned_node.position = position
 
 	return spawned_node

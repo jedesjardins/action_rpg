@@ -64,6 +64,6 @@ position = Vector2( 20, 20 )
 shape = SubResource( 3 )
 
 [node name="Spawner" type="Node2D" parent="."]
-position = Vector2( 202, 364 )
+position = Vector2( 230, 399 )
 script = ExtResource( 2 )
-spawn_scene_path = "res://inst/items/falchion.tscn"
+spawn_scene_path = "res://inst/entities/physics_bodies/base_human/base_human.tscn"
