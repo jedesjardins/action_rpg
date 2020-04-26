@@ -23,6 +23,7 @@ func _ready():
 #
 
 func make_room_loader_active(active_loader):
+	print("Zone: make_room_loader_active")
 	make_room_visible_from(active_loader, active_loader)
 
 	for visible_loader_path in active_loader.visible_room_loaders:
@@ -38,6 +39,7 @@ func make_room_visible_from(newly_visible, active_loader):
 		newly_visible.call_deferred("load_room")
 
 func make_room_loader_inactive(inactive_loader):
+	print("Zone: make_room_loader_inactive")
 	for loader in visible_loaders:
 		# get the list of active loaders keeping loader alive
 		var reference_list = visible_loaders[loader]
@@ -55,6 +57,7 @@ func make_room_loader_inactive(inactive_loader):
 #
 
 func add_entity_to_room(entity, roomloader):
+	print("Zone: add_entity_to_room")
 	var entity_path = entity.get_path()
 
 	# update the entities room pair
@@ -74,7 +77,8 @@ func add_entity_to_room(entity, roomloader):
 	# update rooms entity list
 	entities_in_rooms[roomloader].push_back(entity_path)
 
-func remove_entity_from_room(entity, roomloader):
+func remove_entity_from_room(entity, roomloader, delete_when_leaving = true):
+	print("Zone: remove_entity_from_room")
 	var entity_path = entity.get_path()
 
 	# entity must have had it's room_pair added to be removed (logical error)
@@ -86,8 +90,8 @@ func remove_entity_from_room(entity, roomloader):
 		# make the last room the current room
 		room_pair[CURRENT_ROOM] = room_pair[LAST_ROOM]
 
-		if room_pair[CURRENT_ROOM] == null:
-			print("deleting entity that has left all rooms")
+		if delete_when_leaving and room_pair[CURRENT_ROOM] == null:
+			print("\tdeleting entity ", entity_path, " that has left all rooms")
 			var _erase_result = entities_current_rooms.erase(entity_path)
 			entity.queue_free()
 
@@ -98,7 +102,7 @@ func remove_entity_from_room(entity, roomloader):
 	Helpers.swap_and_pop_back(entities_in_room, entity_path)
 
 func unload_entities_in_room(roomloader):
-	print("unload_entities_in_room ", roomloader, " ", roomloader.get_path())
+	print("Zone: unload_entities_in_room")
 	var entities_in_current_room = entities_in_rooms[roomloader]
 
 	# for each entity in roomloader

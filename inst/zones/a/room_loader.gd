@@ -13,8 +13,10 @@ var room_node: Node setget set_room, get_room
 var zone: Node
 
 func _ready():
+	if not Engine.is_editor_hint():
+		print("RoomLoader: _ready")
+
 	var zone_path = Helpers.get_zone_path_of(self)
-	print(zone_path)
 	zone = get_node(zone_path)
 
 	if Engine.is_editor_hint() and room_path != "":
@@ -24,22 +26,33 @@ func _ready():
 	_err = self.connect("body_exited", self, "body_exited")
 
 func body_entered(body):
+	if not Engine.is_editor_hint():
+		print("RoomLoader: body_entered")
+
 	zone.add_entity_to_room(body, self)
 
 	if body.is_in_group("player"):
 		emit_signal("make_active", self)
 
 func body_exited(body):
-	zone.remove_entity_from_room(body, self)
-
+	if not Engine.is_editor_hint():
+		print("RoomLoader: body_exited")
 	# remove the player from the zone before making it inactive
 	if body.is_in_group("player"):
+		zone.remove_entity_from_room(body, self, false)
 		emit_signal("make_inactive", self)
+	else:
+		zone.remove_entity_from_room(body, self)
 
 func room_is_loaded():
+	if not Engine.is_editor_hint():
+		print("RoomLoader: room_is_loaded")
+
 	return room_node != null
 
 func load_room():
+	if not Engine.is_editor_hint():
+		print("RoomLoader: load_room")
 	if not room_node:
 		var room_scene = load(room_path)
 		if room_scene == null:
@@ -49,6 +62,8 @@ func load_room():
 		add_child(room_node)
 
 func unload_room():
+	if not Engine.is_editor_hint():
+		print("RoomLoader: unload_room")
 	if room_node:
 		room_node.queue_free()
 		room_node = null

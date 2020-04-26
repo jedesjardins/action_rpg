@@ -65,12 +65,14 @@ func _ready():
 	# right now assume the root of the item is an Area2D
 	assert(instanced_item.has_node("Hitbox"))
 	hitbox = instanced_item.get_node("Hitbox")
-	hitbox.logical_parent = self
+	if not Engine.is_editor_hint():
+		hitbox.logical_parent = self
 	_err = hitbox.connect("body_entered", self, "hit_body")
 	_err = hitbox.connect("area_entered", self, "hit_area")
 
 	assert(parsed_dict.has("damage_infos"))
-	hitbox.all_damage_infos = parsed_dict.damage_infos
+	if not Engine.is_editor_hint():
+		hitbox.all_damage_infos = parsed_dict.damage_infos
 
 
 func hit_body(_body):

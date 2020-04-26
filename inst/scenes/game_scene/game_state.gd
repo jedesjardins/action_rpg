@@ -32,6 +32,13 @@ func _input(event):
 			var pause_scene = load("res://inst/scenes/pause_menu_scene/pause_menu.tscn").instance()
 			$"..".push_scene(pause_scene, true)
 
+func update_camera():
+	var transform = player.get_node("RemoteTransform2D")
+	if transform:
+		transform.remote_path = Helpers.get_relative_path_from(transform, $"Camera2D")
+	else:
+		print("GameState: update_camera no transform found")
+
 #func set_current_area(zone):
 ##	assert(zone is Zone)
 #	# get_required_zones() returns the json configuration of the zone?
