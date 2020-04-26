@@ -14,21 +14,23 @@ script = ExtResource( 2 )
 
 [node name="RoomLoader" type="Area2D" parent="."]
 position = Vector2( 0, 1 )
+collision_layer = 0
 script = ExtResource( 1 )
 room_path = "res://inst/zones/a/rooms/room.tscn"
-visible_room_loaders = [ NodePath("../RoomLoader2") ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader"]
+visible = false
 position = Vector2( 200, 200 )
 shape = SubResource( 1 )
 
 [node name="RoomLoader2" type="Area2D" parent="."]
 position = Vector2( 0, 400 )
+collision_layer = 0
 script = ExtResource( 1 )
 room_path = "res://inst/zones/a/rooms/room_two.tscn"
-visible_room_loaders = [ NodePath("../RoomLoader") ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader2"]
+visible = false
 position = Vector2( 200, 200 )
 shape = SubResource( 2 )
 __meta__ = {

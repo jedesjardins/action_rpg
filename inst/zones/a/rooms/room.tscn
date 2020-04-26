@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://inst/zones/a/switch_zone.gd" type="Script" id=1]
+[ext_resource path="res://infra/scripts/spawner.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 200 )
@@ -61,3 +62,8 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/Area2D"]
 position = Vector2( 20, 20 )
 shape = SubResource( 3 )
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 202, 364 )
+script = ExtResource( 2 )
+spawn_scene_path = "res://inst/items/falchion.tscn"
