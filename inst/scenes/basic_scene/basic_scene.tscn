@@ -254,7 +254,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
-ai_script_path = NodePath("")
 interact_script_path = NodePath("InteractScript")
 
 [node name="InteractScript" type="Node2D" parent="base_human2/InteractingAIBehavior"]

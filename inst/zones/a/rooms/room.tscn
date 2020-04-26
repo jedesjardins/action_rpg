@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://inst/zones/a/switch_zone.gd" type="Script" id=1]
 [ext_resource path="res://infra/scripts/spawner.gd" type="Script" id=2]
+[ext_resource path="res://infra/scripts/weapon.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 200 )
@@ -67,3 +68,8 @@ shape = SubResource( 3 )
 position = Vector2( 230, 399 )
 script = ExtResource( 2 )
 spawn_scene_path = "res://inst/entities/physics_bodies/base_human/base_human.tscn"
+
+[node name="Weapon" type="Node2D" parent="."]
+position = Vector2( 141, 187 )
+script = ExtResource( 3 )
+json_path = "res://data/falchion.json"

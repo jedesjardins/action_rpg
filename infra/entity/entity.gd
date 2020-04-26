@@ -82,21 +82,20 @@ func hold_item(var item_node: Weapon):
 	assert(item_node)
 
 	if has_node("Hand"):
-		
 		var hand = get_node("Hand")
-		
+
 		# delete the old transform if there was one
 		if hand.has_node("item_transform"):
 			hand.get_node("item_transform").queue_free()
 
 		if behavior:
 			behavior.set_item(item_node)
-		
+
 		var remote_transform = RemoteTransform2D.new()
 		remote_transform.name = "item_transform"
 		hand.add_child(remote_transform, true)
 		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
-		
+
 		item_node.held_by(self)
 
 func drop_item():
@@ -105,7 +104,7 @@ func drop_item():
 		if hand.has_node("item_transform"):
 			print("Freeing the Item RemoteTransform2D")
 			var item_transform = hand.get_node("item_transform")
-			
+
 			hand.remove_child(item_transform)
 			item_transform.queue_free()
 

@@ -17,9 +17,6 @@ static func get_walk_speed():
 	return 90
 
 static func get_relative_path_from(start: Node, end: Node) -> String:
-	#var start_path_length = start.get_
-	pass
-
 	var start_path = start.get_path()
 	var start_path_size = start_path.get_name_count()
 	var end_path = end.get_path()
@@ -40,7 +37,7 @@ static func get_relative_path_from(start: Node, end: Node) -> String:
 
 	# concatenate the node path to the end from the common parent, down
 	for i in (end_path_size - greatest_common_depth):
-		path += end_path.get_name(greatest_common_depth + i)
+		path += end_path.get_name(greatest_common_depth + i) + "/"
 
 	return path
 
