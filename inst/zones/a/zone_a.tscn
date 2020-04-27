@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://inst/zones/a/room_loader.gd" type="Script" id=1]
+[ext_resource path="res://infra/zone.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 200, 200 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 200, 200 )
+
+[node name="ZoneA" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomLoader" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource( 1 )
+room_path = "res://inst/zones/a/rooms/room.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader"]
+visible = false
+position = Vector2( 200, 200 )
+shape = SubResource( 1 )
+
+[node name="RoomLoader2" type="Area2D" parent="."]
+position = Vector2( 0, 400 )
+collision_layer = 0
+script = ExtResource( 1 )
+room_path = "res://inst/zones/a/rooms/room_two.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader2"]
+visible = false
+position = Vector2( 200, 200 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}

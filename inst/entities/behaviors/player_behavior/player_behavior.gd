@@ -50,6 +50,8 @@ func set_item(item):
 		var _ret = blackboard.erase("item")
 		emit_signal("hold", null)
 	else:
+		# item needs to be moved to entity  
+		
 		blackboard.item = item
 		emit_signal("hold", item)
 

@@ -17,9 +17,6 @@ static func get_walk_speed():
 	return 90
 
 static func get_relative_path_from(start: Node, end: Node) -> String:
-	#var start_path_length = start.get_
-	pass
-
 	var start_path = start.get_path()
 	var start_path_size = start_path.get_name_count()
 	var end_path = end.get_path()
@@ -40,7 +37,7 @@ static func get_relative_path_from(start: Node, end: Node) -> String:
 
 	# concatenate the node path to the end from the common parent, down
 	for i in (end_path_size - greatest_common_depth):
-		path += end_path.get_name(greatest_common_depth + i)
+		path += end_path.get_name(greatest_common_depth + i) + "/"
 
 	return path
 
@@ -76,3 +73,34 @@ static func play_animation_duration(ap: AnimationPlayer, animation_name: String,
 
 	ap.play(animation_name, -1, time_scale)
 	ap.advance(0)
+
+static func get_root_path_of(node: Node) -> NodePath:
+	var node_path = node.get_path()
+	# There should be at least /root/Node2d/Viewport/StateManager/RootState
+	assert(node_path.get_name_count() >= 5)
+
+	var root_path = "/"
+	for i in range(0, 5):
+		root_path += node_path.get_name(i) + "/"
+
+	return root_path
+
+static func get_zone_path_of(node: Node) -> NodePath:
+	var node_path = node.get_path()
+	# There should be at least /root/Node2d/Viewport/StateManager/RootState/Zones/Zone
+	assert(node_path.get_name_count() >= 7)
+
+	var zone_path = "/"
+	for i in range(0, 7):
+		zone_path += node_path.get_name(i) + "/"
+
+	return zone_path
+
+static func swap_and_pop_back(array: Array, element):
+	var index = array.find(element)
+
+	if index != -1:
+		if index != array.size() - 1:
+			array[index] = array[array.size() - 1]
+
+		array.pop_back()

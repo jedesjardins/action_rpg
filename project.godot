@@ -60,6 +60,11 @@ _global_script_classes=[ {
 "path": "res://infra/bt/decorators/fail.gd"
 }, {
 "base": "Node2D",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://inst/scenes/game_scene/game_state.gd"
+}, {
+"base": "Node2D",
 "class": "Hand",
 "language": "GDScript",
 "path": "res://infra/entity/hand.gd"
@@ -94,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorators/repeat.gd"
 }, {
+"base": "Area2D",
+"class": "RoomLoader",
+"language": "GDScript",
+"path": "res://inst/zones/a/room_loader.gd"
+}, {
 "base": "Composite",
 "class": "Selector",
 "language": "GDScript",
@@ -103,6 +113,11 @@ _global_script_classes=[ {
 "class": "Sequence",
 "language": "GDScript",
 "path": "res://infra/bt/composites/sequence.gd"
+}, {
+"base": "Node2D",
+"class": "Spawner",
+"language": "GDScript",
+"path": "res://infra/scripts/spawner.gd"
 }, {
 "base": "Node2D",
 "class": "StateManager",
@@ -128,6 +143,11 @@ _global_script_classes=[ {
 "class": "ZSprite",
 "language": "GDScript",
 "path": "res://infra/scripts/z_sprite.gd"
+}, {
+"base": "Node2D",
+"class": "Zone",
+"language": "GDScript",
+"path": "res://infra/zone.gd"
 } ]
 _global_script_class_icons={
 "AnimationChain": "",
@@ -140,6 +160,7 @@ _global_script_class_icons={
 "Decorator": "",
 "Entity": "",
 "Fail": "",
+"GameState": "",
 "Hand": "",
 "Helpers": "",
 "Hitbox": "",
@@ -147,13 +168,16 @@ _global_script_class_icons={
 "InteractingAIBehavior": "",
 "Not": "",
 "Repeat": "",
+"RoomLoader": "",
 "Selector": "",
 "Sequence": "",
+"Spawner": "",
 "StateManager": "",
 "Suceed": "",
 "TriggerScript": "",
 "Weapon": "",
-"ZSprite": ""
+"ZSprite": "",
+"Zone": ""
 }
 
 [application]
@@ -166,8 +190,8 @@ run/main_scene="res://infra/main.tscn"
 window/size/width=400
 window/size/height=400
 window/size/always_on_top=true
-window/size/test_width=1366
-window/size/test_height=768
+window/size/test_width=800
+window/size/test_height=800
 
 [input]
 

@@ -81,35 +81,35 @@ func get_behavior() -> Node:
 func hold_item(var item_node: Weapon):
 	assert(item_node)
 
-	if has_node("Hand"):
-		
-		var hand = get_node("Hand")
-		
-		# delete the old transform if there was one
-		if hand.has_node("item_transform"):
-			hand.get_node("item_transform").queue_free()
+	if hand != null:
+		if item_node.get_parent():
+			item_node.get_parent().remove_child(item_node)
+
+		hand.add_child(item_node)
+		item_node.position = Vector2(0, 0)
+
+		item_node.held_by(self)
 
 		if behavior:
 			behavior.set_item(item_node)
-		
-		var remote_transform = RemoteTransform2D.new()
-		remote_transform.name = "item_transform"
-		hand.add_child(remote_transform, true)
-		remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, item_node)
-		
-		item_node.held_by(self)
+
 
 func drop_item():
-	if has_node("Hand"):
-		var hand = get_node("Hand")
-		if hand.has_node("item_transform"):
-			print("Freeing the Item RemoteTransform2D")
-			var item_transform = hand.get_node("item_transform")
-			
-			hand.remove_child(item_transform)
-			item_transform.queue_free()
+	if hand != null and hand.get_child_count() == 1:
+		var item_node = hand.get_children()[0]
+		var cached_position = item_node.global_position
+		print(cached_position)
 
-	var held_item = behavior.get_item()
-	if held_item:
-		held_item.drop()
+		hand.remove_child(item_node)
+
+		var zone_path = Helpers.get_zone_path_of(self)
+		var zone = get_node(zone_path)
+
+		var room_loaders = zone.entities_current_rooms[self.get_path()]
+		assert(room_loaders.size() > 0)
+		print(room_loaders[0], room_loaders[0].get_path())
+		room_loaders[0].get_room().add_child(item_node)
+		item_node.global_position = cached_position
+
+		item_node.drop()
 		behavior.set_item(null)
