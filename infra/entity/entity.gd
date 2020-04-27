@@ -113,3 +113,6 @@ func drop_item():
 
 		item_node.drop()
 		behavior.set_item(null)
+
+func animated_move(pixels: Vector2):
+	var _collision = move_and_collide(pixels)

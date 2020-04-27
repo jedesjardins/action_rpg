@@ -954,6 +954,38 @@ tracks/6/keys = {
 "update": 1,
 "values": [ -1, 1 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 3, 0 ), Vector2( 8, 0 ), Vector2( 7, 0 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( 3, 0 ) ],
+"method": "animated_move"
+}, {
+"args": [ Vector2( 5, 0 ) ],
+"method": "animated_move"
+}, {
+"args": [ Vector2( -1, 0 ) ],
+"method": "animated_move"
+} ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.6
@@ -1761,6 +1793,7 @@ region_enabled = true
 region_rect = Rect2( 0, 211, 15, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
 anims/idle_down = SubResource( 3 )
 anims/idle_left = SubResource( 4 )
 anims/idle_right = SubResource( 5 )
