@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/knight.png" type="Texture" id=2]
@@ -357,8 +357,1103 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
+[sub_resource type="Animation" id=29]
+resource_name = "slash_a_cooldown_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 153, 35, 17, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -10, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -9, -1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "slash_a_cooldown_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 200, 35, 18, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -8, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 9, 3 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+
 [sub_resource type="Animation" id=7]
-resource_name = "slash_cooldown_down"
+resource_name = "slash_a_cooldown_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 55, 35, 18, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -10, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -9, 3 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "slash_a_cooldown_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 246, 35, 17, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -7, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 8, 2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "slash_a_down"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 139, 35, 14, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -7, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "slash_a_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 185, 34, 15, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -6, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -5, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "slash_a_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 40, 34, 15, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -9, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "slash_a_up"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 231, 35, 14, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -7, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "slash_a_warmup_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 126, 35, 13, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -6, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, -1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "slash_a_warmup_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 170, 35, 15, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -6, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -1, 2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "slash_a_warmup_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 24, 35, 16, 33 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -9, -17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -1 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "slash_a_warmup_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 218, 35, 13, 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -7, -18 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 5, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -5, -1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:z_modifier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -444,8 +1539,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "slash_cooldown_left"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -531,8 +1625,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "slash_cooldown_right"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -618,8 +1711,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "slash_cooldown_up"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -705,7 +1797,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -792,8 +1884,7 @@ tracks/6/keys = {
 "values": [ -1, 1 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "slash_left"
+[sub_resource type="Animation" id=15]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -868,7 +1959,7 @@ tracks/5/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=16]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -987,7 +2078,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=17]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1074,8 +2165,7 @@ tracks/6/keys = {
 "values": [ 1, -1 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "slash_warmup_down"
+[sub_resource type="Animation" id=18]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1162,8 +2252,7 @@ tracks/6/keys = {
 "values": [ 1, -1 ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "slash_warmup_left"
+[sub_resource type="Animation" id=19]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1238,8 +2327,7 @@ tracks/5/keys = {
 "values": [ Vector2( -4, 2 ), Vector2( -2, -1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
-resource_name = "slash_warmup_right"
+[sub_resource type="Animation" id=20]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1326,8 +2414,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=18]
-resource_name = "slash_warmup_up"
+[sub_resource type="Animation" id=21]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1414,7 +2501,7 @@ tracks/6/keys = {
 "values": [ -1, 1 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=22]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -1502,7 +2589,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=23]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -1590,7 +2677,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=24]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -1678,7 +2765,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=25]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -1786,11 +2873,11 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -8, -19 )
+position = Vector2( -7, -18 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 211, 15, 36 )
+region_rect = Rect2( 231, 35, 14, 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
@@ -1798,24 +2885,36 @@ anims/idle_down = SubResource( 3 )
 anims/idle_left = SubResource( 4 )
 anims/idle_right = SubResource( 5 )
 anims/idle_up = SubResource( 6 )
-anims/slash_cooldown_down = SubResource( 7 )
-anims/slash_cooldown_left = SubResource( 8 )
-anims/slash_cooldown_right = SubResource( 9 )
-anims/slash_cooldown_up = SubResource( 10 )
-anims/slash_down = SubResource( 11 )
-anims/slash_left = SubResource( 12 )
-anims/slash_right = SubResource( 13 )
-anims/slash_up = SubResource( 14 )
-anims/slash_warmup_down = SubResource( 15 )
-anims/slash_warmup_left = SubResource( 16 )
-anims/slash_warmup_right = SubResource( 17 )
-anims/slash_warmup_up = SubResource( 18 )
-anims/walk_down = SubResource( 19 )
-anims/walk_left = SubResource( 20 )
-anims/walk_right = SubResource( 21 )
-anims/walk_up = SubResource( 22 )
+anims/slash_a_cooldown_down = SubResource( 29 )
+anims/slash_a_cooldown_left = SubResource( 27 )
+anims/slash_a_cooldown_right = SubResource( 7 )
+anims/slash_a_cooldown_up = SubResource( 30 )
+anims/slash_a_down = SubResource( 31 )
+anims/slash_a_left = SubResource( 28 )
+anims/slash_a_right = SubResource( 8 )
+anims/slash_a_up = SubResource( 32 )
+anims/slash_a_warmup_down = SubResource( 33 )
+anims/slash_a_warmup_left = SubResource( 26 )
+anims/slash_a_warmup_right = SubResource( 9 )
+anims/slash_a_warmup_up = SubResource( 34 )
+anims/slash_cooldown_down = SubResource( 10 )
+anims/slash_cooldown_left = SubResource( 11 )
+anims/slash_cooldown_right = SubResource( 12 )
+anims/slash_cooldown_up = SubResource( 13 )
+anims/slash_down = SubResource( 14 )
+anims/slash_left = SubResource( 15 )
+anims/slash_right = SubResource( 16 )
+anims/slash_up = SubResource( 17 )
+anims/slash_warmup_down = SubResource( 18 )
+anims/slash_warmup_left = SubResource( 19 )
+anims/slash_warmup_right = SubResource( 20 )
+anims/slash_warmup_up = SubResource( 21 )
+anims/walk_down = SubResource( 22 )
+anims/walk_left = SubResource( 23 )
+anims/walk_right = SubResource( 24 )
+anims/walk_up = SubResource( 25 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( 5, 1 )
+position = Vector2( 0, -5 )
 script = ExtResource( 4 )
 z_modifier = -1
