@@ -114,5 +114,7 @@ func drop_item():
 		item_node.drop()
 		behavior.set_item(null)
 
-func animated_move(pixels: Vector2):
-	var _collision = move_and_collide(pixels)
+func animated_move(magnitude):
+	var vector_to_mouse = Helpers.get_vector_to_mouse_from(self)
+	vector_to_mouse *= magnitude
+	var _collision = move_and_collide(vector_to_mouse)

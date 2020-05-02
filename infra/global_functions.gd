@@ -104,3 +104,16 @@ static func swap_and_pop_back(array: Array, element):
 			array[index] = array[array.size() - 1]
 
 		array.pop_back()
+
+static func get_vector_to_mouse_from(entity):
+	var mouse_position = entity.get_viewport().get_mouse_position()
+	mouse_position = entity.get_node("/root/Node2D").transform_position(mouse_position)
+	mouse_position = entity.get_viewport().canvas_transform.affine_inverse().xform(mouse_position)
+
+	return (mouse_position - entity.global_position).normalized()
+
+# returns an angle between 0 - 2*PI where Vector2(0, 1) is 0 radians
+static func get_angle_to_mouse_from(entity):
+	var e_to_m_vec = get_vector_to_mouse_from(entity)
+
+	return (((Vector2(0, -1).angle_to(e_to_m_vec) * -1) + PI) / (2 * PI))

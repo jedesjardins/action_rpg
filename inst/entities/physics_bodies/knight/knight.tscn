@@ -798,9 +798,18 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 1.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -897,9 +906,18 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 1.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+} ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -995,9 +1013,18 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 1.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+} ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -1094,9 +1121,18 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 1.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+}, {
+"args": [ 2.0 ],
+"method": "animated_move"
+} ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -2870,11 +2906,11 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -8, -18 )
+position = Vector2( -7, -18 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 35 )
+region_rect = Rect2( 139, 35, 14, 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
@@ -2912,6 +2948,6 @@ anims/walk_right = SubResource( 33 )
 anims/walk_up = SubResource( 34 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( -6, 2 )
+position = Vector2( 0, 5 )
 script = ExtResource( 4 )
 z_modifier = 1
