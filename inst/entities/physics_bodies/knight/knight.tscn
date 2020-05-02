@@ -357,7 +357,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=7]
 resource_name = "slash_a_cooldown_down"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -444,7 +444,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=8]
 resource_name = "slash_a_cooldown_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -531,8 +531,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "slash_a_cooldown_right"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -618,7 +617,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=10]
 resource_name = "slash_a_cooldown_up"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -705,7 +704,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=11]
 resource_name = "slash_a_down"
 length = 0.6
 tracks/0/type = "value"
@@ -804,7 +803,7 @@ tracks/7/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=12]
 resource_name = "slash_a_left"
 length = 0.6
 tracks/0/type = "value"
@@ -903,8 +902,7 @@ tracks/7/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "slash_a_right"
+[sub_resource type="Animation" id=13]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1002,7 +1000,7 @@ tracks/7/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=14]
 resource_name = "slash_a_up"
 length = 0.6
 tracks/0/type = "value"
@@ -1101,7 +1099,7 @@ tracks/7/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=15]
 resource_name = "slash_a_warmup_down"
 length = 0.3
 tracks/0/type = "value"
@@ -1189,7 +1187,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=16]
 resource_name = "slash_a_warmup_left"
 length = 0.3
 tracks/0/type = "value"
@@ -1277,8 +1275,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "slash_a_warmup_right"
+[sub_resource type="Animation" id=17]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1365,7 +1362,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=18]
 resource_name = "slash_a_warmup_up"
 length = 0.3
 tracks/0/type = "value"
@@ -1453,7 +1450,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1539,7 +1536,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=20]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1625,7 +1622,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=21]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1711,7 +1708,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=22]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 1
@@ -1797,7 +1794,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=23]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1884,7 +1881,7 @@ tracks/6/keys = {
 "values": [ -1, 1 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=24]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -1959,7 +1956,7 @@ tracks/5/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=25]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2078,7 +2075,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=26]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2165,7 +2162,7 @@ tracks/6/keys = {
 "values": [ 1, -1 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=27]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2252,7 +2249,7 @@ tracks/6/keys = {
 "values": [ 1, -1 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=28]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2327,7 +2324,7 @@ tracks/5/keys = {
 "values": [ Vector2( -4, 2 ), Vector2( -2, -1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=29]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2414,7 +2411,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=30]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -2501,7 +2498,7 @@ tracks/6/keys = {
 "values": [ -1, 1 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=31]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -2589,7 +2586,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=32]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -2677,7 +2674,7 @@ tracks/6/keys = {
 "values": [ -1 ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=33]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -2765,7 +2762,7 @@ tracks/6/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=34]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -2873,11 +2870,11 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -7, -18 )
+position = Vector2( -8, -18 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 231, 35, 14, 34 )
+region_rect = Rect2( 0, 0, 16, 35 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
@@ -2885,36 +2882,36 @@ anims/idle_down = SubResource( 3 )
 anims/idle_left = SubResource( 4 )
 anims/idle_right = SubResource( 5 )
 anims/idle_up = SubResource( 6 )
-anims/slash_a_cooldown_down = SubResource( 29 )
-anims/slash_a_cooldown_left = SubResource( 27 )
-anims/slash_a_cooldown_right = SubResource( 7 )
-anims/slash_a_cooldown_up = SubResource( 30 )
-anims/slash_a_down = SubResource( 31 )
-anims/slash_a_left = SubResource( 28 )
-anims/slash_a_right = SubResource( 8 )
-anims/slash_a_up = SubResource( 32 )
-anims/slash_a_warmup_down = SubResource( 33 )
-anims/slash_a_warmup_left = SubResource( 26 )
-anims/slash_a_warmup_right = SubResource( 9 )
-anims/slash_a_warmup_up = SubResource( 34 )
-anims/slash_cooldown_down = SubResource( 10 )
-anims/slash_cooldown_left = SubResource( 11 )
-anims/slash_cooldown_right = SubResource( 12 )
-anims/slash_cooldown_up = SubResource( 13 )
-anims/slash_down = SubResource( 14 )
-anims/slash_left = SubResource( 15 )
-anims/slash_right = SubResource( 16 )
-anims/slash_up = SubResource( 17 )
-anims/slash_warmup_down = SubResource( 18 )
-anims/slash_warmup_left = SubResource( 19 )
-anims/slash_warmup_right = SubResource( 20 )
-anims/slash_warmup_up = SubResource( 21 )
-anims/walk_down = SubResource( 22 )
-anims/walk_left = SubResource( 23 )
-anims/walk_right = SubResource( 24 )
-anims/walk_up = SubResource( 25 )
+anims/slash_a_cooldown_down = SubResource( 7 )
+anims/slash_a_cooldown_left = SubResource( 8 )
+anims/slash_a_cooldown_right = SubResource( 9 )
+anims/slash_a_cooldown_up = SubResource( 10 )
+anims/slash_a_down = SubResource( 11 )
+anims/slash_a_left = SubResource( 12 )
+anims/slash_a_right = SubResource( 13 )
+anims/slash_a_up = SubResource( 14 )
+anims/slash_a_warmup_down = SubResource( 15 )
+anims/slash_a_warmup_left = SubResource( 16 )
+anims/slash_a_warmup_right = SubResource( 17 )
+anims/slash_a_warmup_up = SubResource( 18 )
+anims/slash_cooldown_down = SubResource( 19 )
+anims/slash_cooldown_left = SubResource( 20 )
+anims/slash_cooldown_right = SubResource( 21 )
+anims/slash_cooldown_up = SubResource( 22 )
+anims/slash_down = SubResource( 23 )
+anims/slash_left = SubResource( 24 )
+anims/slash_right = SubResource( 25 )
+anims/slash_up = SubResource( 26 )
+anims/slash_warmup_down = SubResource( 27 )
+anims/slash_warmup_left = SubResource( 28 )
+anims/slash_warmup_right = SubResource( 29 )
+anims/slash_warmup_up = SubResource( 30 )
+anims/walk_down = SubResource( 31 )
+anims/walk_left = SubResource( 32 )
+anims/walk_right = SubResource( 33 )
+anims/walk_up = SubResource( 34 )
 
 [node name="Hand" type="Node2D" parent="."]
-position = Vector2( 0, -5 )
+position = Vector2( -6, 2 )
 script = ExtResource( 4 )
-z_modifier = -1
+z_modifier = 1
