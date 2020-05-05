@@ -18,10 +18,21 @@ onready var blackboard = {
 }
 
 func set_entity(node: Node):
+	if entity and entity.has_hurtbox():
+		entity.get_hurtbox().disconnect("area_entered", self, "take_damage")
+
 	.set_entity(node) # call inherited function, sets entity
 	blackboard.entity = entity
+
+	if entity and entity.has_hurtbox():
+		var _err = entity.get_hurtbox().connect("area_entered", self, "take_damage")
 
 func _physics_process(delta):
 	blackboard.delta = delta
 
 	$"BehaviorTree".tick(blackboard)
+
+func take_damage(area):
+	if area is ChildArea and area.logical_parent != blackboard.get("item") and area.logical_parent != entity:
+		blackboard.damaged = true
+		print("Taken damage from ", area.get_logical_parent().get_path())

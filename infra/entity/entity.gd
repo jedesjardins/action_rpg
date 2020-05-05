@@ -26,6 +26,9 @@ var direction: int
 var action: int
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
+
 	if trigger_path:
 		trigger = get_node(trigger_path)
 
