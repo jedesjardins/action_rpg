@@ -1,7 +1,8 @@
 tool
-extends ChildPhysicsBody # extends KinematicBody2D
 
 class_name Entity
+
+extends ChildPhysicsBody # extends KinematicBody2D
 
 export var appearance_path: NodePath
 var appearance: Node
@@ -115,6 +116,7 @@ func drop_item():
 		behavior.set_item(null)
 
 func animated_move(magnitude):
-	var vector_to_mouse = Helpers.get_vector_to_mouse_from(self)
+	var mouse_position = Helpers.get_viewport_mouse_position(get_viewport())
+	var vector_to_mouse = (mouse_position - self.global_position).normalized()
 	vector_to_mouse *= magnitude
 	var _collision = move_and_collide(vector_to_mouse)

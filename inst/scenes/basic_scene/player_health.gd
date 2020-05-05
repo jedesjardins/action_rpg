@@ -19,7 +19,9 @@ func attach_hurtbox(hurtbox: Area2D):
 
 func take_damage(area):
 	if area is Hitbox and area.cached_damage_info != null:
-		if area.get_logical_parent().ignored_node == $"..":
+		var logical_parent = area.get_logical_parent()
+
+		if logical_parent is Weapon and logical_parent.ignored_node == $"..":
 			return # hits the entity holding it
 
 		health -= area.cached_damage_info.damage;

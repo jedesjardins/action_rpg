@@ -1,7 +1,8 @@
 extends BTNode
 
 func get_direction(bb):
-	var angle_to_mouse = Helpers.get_angle_to_mouse_from(bb.entity)
+	var mouse_position = Helpers.get_viewport_mouse_position(bb.entity.get_viewport())
+	var angle_to_mouse = Helpers.get_angle_to_pos_from(mouse_position, bb.entity)
 	var direction = int(floor(fmod((angle_to_mouse * 8 ) + .5, 8)))
 
 	return direction
