@@ -16,6 +16,7 @@ script = ExtResource( 2 )
 collision_layer = 0
 script = ExtResource( 1 )
 room_path = "res://inst/zones/a/rooms/room.tscn"
+visible_room_loaders = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader"]
 visible = false
@@ -27,6 +28,7 @@ position = Vector2( 0, 400 )
 collision_layer = 0
 script = ExtResource( 1 )
 room_path = "res://inst/zones/a/rooms/room_two.tscn"
+visible_room_loaders = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLoader2"]
 visible = false

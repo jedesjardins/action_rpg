@@ -623,35 +623,35 @@ script = ExtResource( 8 )
 [node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
 script = ExtResource( 15 )
 
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
+[node name="Damaged - Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
 script = ExtResource( 9 )
 
-[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
 script = ExtResource( 17 )
 
-[node name="SetTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+[node name="SetTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
 script = ExtResource( 21 )
 time = 0.25
 
-[node name="GetDamageVector" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+[node name="GetDamageVector" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
 script = ExtResource( 23 )
 
-[node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+[node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
 script = ExtResource( 10 )
 
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat"]
+[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat"]
 script = ExtResource( 9 )
 
-[node name="CheckTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+[node name="CheckTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 20 )
 
-[node name="InterpolateVelocity" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+[node name="InterpolateVelocity" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 25 )
 
-[node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+[node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 15 )
 
-[node name="SetDamagedFalse" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+[node name="SetDamagedFalse" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
 script = ExtResource( 22 )
 
 [node name="Idle" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
