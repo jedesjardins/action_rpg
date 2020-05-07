@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://infra/scripts/z_sprite.gd" type="Script" id=1]
 [ext_resource path="res://infra/entity/entity.gd" type="Script" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://infra/bt/leaves/check_timer.gd" type="Script" id=20]
 [ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=21]
 [ext_resource path="res://inst/entities/slime/set_damaged.gd" type="Script" id=22]
+[ext_resource path="res://inst/entities/slime/get_damage_vector.gd" type="Script" id=23]
+[ext_resource path="res://inst/entities/slime/interpolate_velocity.gd" type="Script" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 4 )
@@ -629,13 +631,25 @@ script = ExtResource( 17 )
 
 [node name="SetTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
 script = ExtResource( 21 )
-time = 1.0
+time = 0.25
+
+[node name="GetDamageVector" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
+script = ExtResource( 23 )
 
 [node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
 script = ExtResource( 10 )
 
-[node name="CheckTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat"]
+[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat"]
+script = ExtResource( 9 )
+
+[node name="CheckTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
 script = ExtResource( 20 )
+
+[node name="InterpolateVelocity" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+script = ExtResource( 25 )
+
+[node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+script = ExtResource( 15 )
 
 [node name="SetDamagedFalse" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
 script = ExtResource( 22 )

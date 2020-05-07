@@ -35,4 +35,5 @@ func _physics_process(delta):
 func take_damage(area):
 	if area is ChildArea and area.logical_parent != blackboard.get("item") and area.logical_parent != entity:
 		blackboard.damaged = true
+		blackboard.damaged_by = area.logical_parent
 		print("Taken damage from ", area.get_logical_parent().get_path())

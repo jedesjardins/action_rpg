@@ -5,8 +5,10 @@ func start_next_attack(bb: Dictionary):
 	assert(bb.has("item"))
 
 	bb.current_attack = bb.item.attacks[bb.next_attack]
+	bb.direction = bb.next_direction
 	bb.current_animation_index = 0
 	var _ret = bb.erase("next_attack")
+	_ret = bb.erase("next_direction")
 
 	var animation_player = bb.entity.get_node("AnimationPlayer")
 	var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
@@ -49,6 +51,7 @@ func end_attack(bb: Dictionary):
 	_ret = bb.erase("current_attack")
 	_ret = bb.erase("current_animation_index")
 	_ret = bb.erase("next_attack")
+	_ret = bb.erase("next_direction")
 
 func tick(bb: Dictionary) -> int:
 	assert(bb.has("current_attack"))
