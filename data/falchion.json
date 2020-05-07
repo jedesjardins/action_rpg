@@ -6,9 +6,9 @@
 
 	"attacks": {
 		"slash": {
-			"item_animations": ["slash_warmup", "slash", "slash_cooldown"],
-			"entity_animations": ["slash_warmup", "slash", "slash_cooldown"],
-			"durations": [0.1, 0.1, 0.1],
+			"item_animations": ["slash_a_warmup", "slash_a", "slash_a_cooldown"],
+			"entity_animations": ["slash_a_warmup", "slash_a", "slash_a_cooldown"],
+			"durations": [0.05, 0.1, 0.1],
 			"type": "combo",
 			"info": "type can be singular/charge/combo",
 			"next_attack": "slash"

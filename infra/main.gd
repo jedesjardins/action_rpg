@@ -64,3 +64,7 @@ func _unhandled_input(event):
 			event.speed = affine_inverse.xform(event.speed)
 
 	$"Viewport".unhandled_input(event)
+
+func transform_position(pos: Vector2):
+	# return viewport_transform.affine_inverse().xform(pos)
+	return viewport_transform.affine_inverse().xform(pos)

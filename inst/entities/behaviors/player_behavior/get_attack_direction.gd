@@ -7,12 +7,10 @@ func get_direction(bb):
 
 	return direction
 
-func tick(bb: Dictionary) -> int:
-	if bb.current_attack.has("next_attack"):
-		if bb.current_attack.next_attack == "":
-			print("Current Attacks \"next_attack\" field is blank")
+# Returns FAILED if the player isn't going to move
+func tick(blackboard: Dictionary) -> int:
+	assert(blackboard.has("entity"))
 
-		bb.next_attack = bb.current_attack.next_attack
-		bb.next_direction = get_direction(bb)
+	blackboard.direction = get_direction(blackboard)
 
 	return OK
