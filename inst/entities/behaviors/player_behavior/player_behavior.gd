@@ -30,8 +30,8 @@ func _ready():
 
 func set_entity(node: Node):
 	if entity != null:
-		entity.disconnect("entered_area", self, "entered_area")
-		entity.disconnect("exited_area", self, "exited_area")
+		entity.disconnect("entered_area", self, "on_Entity_entered_area")
+		entity.disconnect("exited_area", self, "on_Entity_exited_area")
 		
 		if health_path and entity.has_hurtbox():
 			get_node(health_path).attach_hurtbox(entity.hurtbox)
@@ -39,11 +39,11 @@ func set_entity(node: Node):
 	.set_entity(node) # call inherited function, sets entity
 	blackboard.entity = entity
 
-	entity.hurtbox.connect("area_entered", self, "take_damage")
+	entity.hurtbox.connect("area_entered", self, "on_Hurtbox_area_entered")
 	get_node(health_path).attach_hurtbox(entity.hurtbox)
 
-	var _err = entity.connect("entered_area", self, "entered_area")
-	_err = entity.connect("exited_area", self, "exited_area")
+	var _err = entity.connect("entered_area", self, "on_Entity_entered_area")
+	_err = entity.connect("exited_area", self, "on_Entity_exited_area")
 
 func set_item(item):
 	if item == null:
@@ -103,19 +103,19 @@ func remove_interact_script(script):
 		else:
 			next_interact_script = null
 
-func take_damage(area):
+func on_Hurtbox_area_entered(area):
 	if area is ChildArea and area.logical_parent != blackboard.get("item") and area.logical_parent != entity:
 		blackboard.damaged = true
 		blackboard.damaged_by = area.logical_parent
 		print("Taken damage from ", area.get_logical_parent().get_path())
 
-func entered_area(area, sprite):
+func on_Entity_entered_area(area, sprite):
 	add_interact_script(area, sprite)
 #	if area is Weapon:
 #		add_interact_script(area)
 #		area.sprite.highlight()
 
-func exited_area(area):
+func on_Entity_exited_area(area):
 	remove_interact_script(area)
 #	if area is Weapon:
 #		remove_interact_script(area)

@@ -1,6 +1,6 @@
-extends Node2D
 
 class_name StateManager
+extends Node2D
 
 onready var state_pause_stack = [false]
 

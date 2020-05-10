@@ -15,14 +15,14 @@ func _ready():
 		if child is RoomLoader:
 			visible_loaders[child] = []
 			entities_in_rooms[child] = []
-			child.connect("make_active", self, "make_room_loader_active")
-			child.connect("make_inactive", self, "make_room_loader_inactive")
+			child.connect("make_active", self, "on_RoomLoader_make_active")
+			child.connect("make_inactive", self, "on_RoomLoader_make_inactive")
 
 #
 # Room Loading Functions
 #
 
-func make_room_loader_active(active_loader):
+func on_RoomLoader_make_active(active_loader):
 	print("Zone: make_room_loader_active")
 	make_room_visible_from(active_loader, active_loader)
 
@@ -38,7 +38,7 @@ func make_room_visible_from(newly_visible, active_loader):
 		print("Loading: ", newly_visible.get_path())
 		newly_visible.call_deferred("load_room")
 
-func make_room_loader_inactive(inactive_loader):
+func on_RoomLoader_make_inactive(inactive_loader):
 	print("Zone: make_room_loader_inactive")
 	for loader in visible_loaders:
 		# get the list of active loaders keeping loader alive

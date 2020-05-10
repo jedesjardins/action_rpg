@@ -1,8 +1,8 @@
+
+class_name Suceed
 extends Decorator
 
 # always returns OK unless the child result is ERR_BUSY
-class_name Suceed
-
 func tick(blackboard: Dictionary) -> int:
 	assert(get_child_count() == 1)
 

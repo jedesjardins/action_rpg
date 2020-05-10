@@ -1,6 +1,5 @@
 extends BTNode
 
-
 func tick(bb: Dictionary) -> int:
 	assert(bb.has("knockback_velocity"))
 	assert(bb.has("timer"))

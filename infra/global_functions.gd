@@ -1,6 +1,6 @@
-extends Node
 
 class_name Helpers
+extends Node
 
 enum Direction {
 	DOWN,

@@ -49,8 +49,8 @@ func _ready():
 	assert(instanced_item.has_node("Trigger"))
 	trigger = instanced_item.get_node("Trigger")
 	trigger.logical_parent = self
-	var _err = trigger.connect("body_entered", self, "trigger_entered")
-	_err = trigger.connect("body_exited", self, "trigger_exited")
+	var _err = trigger.connect("body_entered", self, "on_Trigger_body_entered")
+	_err = trigger.connect("body_exited", self, "on_Trigger_body_exited")
 
 	# connect the items hitbox to a deal damage function
 	# right now assume the root of the item is an Area2D
@@ -58,19 +58,19 @@ func _ready():
 	hitbox = instanced_item.get_node("Hitbox")
 	if not Engine.is_editor_hint():
 		hitbox.logical_parent = self
-	_err = hitbox.connect("body_entered", self, "hit_body")
-	_err = hitbox.connect("area_entered", self, "hit_area")
+	_err = hitbox.connect("body_entered", self, "on_Hitbox_body_entered")
+	_err = hitbox.connect("area_entered", self, "on_Hitbox_area_entered")
 
 	assert(parsed_dict.has("damage_infos"))
 	if not Engine.is_editor_hint():
 		hitbox.all_damage_infos = parsed_dict.damage_infos
 
 
-func hit_body(_body):
+func on_Hitbox_body_entered(_body):
 	pass
 	# should hit_body even be called?
 
-func hit_area(area):
+func on_Hitbox_area_entered(area):
 	var hitbox_bit = 1
 	var hurtbox_bit = 2
 
@@ -120,10 +120,10 @@ func interact(interactor):
 func is_interacting() -> bool:
 	return false
 
-func trigger_entered(body):
+func on_Trigger_body_entered(body):
 	if body is ChildPhysicsBody:
 		body.emit_signal("entered_area", self, sprite)
 
-func trigger_exited(body):
+func on_Trigger_body_exited(body):
 	if body is ChildPhysicsBody:
 		body.emit_signal("exited_area", self)

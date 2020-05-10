@@ -1,10 +1,12 @@
 extends Node2D
 
-onready var root = get_tree().get_root()
-export(Vector2) var min_size
-var viewport_transform: Transform2D
 
+export(Vector2) var min_size
+
+var viewport_transform: Transform2D
 var size_cap: float
+
+onready var root = get_tree().get_root()
 
 func _ready():
 	assert($"Viewport".size.x == $"Viewport".size.y)
@@ -12,34 +14,8 @@ func _ready():
 
 	size_cap = $"Viewport".size.x
 
-	root.connect("size_changed", self, "window_resize")
-	window_resize()
-
-func window_resize():
-	var window_size = OS.get_window_size()
-	root.set_size_override(true, window_size)
-
-	var fscale = window_size / min_size
-	var current_scale = min(floor(fscale.x), floor(fscale.y))
-
-	var viewport_size = window_size / current_scale
-	viewport_size.x = ceil(viewport_size.x)
-	viewport_size.y = ceil(viewport_size.y)
-
-	var current_position = Vector2(0, 0)
-
-	if viewport_size.x > size_cap:
-		current_position.x = floor((viewport_size.x - size_cap) * current_scale / 2)
-		viewport_size.x = size_cap
-
-	if viewport_size.y > size_cap:
-		current_position.y = floor((viewport_size.y - size_cap) * current_scale / 2)
-		viewport_size.y = size_cap
-
-	$"Viewport".set_size_override(true, viewport_size)
-
-	viewport_transform = Transform2D.IDENTITY.scaled(Vector2(current_scale, current_scale)).translated(current_position/current_scale)
-	$"ViewportSprite".transform = viewport_transform
+	root.connect("size_changed", self, "on_Root_size_changed")
+	on_Root_size_changed()
 
 func _input(event):
 	if event is InputEventMouse:
@@ -64,6 +40,32 @@ func _unhandled_input(event):
 			event.speed = affine_inverse.xform(event.speed)
 
 	$"Viewport".unhandled_input(event)
+
+func on_Root_size_changed():
+	var window_size = OS.get_window_size()
+	root.set_size_override(true, window_size)
+
+	var fscale = window_size / min_size
+	var current_scale = min(floor(fscale.x), floor(fscale.y))
+
+	var viewport_size = window_size / current_scale
+	viewport_size.x = ceil(viewport_size.x)
+	viewport_size.y = ceil(viewport_size.y)
+
+	var current_position = Vector2(0, 0)
+
+	if viewport_size.x > size_cap:
+		current_position.x = floor((viewport_size.x - size_cap) * current_scale / 2)
+		viewport_size.x = size_cap
+
+	if viewport_size.y > size_cap:
+		current_position.y = floor((viewport_size.y - size_cap) * current_scale / 2)
+		viewport_size.y = size_cap
+
+	$"Viewport".set_size_override(true, viewport_size)
+
+	viewport_transform = Transform2D.IDENTITY.scaled(Vector2(current_scale, current_scale)).translated(current_position/current_scale)
+	$"ViewportSprite".transform = viewport_transform
 
 func transform_position(pos: Vector2):
 	# return viewport_transform.affine_inverse().xform(pos)

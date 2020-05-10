@@ -22,10 +22,10 @@ func _ready():
 	if Engine.is_editor_hint() and room_path != "":
 		load_room()
 
-	var _err = self.connect("body_entered", self, "body_entered")
-	_err = self.connect("body_exited", self, "body_exited")
+	var _err = connect("body_entered", self, "on_body_entered")
+	_err = connect("body_exited", self, "on_body_exited")
 
-func body_entered(body):
+func on_body_entered(body):
 	if not Engine.is_editor_hint():
 		print("RoomLoader: body_entered")
 
@@ -34,7 +34,7 @@ func body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("make_active", self)
 
-func body_exited(body):
+func on_body_exited(body):
 	if not Engine.is_editor_hint():
 		print("RoomLoader: body_exited")
 	# remove the player from the zone before making it inactive

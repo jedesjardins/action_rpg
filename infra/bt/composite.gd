@@ -1,7 +1,7 @@
 tool
-extends BTNode
 
 class_name Composite
+extends BTNode
 
 func _ready():
 	assert(get_child_count() > 0)

@@ -1,3 +1,5 @@
+
+class_name Selector
 extends Composite
 
 # runs children in order until one returns OK
@@ -5,7 +7,6 @@ extends Composite
 # if a child returns FAILED, it continues processing it's children
 # if a child returns ERR_BUSY, it immediately returns ERR_BUSY and will resume
 # with that child next tick
-class_name Selector
 
 var running_child: BTNode
 

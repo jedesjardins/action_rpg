@@ -1,7 +1,7 @@
 extends ColorRect
 
 func _ready():
-	var _err = $"Area2D".connect("area_entered", self, "hitbox_entered")
+	var _err = $"Area2D".connect("area_entered", self, "on_Area2D_area_entered")
 
-func hitbox_entered(_area):
+func on_Area2D_area_entered(_area):
 	print(_area)

@@ -1,7 +1,6 @@
 tool
 
 class_name Entity
-
 extends ChildPhysicsBody # extends KinematicBody2D
 
 export var appearance_path: NodePath

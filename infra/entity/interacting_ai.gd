@@ -1,7 +1,7 @@
 tool
-extends BaseBehavior
 
 class_name InteractingAIBehavior
+extends BaseBehavior
 
 export var ai_script_path: NodePath
 export var interact_script_path: NodePath
@@ -37,15 +37,14 @@ func _physics_process(delta):
 
 func set_entity(node: Node):
 	if entity != null:
-		entity.disconnect("entered_area", self, "entered_area")
-		entity.disconnect("exited_area", self, "exited_area")
+		entity.hurtbox.disconnect("area_entered", self, "on_Hurtbox_area_entered")
 
 	.set_entity(node) # call inherited function
 	blackboard.entity = node
 
 	interact_script.set_ignore(entity)
 	interact_script.set_trigger(entity.get_trigger())
-	var _err = entity.hurtbox.connect("area_entered", self, "damaged")
+	var _err = entity.hurtbox.connect("area_entered", self, "on_Hurtbox_area_entered")
 
 func _get_configuration_warning():
 #	if not ai_script_path:
@@ -56,5 +55,5 @@ func _get_configuration_warning():
 
 	return ""
 
-func damaged(_area):
+func on_Hurtbox_area_entered(_area):
 	entity.get_appearance().flash()

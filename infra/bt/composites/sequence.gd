@@ -1,4 +1,6 @@
 tool
+
+class_name Sequence
 extends Composite
 
 # runs children in order until all return OK
@@ -7,7 +9,7 @@ extends Composite
 # remaining children
 # if a child returns ERR_BUSY, it immediately returns ERR_BUSY and will resume
 # with that child next tick
-class_name Sequence
+
 
 var running_child: BTNode
 
