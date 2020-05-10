@@ -4,7 +4,9 @@ func start_next_attack(bb: Dictionary):
 	assert(bb.has("entity"))
 	assert(bb.has("item"))
 
-	bb.current_attack = bb.item.attacks[bb.next_attack]
+	var attack_info = bb.item.attack_info
+
+	bb.current_attack = attack_info.get_attack(bb.next_attack)
 	bb.direction = bb.next_direction
 	bb.current_animation_index = 0
 	var _ret = bb.erase("next_attack")
