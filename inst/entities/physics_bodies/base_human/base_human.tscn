@@ -399,6 +399,7 @@ script = ExtResource( 2 )
 appearance_path = NodePath("Sprite")
 hurtbox_path = NodePath("Hurtbox")
 hand_path = NodePath("Hand")
+json_path = "res://data/entities/base_human.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )

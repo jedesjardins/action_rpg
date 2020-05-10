@@ -100,6 +100,7 @@ current = true
 [node name="Knight" parent="Entities" instance=ExtResource( 10 )]
 position = Vector2( 200, 200 )
 behavior_path = NodePath("PlayerBehavior")
+json_path = "res://data/entities/knight.json"
 
 [node name="PlayerBehavior" parent="Entities/Knight" instance=ExtResource( 9 )]
 health_path = NodePath("../Health")

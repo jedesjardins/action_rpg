@@ -22,12 +22,25 @@ var hand: Node2D
 export var behavior_path: NodePath
 var behavior: BaseBehavior
 
+export var json_path: String
+var walk_speed: int
+
 var direction: int
 var action: int
 
 func _ready():
 	if Engine.is_editor_hint():
 		return
+
+	var file = File.new()
+	assert(file.file_exists(json_path))
+	file.open(json_path, 1)
+	var parse_result = JSON.parse(file.get_as_text())
+	assert(parse_result.error == OK)
+
+	var parsed_dict = parse_result.result
+	assert(parsed_dict.has("walk_speed"))
+	walk_speed = parsed_dict.walk_speed
 
 	if trigger_path:
 		trigger = get_node(trigger_path)

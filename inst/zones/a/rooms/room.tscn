@@ -72,8 +72,6 @@ shape = SubResource( 3 )
 position = Vector2( 230, 399 )
 script = ExtResource( 2 )
 spawn_scene_path = "res://inst/entities/physics_bodies/base_human/base_human.tscn"
-spawn_on_ready = true
-keep_loaded = false
 
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 141, 187 )
@@ -100,3 +98,4 @@ shape = SubResource( 4 )
 
 [node name="Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 208, 55 )
+json_path = "res://data/entities/slime.json"
