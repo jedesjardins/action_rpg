@@ -52,6 +52,8 @@ func _ready():
 		hitbox = get_node(hitbox_path)
 		assert(hitbox is ChildArea)
 		hitbox.logical_parent = self
+		assert(parsed_dict.has("damage_infos"))
+		hitbox.all_damage_infos = parsed_dict.damage_infos
 
 	if hurtbox_path:
 		hurtbox = get_node(hurtbox_path)

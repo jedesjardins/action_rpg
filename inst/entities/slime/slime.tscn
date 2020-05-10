@@ -15,7 +15,7 @@
 [ext_resource path="res://inst/entities/slime/get_direction_to_target.gd" type="Script" id=13]
 [ext_resource path="res://inst/entities/slime/set_player_as_target.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=15]
-[ext_resource path="res://inst/entities/slime/hitbox_damage.gd" type="Script" id=16]
+[ext_resource path="res://infra/scripts/hitbox.gd" type="Script" id=16]
 [ext_resource path="res://inst/entities/slime/is_damaged.gd" type="Script" id=17]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=18]
 [ext_resource path="res://infra/bt/decorators/fail.gd" type="Script" id=19]
@@ -346,6 +346,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "move" ],
+"method": "set_damage_info"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "walk_left"
@@ -409,6 +423,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "move" ],
+"method": "set_damage_info"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -474,6 +502,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "move" ],
+"method": "set_damage_info"
+} ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "walk_up"
@@ -538,6 +580,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("Hitbox")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "move" ],
+"method": "set_damage_info"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 6, 5 )
@@ -557,7 +613,7 @@ position = Vector2( -8, -8 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 14, 27, 16, 13 )
+region_rect = Rect2( 0, 0, 16, 13 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

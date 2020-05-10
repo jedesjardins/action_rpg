@@ -1,4 +1,9 @@
 {
 	"name": "slime",
-	"walk_speed": 45
+	"walk_speed": 45,
+	"damage_infos": {
+		"move": {
+			"damage": 5
+		}
+	}
 }
