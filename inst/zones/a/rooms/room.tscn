@@ -78,7 +78,7 @@ keep_loaded = false
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 141, 187 )
 script = ExtResource( 3 )
-json_path = "res://data/falchion.json"
+json_path = "res://data/items/falchion.json"
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 margin_left = 261.0
