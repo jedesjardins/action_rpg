@@ -341,12 +341,12 @@ shape = SubResource( 9 )
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 225, 174 )
 script = ExtResource( 22 )
-json_path = "res://data/dumb_sword.json"
+json_path = "res://data/items/dumb_sword.json"
 
 [node name="Weapon2" type="Node2D" parent="."]
 position = Vector2( 141, 187 )
 script = ExtResource( 22 )
-json_path = "res://data/falchion.json"
+json_path = "res://data/items/falchion.json"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

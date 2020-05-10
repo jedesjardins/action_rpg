@@ -4,9 +4,8 @@ extends InteractScript
 class_name Weapon
 
 export var json_path: String
-var attacks: Dictionary
-onready var first_attack = ""
-onready var charge_attack = ""
+
+var attack_info: AttackInfo
 
 var sprite: Sprite
 var icon: String
@@ -30,15 +29,7 @@ func _ready():
 	assert(parsed_dict.has("icon") and parsed_dict.icon is String)
 	icon = parsed_dict.icon
 
-	# read attacks
-	assert(parsed_dict.has("attacks"))
-	attacks = parsed_dict.attacks
-
-	assert(parsed_dict.has("first_attack"))
-	first_attack = parsed_dict.first_attack
-
-	if parsed_dict.has("charge_attack"):
-		charge_attack = attacks[parsed_dict.charge_attack]
+	attack_info = AttackInfo.new(parsed_dict)
 
 	# instance the scene located at item_scene
 	assert(parsed_dict.has("item_scene"))

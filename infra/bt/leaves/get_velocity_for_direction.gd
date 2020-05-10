@@ -25,6 +25,6 @@ func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("entity"))
 	assert(blackboard.has("direction"))
 
-	blackboard.velocity = get_velocity(blackboard.direction) * Helpers.get_walk_speed()
+	blackboard.velocity = get_velocity(blackboard.direction) * blackboard.entity.walk_speed
 
 	return OK
