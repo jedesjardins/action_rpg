@@ -26,7 +26,8 @@ export var json_path: String
 var walk_speed: int
 
 var direction: int
-var action: int
+
+var attack_info: AttackInfo
 
 func _ready():
 	if Engine.is_editor_hint():
@@ -50,10 +51,13 @@ func _ready():
 
 	if hitbox_path:
 		hitbox = get_node(hitbox_path)
-		assert(hitbox is ChildArea)
+		assert(hitbox is Hitbox)
 		hitbox.logical_parent = self
+
 		assert(parsed_dict.has("damage_infos"))
 		hitbox.all_damage_infos = parsed_dict.damage_infos
+
+		attack_info = AttackInfo.new(parsed_dict)
 
 	if hurtbox_path:
 		hurtbox = get_node(hurtbox_path)
@@ -133,8 +137,11 @@ func drop_item():
 		item_node.drop()
 		behavior.set_item(null)
 
-func animated_move(magnitude):
+func animated_move(magnitude: int):
 	var mouse_position = Helpers.get_viewport_mouse_position(get_viewport())
 	var vector_to_mouse = (mouse_position - self.global_position).normalized()
-	vector_to_mouse *= magnitude
-	var _collision = move_and_collide(vector_to_mouse)
+
+	animated_move2(vector_to_mouse, magnitude)
+
+func animated_move2(vector: Vector2, magnitude: int):
+	var _collision = move_and_collide(vector * magnitude)

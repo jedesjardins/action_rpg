@@ -2,8 +2,8 @@ extends BTNode
 
 func start_next_attack(bb: Dictionary):
 	assert(bb.has("entity"))
-	assert(bb.has("item"))
 
+	var has_item = bb.has("item")
 	var attack_info = bb.item.attack_info
 
 	bb.current_attack = attack_info.get_attack(bb.next_attack)
@@ -13,7 +13,6 @@ func start_next_attack(bb: Dictionary):
 	_ret = bb.erase("next_direction")
 
 	var animation_player = bb.entity.get_node("AnimationPlayer")
-	var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
 
 	var direction_string = "_" + bb.direction_string[bb.direction]
 
@@ -22,19 +21,22 @@ func start_next_attack(bb: Dictionary):
 		bb.current_attack.entity_animations[bb.current_animation_index] + direction_string,
 		bb.current_attack.durations[bb.current_animation_index])
 
-	Helpers.play_animation_duration(
-		item_animation_player,
-		bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
-		bb.current_attack.durations[bb.current_animation_index])
+	if has_item:
+		var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
+
+		Helpers.play_animation_duration(
+			item_animation_player,
+			bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
+			bb.current_attack.durations[bb.current_animation_index])
 
 func start_next_anim(bb: Dictionary):
 	assert(bb.has("entity"))
-	assert(bb.has("item"))
+
+	var has_item = bb.has("item")
 
 	bb.current_animation_index += 1
 
 	var animation_player = bb.entity.get_node("AnimationPlayer")
-	var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
 
 	var direction_string = "_" + bb.direction_string[bb.direction]
 
@@ -43,10 +45,13 @@ func start_next_anim(bb: Dictionary):
 		bb.current_attack.entity_animations[bb.current_animation_index] + direction_string,
 		bb.current_attack.durations[bb.current_animation_index])
 
-	Helpers.play_animation_duration(
-		item_animation_player,
-		bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
-		bb.current_attack.durations[bb.current_animation_index])
+	if has_item:
+		var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
+
+		Helpers.play_animation_duration(
+			item_animation_player,
+			bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
+			bb.current_attack.durations[bb.current_animation_index])
 
 func end_attack(bb: Dictionary):
 	var _ret

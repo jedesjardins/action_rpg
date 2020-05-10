@@ -2,17 +2,18 @@ extends BTNode
 
 func tick(bb: Dictionary) -> int:
 	assert(bb.has("entity"))
-	assert(bb.has("item"))
+
+	var has_item = bb.has("item")
 
 	var animation_player = bb.entity.get_node("AnimationPlayer")
-	var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
-
-#	if not bb.has("animation_chain"):
-#		bb.entity_animation_chain = AnimationChain.new(animation_player)
-#		bb.item_animation_chain = AnimationChain.new(item_animation_player)
 
 	# start attack animation here
-	var attack_info = bb.item.attack_info
+
+	var attack_info = null
+	if has_item:
+		attack_info = bb.item.attack_info
+	else:
+		attack_info = bb.entity.attack_info
 
 	var current_attack = attack_info.get_first_attack()
 	var current_animation_index = 0
@@ -23,13 +24,16 @@ func tick(bb: Dictionary) -> int:
 		current_attack.entity_animations[current_animation_index] + direction_string,
 		current_attack.durations[current_animation_index])
 
-	Helpers.play_animation_duration(
-		item_animation_player,
-		current_attack.item_animations[current_animation_index] + direction_string,
-		current_attack.durations[current_animation_index])
+	if has_item:
+		var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
 
-	if bb.item.hitbox:
-		bb.item.hitbox.modifier = {}
+		Helpers.play_animation_duration(
+			item_animation_player,
+			current_attack.item_animations[current_animation_index] + direction_string,
+			current_attack.durations[current_animation_index])
+
+		if bb.item.hitbox:
+			bb.item.hitbox.modifier = {}
 
 	bb.current_attack = current_attack
 	bb.current_animation_index = current_animation_index

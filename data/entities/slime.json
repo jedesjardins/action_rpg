@@ -1,8 +1,19 @@
 {
 	"name": "slime",
 	"walk_speed": 45,
+	"attacks": {
+		"lunge": {
+			"entity_animations": ["idle", "lunge"],
+			"durations": [0.2, 0.2],
+			"type": "singular",
+			"info": "type can be singular/charge/combo",
+			"next_attack": ""
+		}
+	},
+	"first_attack": "lunge",
+
 	"damage_infos": {
-		"move": {
+		"lunge": {
 			"damage": 5
 		}
 	}
