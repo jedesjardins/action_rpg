@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/scripts/hitbox.gd"
 }, {
+"base": "ChildArea",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://infra/scripts/hurtbox.gd"
+}, {
 "base": "TriggerScript",
 "class": "InteractScript",
 "language": "GDScript",
@@ -170,6 +175,7 @@ _global_script_class_icons={
 "Hand": "",
 "Helpers": "",
 "Hitbox": "",
+"Hurtbox": "",
 "InteractScript": "",
 "InteractingAIBehavior": "",
 "Not": "",

@@ -56,4 +56,4 @@ func _get_configuration_warning():
 	return ""
 
 func on_Hurtbox_area_entered(_area):
-	entity.get_appearance().flash()
+	entity.sprite.flash()

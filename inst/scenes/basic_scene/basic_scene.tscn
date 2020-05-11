@@ -224,7 +224,6 @@ tile_data = PoolIntArray( 262146, 6, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0
 
 [node name="Knight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 200, 200 )
-behavior_path = NodePath("PlayerBehavior")
 
 [node name="PlayerBehavior" parent="Knight" instance=ExtResource( 21 )]
 health_path = NodePath("../Health")
@@ -234,8 +233,6 @@ script = ExtResource( 6 )
 
 [node name="base_human2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 236, 180 )
-trigger_path = NodePath("Trigger")
-behavior_path = NodePath("InteractingAIBehavior")
 
 [node name="Trigger" type="Area2D" parent="base_human2"]
 collision_layer = 8
@@ -254,7 +251,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
-ai_script_path = NodePath("")
 interact_script_path = NodePath("InteractScript")
 
 [node name="InteractScript" type="Node2D" parent="base_human2/InteractingAIBehavior"]

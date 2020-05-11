@@ -3,29 +3,18 @@ tool
 class_name Entity
 extends ChildPhysicsBody # extends KinematicBody2D
 
-export var appearance_path: NodePath
-var appearance: Node
-
-export var trigger_path: NodePath
-var trigger: Area2D
-
-export var hitbox_path: NodePath
-var hitbox: Area2D
-
-export var hurtbox_path: NodePath
-var hurtbox: Area2D
-
-export var hand_path: NodePath
-var hand: Node2D
-
-export var behavior_path: NodePath
-var behavior: BaseBehavior
-
 export var json_path: String
+
+var sprite: Sprite setget set_sprite
+var trigger: Area2D setget set_trigger
+var hitbox: Hitbox setget set_hitbox
+var hurtbox: Hurtbox setget set_hurtbox
+var hand: Hand setget set_hand
+var behavior: BaseBehavior setget set_behavior
+
 var walk_speed: int
 
-var direction: int
-
+var damage_info: Dictionary
 var attack_info: AttackInfo
 
 func _ready():
@@ -42,63 +31,54 @@ func _ready():
 	assert(parsed_dict.has("walk_speed"))
 	walk_speed = parsed_dict.walk_speed
 
-	if trigger_path:
-		trigger = get_node(trigger_path)
-
-	if appearance_path:
-		appearance = get_node(appearance_path)
-
-	if hitbox_path:
-		hitbox = get_node(hitbox_path)
-		assert(hitbox is Hitbox)
-		hitbox.logical_parent = self
-
-		assert(parsed_dict.has("damage_infos"))
-		hitbox.all_damage_infos = parsed_dict.damage_infos
-
+	damage_info = parsed_dict.get("damage_infos", {})
+	if parsed_dict.has("attacks") and parsed_dict.has("first_attack"):
 		attack_info = AttackInfo.new(parsed_dict)
 
-	if hurtbox_path:
-		hurtbox = get_node(hurtbox_path)
-		assert(hurtbox is ChildArea)
-		hurtbox.logical_parent = self
+	print("Entity ", self.get_path())
+	for child in get_children():
+		if child is Sprite:
+			print("found Sprite")
+			set_sprite(child)
+		elif child is Hitbox:
+			print("found Hitbox")
+			set_hitbox(child)
+		elif child is Hurtbox:
+			print("found Hurtbox")
+			set_hurtbox(child)
+		elif child is Area2D:
+			print("found Area2D")
+			set_trigger(child)
+		elif child is Hand:
+			print("found Hand")
+			set_hand(child)
+		elif child is BaseBehavior:
+			print("found BaseBehavior")
+			set_behavior(child)
 
-	if behavior_path:
-		behavior = get_node(behavior_path)
-		behavior.set_entity(self)
+func set_sprite(s: Sprite):
+	sprite = s
 
-	if hand_path:
-		hand = get_node(hand_path)
+func set_trigger(a: Area2D):
+	trigger = a
 
-func has_trigger() -> bool:
-	return trigger != null
+func set_hitbox(h: Hitbox):
+	hitbox = h
+	hitbox.logical_parent = self
 
-func get_trigger() -> Node:
-	return trigger
+	hitbox.all_damage_infos = damage_info
 
-func has_hitbox() -> bool:
-	return hitbox != null
+func set_hurtbox(h: Hurtbox):
+	hurtbox = h
+	hurtbox.logical_parent = self
 
-func get_hitbox() -> Node:
-	return hitbox
+func set_hand(h: Hand):
+	hand = h
 
-func has_hurtbox() -> bool:
-	return hurtbox != null
-
-func get_hurtbox() -> Node:
-	return hurtbox
-
-func has_appearance() -> bool:
-	return appearance != null
-
-func get_appearance() -> Node:
-	return appearance
-
-func has_behavior() -> bool:
-	return behavior != null
-
-func get_behavior() -> Node:
-	return behavior
+func set_behavior(b: BaseBehavior):
+	print("Set behavior ", self, " ", get_path())
+	behavior = b
+	behavior.set_entity(self)
 
 func hold_item(var item_node: Weapon):
 	assert(item_node)
