@@ -100,7 +100,7 @@ current = true
 
 [node name="Knight" parent="Entities" instance=ExtResource( 10 )]
 position = Vector2( 200, 200 )
-json_path = "res://data/entities/knight.json"
+configuration_path = "res://data/entities/knight.json"
 
 [node name="BehaviorTree" parent="Entities/Knight" instance=ExtResource( 9 )]
 

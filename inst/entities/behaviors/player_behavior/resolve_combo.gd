@@ -4,7 +4,7 @@ func start_next_attack(bb: Dictionary):
 	assert(bb.has("entity"))
 
 	var has_item = bb.has("item")
-	var attack_info = bb.item.attack_info
+	var attack_info = bb.item.get_node("Hitbox").attack_info
 
 	bb.current_attack = attack_info.get_attack(bb.next_attack)
 	bb.direction = bb.next_direction
@@ -22,7 +22,7 @@ func start_next_attack(bb: Dictionary):
 		bb.current_attack.durations[bb.current_animation_index])
 
 	if has_item:
-		var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
+		var item_animation_player = bb.item.get_node("AnimationPlayer")
 
 		Helpers.play_animation_duration(
 			item_animation_player,
@@ -46,7 +46,7 @@ func start_next_anim(bb: Dictionary):
 		bb.current_attack.durations[bb.current_animation_index])
 
 	if has_item:
-		var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
+		var item_animation_player = bb.item.get_node("AnimationPlayer")
 
 		Helpers.play_animation_duration(
 			item_animation_player,

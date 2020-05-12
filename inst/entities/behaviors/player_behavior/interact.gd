@@ -1,10 +1,8 @@
 extends BTNode
 
-var can_interact = true
-
 func enable_interaction_after(script, entity, interactor):
 	interactor.can_interact = false
-	var result = script.interact(entity)
+	var result = script.interact_with(entity)
 	if result is GDScriptFunctionState:
 		yield(result, "completed")
 	interactor.can_interact = true

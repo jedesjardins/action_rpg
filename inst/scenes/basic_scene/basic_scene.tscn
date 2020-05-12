@@ -29,7 +29,6 @@
 [ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=27]
 [ext_resource path="res://inst/scenes/basic_scene/health_bar.gd" type="Script" id=28]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
@@ -227,7 +226,6 @@ tile_data = PoolIntArray( 262146, 6, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0
 position = Vector2( 200, 200 )
 
 [node name="PlayerBehavior" parent="Knight" instance=ExtResource( 21 )]
-health_path = NodePath("../Health")
 
 [node name="Health" type="Node" parent="Knight"]
 script = ExtResource( 6 )
@@ -252,6 +250,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+ai_script_path = NodePath("")
 interact_script_path = NodePath("InteractScript")
 
 [node name="InteractScript" type="Node2D" parent="base_human2/InteractingAIBehavior"]
@@ -338,12 +337,10 @@ shape = SubResource( 9 )
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 225, 174 )
 script = ExtResource( 22 )
-json_path = "res://data/items/dumb_sword.json"
 
 [node name="Weapon2" type="Node2D" parent="."]
 position = Vector2( 141, 187 )
 script = ExtResource( 22 )
-json_path = "res://data/items/falchion.json"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

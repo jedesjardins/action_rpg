@@ -6,7 +6,7 @@ func tick(bb: Dictionary) -> int:
 	assert(bb.has("direction_string"))
 
 	if bb.item:
-		var ap = bb.item.get_children()[0].get_node("AnimationPlayer")
+		var ap = bb.item.get_node("AnimationPlayer")
 		ap.play("held_" + bb.direction_string[bb.direction])
 
 	return OK

@@ -6,7 +6,7 @@
 [ext_resource path="res://infra/scripts/hurtbox.gd" type="Script" id=4]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=5]
 [ext_resource path="res://inst/entities/slime/slime_behavior_tree.gd" type="Script" id=6]
-[ext_resource path="res://inst/entities/slime/entity_hitbox.gd" type="Script" id=7]
+[ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=7]
 [ext_resource path="res://infra/bt/leaves/get_velocity_for_direction.gd" type="Script" id=8]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=9]
 [ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=10]
@@ -15,7 +15,7 @@
 [ext_resource path="res://inst/entities/slime/get_direction_to_target.gd" type="Script" id=13]
 [ext_resource path="res://inst/entities/slime/set_player_as_target.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=15]
-[ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=16]
+[ext_resource path="res://infra/scripts/hitbox.gd" type="Script" id=16]
 [ext_resource path="res://inst/entities/slime/is_damaged.gd" type="Script" id=17]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=18]
 [ext_resource path="res://infra/bt/decorators/fail.gd" type="Script" id=19]
@@ -1249,7 +1249,7 @@ shape = SubResource( 14 )
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource( 7 )
+script = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, 2.5 )
@@ -1378,4 +1378,4 @@ script = ExtResource( 22 )
 script = ExtResource( 5 )
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource( 16 )
+script = ExtResource( 7 )

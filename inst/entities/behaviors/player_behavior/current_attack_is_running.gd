@@ -14,7 +14,7 @@ func tick(bb: Dictionary) -> int:
 
 	if animation_player.current_animation == current_entity_animation:
 		if has_item:
-			var item_animation_player = bb.item.get_children()[0].get_node("AnimationPlayer")
+			var item_animation_player = bb.item.get_node("AnimationPlayer")
 			var current_item_animation = bb.current_attack.item_animations[bb.current_animation_index] + direction_string
 			if item_animation_player.current_animation == current_item_animation:
 				return OK

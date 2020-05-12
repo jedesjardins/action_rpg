@@ -2,7 +2,7 @@
 
 [ext_resource path="res://inst/zones/a/switch_zone.gd" type="Script" id=1]
 [ext_resource path="res://infra/scripts/spawner.gd" type="Script" id=2]
-[ext_resource path="res://infra/scripts/weapon.gd" type="Script" id=3]
+[ext_resource path="res://inst/items/falchion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inst/zones/a/rooms/damage_box.gd" type="Script" id=4]
 [ext_resource path="res://inst/entities/slime/slime.tscn" type="PackedScene" id=5]
 
@@ -73,10 +73,8 @@ position = Vector2( 230, 399 )
 script = ExtResource( 2 )
 spawn_scene_path = "res://inst/entities/physics_bodies/base_human/base_human.tscn"
 
-[node name="Weapon" type="Node2D" parent="."]
-position = Vector2( 141, 187 )
-script = ExtResource( 3 )
-json_path = "res://data/items/falchion.json"
+[node name="Falchion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 106, 200 )
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 margin_left = 261.0
@@ -98,4 +96,4 @@ shape = SubResource( 4 )
 
 [node name="Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 208, 55 )
-json_path = "res://data/entities/slime.json"
+configuration_path = "res://data/entities/slime.json"

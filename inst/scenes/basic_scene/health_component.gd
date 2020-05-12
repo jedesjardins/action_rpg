@@ -17,32 +17,22 @@ func on_Parent_ready():
 	if parent.has_node("Hurtbox"):
 		var _err = parent.get_node("Hurtbox").connect("area_entered", self, "on_Hurtbox_area_entered")
 
-#func attach_hurtbox(hurtbox: Area2D):
-#	# maybe add asserts to see if the hurtbox has the right layers set
-#
-#	if attached_hurtbox:
-#		attached_hurtbox.disconnect("area_entered", self, "on_Hurtbox_area_entered")
-#
-#	attached_hurtbox = hurtbox
-#
-#	if attached_hurtbox:
-#		var _err = attached_hurtbox.connect("area_entered", self, "on_Hurtbox_area_entered")
-
 func on_Hurtbox_area_entered(area):
 	if area is Hitbox and area.cached_damage_info != null:
-		var parent = area.get_parent()
+		var area_parent = area.get_parent()
+		var self_parent = get_parent()
 
-		# TODO: Hacky fix, since Hitboxes are children of Entities, but grandchildren of Weapons.
-		#       Fix by remaking Weapons like Entities, or can weapons BE entities?
-		if not parent is Entity:
-			parent = parent.get_parent()
-
-		if parent == get_parent() or (parent is Weapon and parent.ignored_node == $".."):
+		# This entities own Hitbox is hitting its Hurtbox
+		if area_parent == self_parent:
 			return # hits the entity holding it
+
+		# The item this entity is holding is hitting it's Hurtbox
+		if self_parent.has_node("Hand") and self_parent.get_node("Hand").item == area_parent:
+			return
 
 		health -= area.cached_damage_info.damage;
 		damaged = true
-		damaged_by = parent
+		damaged_by = area_parent
 		print("Took damage, health is now: ", health)
 		emit_signal("damaged", health)
 	else:

@@ -3,7 +3,7 @@ tool
 class_name Entity
 extends KinematicBody2D
 
-export var json_path: String
+export var configuration_path: String
 var configuration: Dictionary
 
 func _ready():
@@ -11,8 +11,8 @@ func _ready():
 		return
 
 	var file = File.new()
-	assert(file.file_exists(json_path))
-	file.open(json_path, 1)
+	assert(file.file_exists(configuration_path))
+	file.open(configuration_path, 1)
 	var parse_result = JSON.parse(file.get_as_text())
 	assert(parse_result.error == OK)
 

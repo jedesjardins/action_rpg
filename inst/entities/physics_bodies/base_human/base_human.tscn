@@ -395,7 +395,7 @@ tracks/1/keys = {
 [node name="base_human" type="KinematicBody2D"]
 collision_mask = 9
 script = ExtResource( 2 )
-json_path = "res://data/entities/base_human.json"
+configuration_path = "res://data/entities/base_human.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )

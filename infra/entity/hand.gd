@@ -18,7 +18,7 @@ func hold_item(item_node):
 		add_child(item_node)
 		item_node.position = Vector2(0, 0)
 
-		item_node.held_by(get_parent())
+		#item_node.held_by(get_parent())
 		item = item_node
 
 		emit_signal("item_held", item)
@@ -38,7 +38,7 @@ func drop_item():
 		room_loaders[0].get_room().add_child(item)
 		item.global_position = cached_position
 
-		item.drop()
+		#item.drop()
 
 		var cached_item = item
 		item = null
