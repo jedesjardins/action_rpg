@@ -13,7 +13,7 @@ func tick(bb: Dictionary) -> int:
 	if has_item:
 		attack_info = bb.item.attack_info
 	else:
-		attack_info = bb.entity.attack_info
+		attack_info = bb.entity.get_node("Hitbox").attack_info
 
 	var current_attack = attack_info.get_first_attack()
 	var current_animation_index = 0

@@ -5,7 +5,7 @@
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inst/scenes/basic_scene/held_item_texture.gd" type="Script" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
-[ext_resource path="res://inst/scenes/basic_scene/player_health.gd" type="Script" id=6]
+[ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://infra/entity/interacting_ai.gd" type="Script" id=8]
 [ext_resource path="res://inst/scenes/basic_scene/basic_scene.gd" type="Script" id=9]
@@ -28,6 +28,7 @@
 [ext_resource path="res://infra/bt/leaves/check_timer.gd" type="Script" id=26]
 [ext_resource path="res://infra/bt/leaves/set_timer.gd" type="Script" id=27]
 [ext_resource path="res://inst/scenes/basic_scene/health_bar.gd" type="Script" id=28]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )

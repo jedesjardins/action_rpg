@@ -1,3 +1,3 @@
 
 class_name Hurtbox
-extends ChildArea
+extends Area2D

@@ -48,7 +48,7 @@ func _ready():
 	# get the trigger from the item scene
 	assert(instanced_item.has_node("Trigger"))
 	trigger = instanced_item.get_node("Trigger")
-	trigger.logical_parent = self
+
 	var _err = trigger.connect("body_entered", self, "on_Trigger_body_entered")
 	_err = trigger.connect("body_exited", self, "on_Trigger_body_exited")
 
@@ -56,8 +56,7 @@ func _ready():
 	# right now assume the root of the item is an Area2D
 	assert(instanced_item.has_node("Hitbox"))
 	hitbox = instanced_item.get_node("Hitbox")
-	if not Engine.is_editor_hint():
-		hitbox.logical_parent = self
+
 	_err = hitbox.connect("body_entered", self, "on_Hitbox_body_entered")
 	_err = hitbox.connect("area_entered", self, "on_Hitbox_area_entered")
 
@@ -85,12 +84,13 @@ func on_Hitbox_area_entered(area):
 		# weapon clash (stun lock mechanic here?)
 
 # TODO: set_ignore(entity.hurtbox)
-func held_by(entity: Node):
+func held_by(entity: Entity):
 	# set the trigger to ignore the entity
 	set_ignore(entity)
 	trigger.get_node("CollisionShape2D").disabled = true
 
-	hitbox_ignored_node = entity.hurtbox
+	if entity.has_node("Hurtbox"):
+		hitbox_ignored_node = entity.get_node("Hurtbox")
 
 	sprite.set_process(false)
 
@@ -111,19 +111,20 @@ func drop():
 
 	hitbox_ignored_node = null
 
-func interact(interactor):
-	assert(interactor.get_entity() != null)
+func interact(entity):
+	if entity.has_node("Hand"):
+		entity.get_node("Hand").hold_item(self)
 
-	interactor.get_entity().hold_item(self)
 	sprite.unhighlight()
 
 func is_interacting() -> bool:
 	return false
 
 func on_Trigger_body_entered(body):
-	if body is ChildPhysicsBody:
-		body.emit_signal("entered_area", self, sprite)
+	if body is Entity and body.has_node("Interact"):
+		# TODO: remove sprite here
+		body.get_node("Interact").add_interact_script(self, sprite)
 
 func on_Trigger_body_exited(body):
-	if body is ChildPhysicsBody:
-		body.emit_signal("exited_area", self)
+	if body is Entity and body.has_node("Interact"):
+		body.get_node("Interact").remove_interact_script(self)

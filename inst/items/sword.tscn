@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/textures/sword_rotate.png" type="Texture" id=1]
 [ext_resource path="res://inst/entities/physics_bodies/base_human/sprite_script.gd" type="Script" id=2]
-[ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=3]
 [ext_resource path="res://infra/scripts/hitbox.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -830,7 +829,6 @@ disabled = true
 
 [node name="Trigger" type="Area2D" parent="."]
 collision_layer = 8
-script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
 shape = SubResource( 3 )

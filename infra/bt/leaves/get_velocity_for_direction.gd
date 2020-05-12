@@ -21,10 +21,10 @@ func get_velocity(direction: int):
 		Helpers.Direction.DOWN_LEFT:
 			return Vector2(-1, 1).normalized()
 
-func tick(blackboard: Dictionary) -> int:
-	assert(blackboard.has("entity"))
-	assert(blackboard.has("direction"))
+func tick(bb: Dictionary) -> int:
+	assert(bb.has("entity"))
+	assert(bb.has("direction"))
 
-	blackboard.velocity = get_velocity(blackboard.direction) * blackboard.entity.walk_speed
+	bb.velocity = get_velocity(bb.direction) * bb.entity.configuration.walk_speed
 
 	return OK

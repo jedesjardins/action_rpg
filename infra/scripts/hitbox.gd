@@ -1,6 +1,6 @@
-extends ChildArea
 
 class_name Hitbox
+extends Area2D
 
 var modifier: Dictionary setget set_modifier, get_modifier
 var cached_damage_info: Dictionary setget set_cached_damage_info, get_damage_info

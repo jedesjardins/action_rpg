@@ -3,13 +3,19 @@ tool
 class_name BehaviorTree
 extends BTNode
 
+onready var blackboard = {}
+
 func _ready():
 	assert(get_child_count() == 1)
+	blackboard.entity = get_parent()
 
-func tick(blackboard: Dictionary) -> int:
-	assert(get_child_count() == 1)
+func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
 
-	return get_children()[0].tick(blackboard)
+	blackboard.delta = delta
+
+	get_children()[0].tick(blackboard)
 
 func _get_configuration_warning():
 	if get_child_count() != 1:

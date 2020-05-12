@@ -22,9 +22,9 @@ func _ready():
 	# connect player damage to health bar
 	var _err = player.get_node("Health").connect("damaged", $"HUD/StatusMarginContainer/ProgressBar", "change_health")
 
-	# connect player damage to health bar
-	if player.behavior:
-		_err = player.behavior.connect("hold", $"HUD/ItemMarginContainer/PanelContainer/MarginContainer/CenterContainer/TextureRect", "hold")
+	# put held item in the item frame
+	if player.has_node("Hand"):
+		_err = player.get_node("Hand").connect("item_held", $"HUD/ItemMarginContainer/PanelContainer/MarginContainer/CenterContainer/TextureRect", "hold")
 
 func _input(event):
 	if(event is InputEventKey):

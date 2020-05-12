@@ -1,12 +1,12 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://infra/scripts/z_sprite.gd" type="Script" id=1]
 [ext_resource path="res://infra/entity/entity.gd" type="Script" id=2]
 [ext_resource path="res://resources/textures/slime.png" type="Texture" id=3]
 [ext_resource path="res://infra/scripts/hurtbox.gd" type="Script" id=4]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=5]
-[ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=6]
-[ext_resource path="res://infra/entity/bt_behavior.gd" type="Script" id=7]
+[ext_resource path="res://inst/entities/slime/slime_behavior_tree.gd" type="Script" id=6]
+[ext_resource path="res://inst/entities/slime/entity_hitbox.gd" type="Script" id=7]
 [ext_resource path="res://infra/bt/leaves/get_velocity_for_direction.gd" type="Script" id=8]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=9]
 [ext_resource path="res://infra/bt/decorators/repeat.gd" type="Script" id=10]
@@ -15,7 +15,7 @@
 [ext_resource path="res://inst/entities/slime/get_direction_to_target.gd" type="Script" id=13]
 [ext_resource path="res://inst/entities/slime/set_player_as_target.gd" type="Script" id=14]
 [ext_resource path="res://infra/bt/leaves/move.gd" type="Script" id=15]
-[ext_resource path="res://infra/scripts/hitbox.gd" type="Script" id=16]
+[ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=16]
 [ext_resource path="res://inst/entities/slime/is_damaged.gd" type="Script" id=17]
 [ext_resource path="res://infra/bt/decorators/not.gd" type="Script" id=18]
 [ext_resource path="res://infra/bt/decorators/fail.gd" type="Script" id=19]
@@ -25,7 +25,6 @@
 [ext_resource path="res://inst/entities/slime/get_damage_vector.gd" type="Script" id=23]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/start_attack_anim.gd" type="Script" id=24]
 [ext_resource path="res://inst/entities/slime/interpolate_velocity.gd" type="Script" id=25]
-[ext_resource path="res://infra/bt/bt_node.gd" type="Script" id=26]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/current_attack_is_running.gd" type="Script" id=27]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/resolve_combo.gd" type="Script" id=28]
 
@@ -1247,140 +1246,136 @@ script = ExtResource( 4 )
 position = Vector2( 0, -1 )
 shape = SubResource( 14 )
 
-[node name="BTBehavior" type="Node2D" parent="."]
-script = ExtResource( 7 )
-behavior_tree_path = NodePath("../BTBehavior/BehaviorTree")
-
-[node name="BehaviorTree" type="Node" parent="BTBehavior"]
-script = ExtResource( 6 )
-
-[node name="Selector" type="Node" parent="BTBehavior/BehaviorTree"]
-script = ExtResource( 12 )
-
-[node name="Fail" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
-script = ExtResource( 19 )
-
-[node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail"]
-script = ExtResource( 10 )
-
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat"]
-script = ExtResource( 9 )
-
-[node name="Not" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 18 )
-
-[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence/Not"]
-script = ExtResource( 17 )
-
-[node name="SetPlayerAsTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 14 )
-
-[node name="Not2" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 18 )
-
-[node name="NearTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence/Not2"]
-script = ExtResource( 11 )
-distance = 30
-
-[node name="NearTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 11 )
-distance = 100
-
-[node name="GetDirectionToTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 13 )
-
-[node name="GetVelocityForDirection" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 8 )
-
-[node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Fail/Repeat/Sequence"]
-script = ExtResource( 15 )
-
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
-script = ExtResource( 9 )
-
-[node name="Not" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 18 )
-
-[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Not"]
-script = ExtResource( 17 )
-
-[node name="SetPlayerAsTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 14 )
-
-[node name="NearTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 11 )
-distance = 30
-
-[node name="GetDirectionToTarget" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 13 )
-
-[node name="StartAttackAnim" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 24 )
-
-[node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence"]
-script = ExtResource( 10 )
-
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat"]
-script = ExtResource( 9 )
-
-[node name="Not" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
-script = ExtResource( 18 )
-
-[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence/Not"]
-script = ExtResource( 17 )
-
-[node name="Selector" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence"]
-script = ExtResource( 12 )
-
-[node name="CurrentAttackIsRunning" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence/Selector"]
-script = ExtResource( 27 )
-
-[node name="ResolveCombo" type="Node" parent="BTBehavior/BehaviorTree/Selector/Sequence/Repeat/Sequence/Selector"]
-script = ExtResource( 28 )
-
-[node name="Damaged - Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
-script = ExtResource( 9 )
-
-[node name="IsDamaged" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
-script = ExtResource( 17 )
-
-[node name="SetTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
-script = ExtResource( 21 )
-time = 0.25
-
-[node name="GetDamageVector" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
-script = ExtResource( 23 )
-
-[node name="Repeat" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
-script = ExtResource( 10 )
-
-[node name="Sequence" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat"]
-script = ExtResource( 9 )
-
-[node name="CheckTimer" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
-script = ExtResource( 20 )
-
-[node name="InterpolateVelocity" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
-script = ExtResource( 25 )
-
-[node name="Move" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
-script = ExtResource( 15 )
-
-[node name="SetDamagedFalse" type="Node" parent="BTBehavior/BehaviorTree/Selector/Damaged - Sequence"]
-script = ExtResource( 22 )
-
-[node name="Idle" type="Node" parent="BTBehavior/BehaviorTree/Selector"]
-script = ExtResource( 5 )
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource( 16 )
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, 2.5 )
 shape = SubResource( 15 )
 disabled = true
 
-[node name="BTNode" type="Node" parent="."]
-script = ExtResource( 26 )
+[node name="BehaviorTree" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="Selector" type="Node" parent="BehaviorTree"]
+script = ExtResource( 12 )
+
+[node name="Fail" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 19 )
+
+[node name="Repeat" type="Node" parent="BehaviorTree/Selector/Fail"]
+script = ExtResource( 10 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Fail/Repeat"]
+script = ExtResource( 9 )
+
+[node name="Not" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 18 )
+
+[node name="IsDamaged" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence/Not"]
+script = ExtResource( 17 )
+
+[node name="SetPlayerAsTarget" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 14 )
+
+[node name="Not2" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 18 )
+
+[node name="NearTarget" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence/Not2"]
+script = ExtResource( 11 )
+distance = 30
+
+[node name="NearTarget" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 11 )
+distance = 100
+
+[node name="GetDirectionToTarget" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 13 )
+
+[node name="GetVelocityForDirection" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 8 )
+
+[node name="Move" type="Node" parent="BehaviorTree/Selector/Fail/Repeat/Sequence"]
+script = ExtResource( 15 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 9 )
+
+[node name="Not" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 18 )
+
+[node name="IsDamaged" type="Node" parent="BehaviorTree/Selector/Sequence/Not"]
+script = ExtResource( 17 )
+
+[node name="SetPlayerAsTarget" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 14 )
+
+[node name="NearTarget" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 11 )
+distance = 30
+
+[node name="GetDirectionToTarget" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 13 )
+
+[node name="StartAttackAnim" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 24 )
+
+[node name="Repeat" type="Node" parent="BehaviorTree/Selector/Sequence"]
+script = ExtResource( 10 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat"]
+script = ExtResource( 9 )
+
+[node name="Not" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+script = ExtResource( 18 )
+
+[node name="IsDamaged" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat/Sequence/Not"]
+script = ExtResource( 17 )
+
+[node name="Selector" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat/Sequence"]
+script = ExtResource( 12 )
+
+[node name="CurrentAttackIsRunning" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat/Sequence/Selector"]
+script = ExtResource( 27 )
+
+[node name="ResolveCombo" type="Node" parent="BehaviorTree/Selector/Sequence/Repeat/Sequence/Selector"]
+script = ExtResource( 28 )
+
+[node name="Damaged - Sequence" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 9 )
+
+[node name="IsDamaged" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+script = ExtResource( 17 )
+
+[node name="SetTimer" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+script = ExtResource( 21 )
+time = 0.25
+
+[node name="GetDamageVector" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+script = ExtResource( 23 )
+
+[node name="Repeat" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+script = ExtResource( 10 )
+
+[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat"]
+script = ExtResource( 9 )
+
+[node name="CheckTimer" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+script = ExtResource( 20 )
+
+[node name="InterpolateVelocity" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+script = ExtResource( 25 )
+
+[node name="Move" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+script = ExtResource( 15 )
+
+[node name="SetDamagedFalse" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+script = ExtResource( 22 )
+
+[node name="Idle" type="Node" parent="BehaviorTree/Selector"]
+script = ExtResource( 5 )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 16 )
