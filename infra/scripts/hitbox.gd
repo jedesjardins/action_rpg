@@ -15,8 +15,6 @@ func _ready():
 func on_Parent_ready():
 	var parent = get_parent()
 
-	print("on_Parent_ready: ", parent.get_path())
-
 	assert(parent.configuration.has("damage_infos"))
 	all_damage_infos = parent.configuration.damage_infos
 

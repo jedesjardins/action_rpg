@@ -185,6 +185,10 @@ _global_script_class_icons={
 config/name="Game"
 run/main_scene="res://infra/main.tscn"
 
+[autoload]
+
+Logger="*res://infra/logger.gd"
+
 [display]
 
 window/size/width=400
