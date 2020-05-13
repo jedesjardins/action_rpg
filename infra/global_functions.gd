@@ -1,6 +1,7 @@
 
-class_name Helpers
 extends Node
+
+var Log = Logger.get_logger("global_functions.gd")
 
 enum Direction {
 	DOWN,
@@ -13,7 +14,7 @@ enum Direction {
 	DOWN_LEFT
 }
 
-static func get_relative_path_from(start: Node, end: Node) -> String:
+func get_relative_path_from(start: Node, end: Node) -> String:
 	var start_path = start.get_path()
 	var start_path_size = start_path.get_name_count()
 	var end_path = end.get_path()
@@ -38,7 +39,8 @@ static func get_relative_path_from(start: Node, end: Node) -> String:
 
 	return path
 
-static func run_animation_chain(animation_player, anim_list: Array, anim_durations = null):
+# TODO: remove this, it's old
+func run_animation_chain(animation_player, anim_list: Array, anim_durations = null):
 	assert(anim_list.size() > 0)
 
 	# if anim_durations == null, create one
@@ -49,7 +51,7 @@ static func run_animation_chain(animation_player, anim_list: Array, anim_duratio
 	if anim_durations.size() != anim_list.size():
 		var starting_size = anim_durations.size()
 		anim_durations.resize(anim_list.size())
-		
+
 		for i in range(anim_list.size() - starting_size):
 			anim_durations[i+starting_size] = 1
 
@@ -58,20 +60,21 @@ static func run_animation_chain(animation_player, anim_list: Array, anim_duratio
 
 	for i in range(anim_list.size()):
 		var animation_name = anim_list[i]
-		
-		animation_player.play(animation_name, -1, anim_durations[i])
-		
-		yield(animation_player, "animation_finished")
-		
-		print("Animation_Player current: ", animation_player.current_animation, " expected: ", animation_name)
 
-static func play_animation_duration(ap: AnimationPlayer, animation_name: String, duration: float):
+		animation_player.play(animation_name, -1, anim_durations[i])
+
+		yield(animation_player, "animation_finished")
+
+		Log.debug("AnimationPlayer current: %s expected: %s" % [animation_player.current_animation, animation_name], \
+			"run_animation_chain(animation_player, anim_list, anim_durations)")
+
+func play_animation_duration(ap: AnimationPlayer, animation_name: String, duration: float):
 	var time_scale = ap.get_animation(animation_name).length / duration
 
 	ap.play(animation_name, -1, time_scale)
 	ap.advance(0)
 
-static func get_root_path_of(node: Node) -> NodePath:
+func get_root_path_of(node: Node) -> NodePath:
 	var node_path = node.get_path()
 	# There should be at least /root/Node2d/Viewport/StateManager/RootState
 	assert(node_path.get_name_count() >= 5)
@@ -82,7 +85,7 @@ static func get_root_path_of(node: Node) -> NodePath:
 
 	return root_path
 
-static func get_zone_path_of(node: Node) -> NodePath:
+func get_zone_path_of(node: Node) -> NodePath:
 	var node_path = node.get_path()
 	# There should be at least /root/Node2d/Viewport/StateManager/RootState/Zones/Zone
 	assert(node_path.get_name_count() >= 7)
@@ -93,7 +96,7 @@ static func get_zone_path_of(node: Node) -> NodePath:
 
 	return zone_path
 
-static func swap_and_pop_back(array: Array, element):
+func swap_and_pop_back(array: Array, element):
 	var index = array.find(element)
 
 	if index != -1:
@@ -102,7 +105,7 @@ static func swap_and_pop_back(array: Array, element):
 
 		array.pop_back()
 
-static func get_viewport_mouse_position(vp):
+func get_viewport_mouse_position(vp):
 	var mouse_position = vp.get_mouse_position()
 	mouse_position = vp.get_node("/root/Node2D").transform_position(mouse_position)
 	mouse_position = vp.canvas_transform.affine_inverse().xform(mouse_position)
@@ -110,7 +113,7 @@ static func get_viewport_mouse_position(vp):
 	return mouse_position
 
 # returns an angle between 0 - 2*PI where Vector2(0, 1) is 0 radians
-static func get_angle_to_pos_from(pos, entity):
+func get_angle_to_pos_from(pos, entity):
 	var e_to_p_vec = (pos - entity.global_position).normalized()
 
 	return (((Vector2(0, -1).angle_to(e_to_p_vec) * -1) + PI) / (2 * PI))

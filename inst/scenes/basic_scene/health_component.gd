@@ -5,6 +5,8 @@ signal damaged
 
 export var health = 100
 
+var Log = Logger.get_logger("health_component.gd")
+
 onready var damaged = false
 onready var damaged_by = null
 
@@ -33,7 +35,9 @@ func on_Hurtbox_area_entered(area):
 		health -= area.cached_damage_info.damage;
 		damaged = true
 		damaged_by = area_parent
-		print("Took damage, health is now: ", health)
+
+		Log.debug("Took damage from area %s, health is now: %s" % [area, health], "on_Hurtbox_area_entered(area)")
+
 		emit_signal("damaged", health)
 	else:
-		print("No DamageInfo to apply damage from")
+		Log.debug("Can't apply damage from area %s" % area, "on_Hurtbox_area_entered(area)")

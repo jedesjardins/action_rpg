@@ -18,7 +18,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		Log.trace("ready", "_ready()")
 
-	var zone_path = Helpers.get_zone_path_of(self)
+	var zone_path = Global.get_zone_path_of(self)
 	zone = get_node(zone_path)
 
 	if Engine.is_editor_hint() and room_path != "":

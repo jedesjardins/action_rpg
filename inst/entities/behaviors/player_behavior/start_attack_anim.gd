@@ -19,7 +19,7 @@ func tick(bb: Dictionary) -> int:
 	var current_animation_index = 0
 	var direction_string = "_" + bb.direction_string[bb.direction]
 
-	Helpers.play_animation_duration(
+	Global.play_animation_duration(
 		animation_player,
 		current_attack.entity_animations[current_animation_index] + direction_string,
 		current_attack.durations[current_animation_index])
@@ -27,7 +27,7 @@ func tick(bb: Dictionary) -> int:
 	if has_item:
 		var item_animation_player = bb.item.get_node("AnimationPlayer")
 
-		Helpers.play_animation_duration(
+		Global.play_animation_duration(
 			item_animation_player,
 			current_attack.item_animations[current_animation_index] + direction_string,
 			current_attack.durations[current_animation_index])

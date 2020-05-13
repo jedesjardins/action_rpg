@@ -20,7 +20,7 @@ func _ready():
 
 # TODO: move these functions.. but to where?
 func animated_move(magnitude: int):
-	var mouse_position = Helpers.get_viewport_mouse_position(get_viewport())
+	var mouse_position = Global.get_viewport_mouse_position(get_viewport())
 	var vector_to_mouse = (mouse_position - self.global_position).normalized()
 
 	animated_move2(vector_to_mouse, magnitude)

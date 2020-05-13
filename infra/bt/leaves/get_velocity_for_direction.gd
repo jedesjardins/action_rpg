@@ -4,21 +4,21 @@ onready var leftover_delta_velocity = Vector2(0, 0)
 
 func get_velocity(direction: int):
 	match direction:
-		Helpers.Direction.DOWN:
+		Global.Direction.DOWN:
 			return Vector2(0, 1)
-		Helpers.Direction.DOWN_RIGHT:
+		Global.Direction.DOWN_RIGHT:
 			return Vector2(1, 1).normalized()
-		Helpers.Direction.RIGHT:
+		Global.Direction.RIGHT:
 			return Vector2(1, 0)
-		Helpers.Direction.UP_RIGHT:
+		Global.Direction.UP_RIGHT:
 			return Vector2(1, -1).normalized()
-		Helpers.Direction.UP:
+		Global.Direction.UP:
 			return Vector2(0, -1)
-		Helpers.Direction.UP_LEFT:
+		Global.Direction.UP_LEFT:
 			return Vector2(-1, -1).normalized()
-		Helpers.Direction.LEFT:
+		Global.Direction.LEFT:
 			return Vector2(-1, 0)
-		Helpers.Direction.DOWN_LEFT:
+		Global.Direction.DOWN_LEFT:
 			return Vector2(-1, 1).normalized()
 
 func tick(bb: Dictionary) -> int:

@@ -1,6 +1,7 @@
 extends Node2D
 
 # to be used under a behavior node of an entity.
+# TODO: determine if this is necessary
 class_name TriggerScript
 
 var trigger_node: Area2D

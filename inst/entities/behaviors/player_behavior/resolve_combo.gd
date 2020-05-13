@@ -16,7 +16,7 @@ func start_next_attack(bb: Dictionary):
 
 	var direction_string = "_" + bb.direction_string[bb.direction]
 
-	Helpers.play_animation_duration(
+	Global.play_animation_duration(
 		animation_player,
 		bb.current_attack.entity_animations[bb.current_animation_index] + direction_string,
 		bb.current_attack.durations[bb.current_animation_index])
@@ -24,7 +24,7 @@ func start_next_attack(bb: Dictionary):
 	if has_item:
 		var item_animation_player = bb.item.get_node("AnimationPlayer")
 
-		Helpers.play_animation_duration(
+		Global.play_animation_duration(
 			item_animation_player,
 			bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
 			bb.current_attack.durations[bb.current_animation_index])
@@ -40,7 +40,7 @@ func start_next_anim(bb: Dictionary):
 
 	var direction_string = "_" + bb.direction_string[bb.direction]
 
-	Helpers.play_animation_duration(
+	Global.play_animation_duration(
 		animation_player,
 		bb.current_attack.entity_animations[bb.current_animation_index] + direction_string,
 		bb.current_attack.durations[bb.current_animation_index])
@@ -48,7 +48,7 @@ func start_next_anim(bb: Dictionary):
 	if has_item:
 		var item_animation_player = bb.item.get_node("AnimationPlayer")
 
-		Helpers.play_animation_duration(
+		Global.play_animation_duration(
 			item_animation_player,
 			bb.current_attack.item_animations[bb.current_animation_index] + direction_string,
 			bb.current_attack.durations[bb.current_animation_index])

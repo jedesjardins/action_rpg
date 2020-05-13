@@ -11,7 +11,7 @@ export(bool) var keep_loaded # load the scene at ready and keep it loaded
 var zone: Node
 
 func _ready():
-	var zone_path = Helpers.get_zone_path_of(self)
+	var zone_path = Global.get_zone_path_of(self)
 	zone = get_node(zone_path)
 
 	if spawn_on_ready or Engine.is_editor_hint():

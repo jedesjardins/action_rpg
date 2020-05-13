@@ -29,12 +29,11 @@ func drop_item():
 
 		remove_child(item)
 
-		var zone_path = Helpers.get_zone_path_of(self)
+		var zone_path = Global.get_zone_path_of(self)
 		var zone = get_node(zone_path)
 
 		var room_loaders = zone.entities_current_rooms[self.get_path()]
 		assert(room_loaders.size() > 0)
-		print(room_loaders[0], room_loaders[0].get_path())
 		room_loaders[0].get_room().add_child(item)
 		item.global_position = cached_position
 

@@ -4,23 +4,23 @@ func get_direction(blackboard):
 	var velocity = blackboard.velocity
 	if velocity.y < 0:
 		if velocity.x < 0:
-			return Helpers.Direction.UP_LEFT
+			return Global.Direction.UP_LEFT
 		elif velocity.x > 0:
-			return Helpers.Direction.UP_RIGHT
+			return Global.Direction.UP_RIGHT
 		else:
-			return Helpers.Direction.UP
+			return Global.Direction.UP
 	elif velocity.y > 0:
 		if velocity.x < 0:
-			return Helpers.Direction.DOWN_LEFT
+			return Global.Direction.DOWN_LEFT
 		elif velocity.x > 0:
-			return Helpers.Direction.DOWN_RIGHT
+			return Global.Direction.DOWN_RIGHT
 		else:
-			return Helpers.Direction.DOWN
+			return Global.Direction.DOWN
 	else:
 		if velocity.x < 0:
-			return Helpers.Direction.LEFT
+			return Global.Direction.LEFT
 		elif velocity.x > 0:
-			return Helpers.Direction.RIGHT
+			return Global.Direction.RIGHT
 		else:
 			return blackboard.direction
 

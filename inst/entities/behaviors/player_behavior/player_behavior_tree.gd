@@ -2,14 +2,14 @@
 extends BehaviorTree
 
 func _ready():
-	blackboard.direction = Helpers.Direction.DOWN
+	blackboard.direction = Global.Direction.DOWN
 	blackboard.direction_string = {
-		Helpers.Direction.DOWN: "down",
-		Helpers.Direction.DOWN_RIGHT: "right",
-		Helpers.Direction.RIGHT: "right",
-		Helpers.Direction.UP_RIGHT: "right",
-		Helpers.Direction.UP: "up",
-		Helpers.Direction.UP_LEFT: "left",
-		Helpers.Direction.LEFT: "left",
-		Helpers.Direction.DOWN_LEFT: "left"
+		Global.Direction.DOWN: "down",
+		Global.Direction.DOWN_RIGHT: "right",
+		Global.Direction.RIGHT: "right",
+		Global.Direction.UP_RIGHT: "right",
+		Global.Direction.UP: "up",
+		Global.Direction.UP_LEFT: "left",
+		Global.Direction.LEFT: "left",
+		Global.Direction.DOWN_LEFT: "left"
 	}

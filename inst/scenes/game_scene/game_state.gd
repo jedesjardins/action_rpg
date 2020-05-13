@@ -5,6 +5,8 @@ class_name GameState
 var current_zone: Node # Zone
 var player: Entity
 
+var Log = Logger.get_logger("game_state.gd")
+
 func _ready():
 	# add player to player group
 	player = $"Entities/Knight"
@@ -17,7 +19,7 @@ func _ready():
 	# set camera to follow the player
 	var remote_transform = RemoteTransform2D.new()
 	player.add_child(remote_transform)
-	remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, $"Camera2D")
+	remote_transform.remote_path = Global.get_relative_path_from(remote_transform, $"Camera2D")
 
 	# connect player damage to health bar
 	var _err = player.get_node("Health").connect("damaged", $"HUD/StatusMarginContainer/ProgressBar", "change_health")
@@ -35,9 +37,9 @@ func _input(event):
 func update_camera():
 	var transform = player.get_node("RemoteTransform2D")
 	if transform:
-		transform.remote_path = Helpers.get_relative_path_from(transform, $"Camera2D")
+		transform.remote_path = Global.get_relative_path_from(transform, $"Camera2D")
 	else:
-		print("GameState: update_camera no transform found")
+		Log.warn("RemoteTransform2D not found under player node %s" % player, "update_camera()")
 
 #func set_current_area(zone):
 ##	assert(zone is Zone)

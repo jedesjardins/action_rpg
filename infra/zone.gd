@@ -49,7 +49,7 @@ func on_RoomLoader_make_inactive(inactive_loader):
 		# remove inactive_loader from keep_alive list
 		# (by swapping with the back, then popping back)
 
-		Helpers.swap_and_pop_back(reference_list, inactive_loader)
+		Global.swap_and_pop_back(reference_list, inactive_loader)
 		if reference_list.size() == 0:
 			loader.call_deferred("unload_room")
 			unload_entities_in_room(loader)
@@ -104,7 +104,7 @@ func remove_entity_from_room(entity, roomloader, delete_when_leaving = true):
 
 	# remove the entity from the rooms list of entities
 	var entities_in_room = entities_in_rooms[roomloader]
-	Helpers.swap_and_pop_back(entities_in_room, entity_path)
+	Global.swap_and_pop_back(entities_in_room, entity_path)
 
 func unload_entities_in_room(roomloader):
 	Log.trace("unload all entities from room %s" % roomloader, "unload_entities_in_room(roomloader)")
@@ -125,7 +125,7 @@ func unload_entities_in_room(roomloader):
 			if room != roomloader and room != null: # since last_room can be null!
 				Log.trace("removing entity %s from room %s" % [entity, room], "unload_entities_in_room(roomloader)")
 				# remove the entity from the other room too (it was on a border)
-				Helpers.swap_and_pop_back(entities_in_rooms[room], entity_path)
+				Global.swap_and_pop_back(entities_in_rooms[room], entity_path)
 
 	entities_in_current_room.clear()
 

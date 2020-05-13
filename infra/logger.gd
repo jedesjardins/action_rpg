@@ -42,12 +42,6 @@ class Log:
 	func _init(script_name = "", file_writer = null):
 		self.script_name = script_name
 		self.file_writer = file_writer
-#		var file = File.new()
-#		file.open("user://2020-05-12-logger.log", File.READ)
-#		var file_string = file.get_as_text()
-#		print("Absolute path", file.get_path_absolute())
-#		print("File String!:", file_string)
-#		file.close()
 
 	# Used to set function name at teh beginning of each function, 
 	# in order to populate the logger with function name

@@ -1,5 +1,7 @@
 extends Node
 
+# TODO: remove this
+
 class_name AnimationChain
 
 signal finished

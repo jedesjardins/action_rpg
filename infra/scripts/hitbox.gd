@@ -21,7 +21,6 @@ func on_Parent_ready():
 	attack_info = AttackInfo.new(parent.configuration)
 
 func set_modifier(m: Dictionary):
-	# TODO: Recalculate cached_damage_info
 	modifier = m
 
 	recalculate_damage_info()
@@ -30,7 +29,6 @@ func get_modifier():
 	return modifier
 
 func set_cached_damage_info(_di: Dictionary):
-	# TODO: Recalculate cached_damage_info
 	assert(false)
 
 func set_damage_info(key: String):

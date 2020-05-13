@@ -64,11 +64,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/entity/hand.gd"
 }, {
-"base": "Node",
-"class": "Helpers",
-"language": "GDScript",
-"path": "res://infra/global_functions.gd"
-}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
@@ -161,7 +156,6 @@ _global_script_class_icons={
 "Fail": "",
 "GameState": "",
 "Hand": "",
-"Helpers": "",
 "Hitbox": "",
 "Hurtbox": "",
 "InteractScript": "",
@@ -188,6 +182,7 @@ run/main_scene="res://infra/main.tscn"
 [autoload]
 
 Logger="*res://infra/logger.gd"
+Global="*res://infra/global_functions.gd"
 
 [display]
 
