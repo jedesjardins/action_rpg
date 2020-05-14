@@ -9,7 +9,7 @@ var visible_loaders: Dictionary
 var entities_current_rooms: Dictionary # maps entity path -> RoomLoader?
 var entities_in_rooms: Dictionary # maps Roomloader -> Array(Entity Path)
 
-var Log = Logger.get_logger("zone.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "zone.gd")
 
 func _ready():
 	for child in get_children():

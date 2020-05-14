@@ -5,7 +5,7 @@ class_name GameState
 var current_zone: Node # Zone
 var player: Entity
 
-var Log = Logger.get_logger("game_state.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "game_state.gd")
 
 func _ready():
 	# add player to player group

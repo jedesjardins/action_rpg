@@ -12,7 +12,7 @@ export(Array, NodePath) var visible_room_loaders
 var room_node: Node setget set_room, get_room
 var zone: Node
 
-var Log = Logger.get_logger("room_loader.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "room_loader.gd")
 
 func _ready():
 	if not Engine.is_editor_hint():

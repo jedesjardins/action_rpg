@@ -5,7 +5,7 @@ signal damaged
 
 export var health = 100
 
-var Log = Logger.get_logger("health_component.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "health_component.gd")
 
 onready var damaged = false
 onready var damaged_by = null

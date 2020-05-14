@@ -2,7 +2,7 @@ extends Node2D
 
 onready var focused = false
 
-var Log = Logger.get_logger("pause_menu.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "pause_menu.gd")
 
 func _ready():
 	var _err = $"CanvasLayer/CenterContainer/VBoxContainer/ResumeButton".connect("button_down", self, "on_ResumeButton_button_down")

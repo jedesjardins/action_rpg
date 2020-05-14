@@ -1,6 +1,6 @@
 extends Area2D
 
-var Log = Logger.get_logger("switch_zone.gd")
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "switch_zone.gd")
 
 func _ready():
 	var _err = connect("body_entered", self, "switch_to_b")
