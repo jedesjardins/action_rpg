@@ -2,6 +2,11 @@
 class_name Weapon
 extends Node2D
 
+#warning-ignore: unused_signal
+signal picked_up
+#warning-ignore: unused_signal
+signal dropped
+
 export var configuration_path: String
 
 var configuration: Dictionary

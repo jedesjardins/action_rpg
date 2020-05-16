@@ -20,7 +20,12 @@ func on_Trigger_body_exited(body):
 
 func interact_with(entity):
 	if entity.has_node("Hand"):
+		Logger.debug("Remove Item interact script!", "item_pickup_trigger.gd", "interact_with(entity)")
+		entity.get_node("Interact").remove_interact_script(self)
 		entity.get_node("Hand").hold_item(self.get_parent())
+
+		get_parent().emit_signal("picked_up")
+		$"CollisionShape2D".disabled = true
 
 func is_interacting() -> bool:
 	return false

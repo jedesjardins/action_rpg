@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://inst/scenes/game_scene/game_state.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/LCD_Solid.fnt" type="BitmapFont" id=2]
@@ -7,9 +7,68 @@
 [ext_resource path="res://inst/scenes/basic_scene/health_bar.gd" type="Script" id=5]
 [ext_resource path="res://inst/scenes/game_scene/interact_component.gd" type="Script" id=6]
 [ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=7]
+[ext_resource path="res://resources/textures/interact.png" type="Texture" id=8]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=9]
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://inst/zones/a/zone_a.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hide"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.175 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "reveal"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [node name="GameState" type="Node2D"]
 pause_mode = 2
@@ -106,6 +165,19 @@ configuration_path = "res://data/entities/knight.json"
 
 [node name="Health" type="Node" parent="Entities/Knight"]
 script = ExtResource( 7 )
+health = 100
 
-[node name="Interact" type="Node" parent="Entities/Knight"]
+[node name="Interact" type="Node2D" parent="Entities/Knight"]
 script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Entities/Knight/Interact"]
+visible = false
+position = Vector2( -4, -29 )
+texture = ExtResource( 8 )
+centered = false
+hframes = 15
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Entities/Knight/Interact"]
+anims/hide = SubResource( 1 )
+anims/reveal = SubResource( 2 )
