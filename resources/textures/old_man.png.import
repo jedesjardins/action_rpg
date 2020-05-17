@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/man.png-7d4f617ebd10a547c4b0144b6bd3e82b.stex"
+path="res://.import/old_man.png-6e6d7567373ffa5bb471a0e4380f33ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/textures/man.png"
-dest_files=[ "res://.import/man.png-7d4f617ebd10a547c4b0144b6bd3e82b.stex" ]
+source_file="res://resources/textures/old_man.png"
+dest_files=[ "res://.import/old_man.png-6e6d7567373ffa5bb471a0e4380f33ff.stex" ]
 
 [params]
 
