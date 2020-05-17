@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://infra/bt/behavior_tree.gd" type="Script" id=1]
+[ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior_tree.gd" type="Script" id=1]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/get_velocity.gd" type="Script" id=2]
-[ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.gd" type="Script" id=3]
 [ext_resource path="res://infra/bt/composites/selector.gd" type="Script" id=4]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/idle.gd" type="Script" id=5]
 [ext_resource path="res://infra/bt/composites/sequence.gd" type="Script" id=6]
@@ -35,210 +34,216 @@
 [ext_resource path="res://inst/entities/slime/interpolate_velocity.gd" type="Script" id=33]
 [ext_resource path="res://inst/entities/slime/set_damaged.gd" type="Script" id=34]
 
-[node name="PlayerBehavior" type="Node2D"]
-script = ExtResource( 3 )
-
-[node name="BehaviorTree" type="Node" parent="."]
+[node name="BehaviorTree" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Selector" type="Node" parent="BehaviorTree"]
+[node name="Selector" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="Attack - Sequence" type="Node" parent="BehaviorTree/Selector"]
+[node name="Attack - Sequence" type="Node" parent="Selector"]
 script = ExtResource( 6 )
 
-[node name="IsActionJustPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="IsActionJustPressed" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 12 )
 action = "click"
 
-[node name="IsItemHeld" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="IsItemHeld" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 22 )
 
-[node name="GetAttackDirection" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="GetAttackDirection" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 30 )
 
-[node name="StartAttackAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="StartAttackAnim" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 15 )
 
-[node name="Busy" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="Busy" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 29 )
 
-[node name="SetTimer" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="SetTimer" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 16 )
 time = 0.1
 
-[node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="Selector" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 4 )
 
-[node name="ItemCanCharge - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector"]
+[node name="ItemCanCharge - Sequence" type="Node" parent="Selector/Attack - Sequence/Selector"]
 script = ExtResource( 6 )
 
-[node name="ItemHasChargeAttack" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
+[node name="ItemHasChargeAttack" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
 script = ExtResource( 27 )
 
-[node name="SetIsChargingTrue" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
+[node name="SetIsChargingTrue" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
 script = ExtResource( 19 )
 value = true
 
-[node name="ChargingWindow - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
+[node name="ChargingWindow - Repeat" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence"]
 script = ExtResource( 11 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat"]
+[node name="Sequence" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat"]
 script = ExtResource( 6 )
 
-[node name="CheckTimer" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
+[node name="CheckTimer" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
 script = ExtResource( 14 )
 
-[node name="CurrentAnimationIs" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
+[node name="CurrentAnimationIs" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
 script = ExtResource( 17 )
 animation = "attack_warm_up_down"
 
-[node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
+[node name="Selector" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence"]
 script = ExtResource( 4 )
 
-[node name="IsActionPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
+[node name="IsActionPressed" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
 script = ExtResource( 18 )
 action = "ui_select"
 
-[node name="Fail" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
+[node name="Fail" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector"]
 script = ExtResource( 13 )
 
-[node name="SetIsChargingFalse" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector/Fail"]
+[node name="SetIsChargingFalse" type="Node" parent="Selector/Attack - Sequence/Selector/ItemCanCharge - Sequence/ChargingWindow - Repeat/Sequence/Selector/Fail"]
 script = ExtResource( 19 )
 
-[node name="SetIsChargingFalse" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/Selector"]
+[node name="SetIsChargingFalse" type="Node" parent="Selector/Attack - Sequence/Selector"]
 script = ExtResource( 19 )
 
-[node name="ChargeOrRegular - Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence"]
+[node name="ChargeOrRegular - Selector" type="Node" parent="Selector/Attack - Sequence"]
 script = ExtResource( 4 )
 
-[node name="ChargeAttack - Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector"]
+[node name="ChargeAttack - Sequence" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector"]
 script = ExtResource( 6 )
 
-[node name="CheckIsCharging" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
+[node name="CheckIsCharging" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
 script = ExtResource( 20 )
 
-[node name="StartChargeAnim" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
+[node name="StartChargeAnim" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
 script = ExtResource( 9 )
 
-[node name="WhileCharging - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
+[node name="WhileCharging - Repeat" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
 script = ExtResource( 11 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat"]
+[node name="Sequence" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat"]
 script = ExtResource( 6 )
 
-[node name="IsActionPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
+[node name="IsActionPressed" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
 script = ExtResource( 9 )
 
-[node name="IsChargeAnimationPlaying" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
+[node name="IsChargeAnimationPlaying" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
 script = ExtResource( 9 )
 
-[node name="Suceed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
+[node name="Suceed" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence"]
 script = ExtResource( 21 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed"]
+[node name="Sequence" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed"]
 script = ExtResource( 6 )
 
-[node name="GetVelocity" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
+[node name="GetVelocity" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 2 )
 
-[node name="Move" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
+[node name="Move" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 7 )
 
-[node name="UpdateItemZ" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
+[node name="UpdateItemZ" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence/WhileCharging - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 25 )
 
-[node name="FinishChargeAnimations" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
+[node name="FinishChargeAnimations" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/ChargeAttack - Sequence"]
 script = ExtResource( 9 )
 
-[node name="FinishAttack - Repeat" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector"]
+[node name="FinishAttack - Repeat" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector"]
 script = ExtResource( 11 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat"]
+[node name="Sequence" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat"]
 script = ExtResource( 6 )
 
-[node name="Suceed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
+[node name="Suceed" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
 script = ExtResource( 21 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed"]
+[node name="Sequence" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed"]
 script = ExtResource( 6 )
 
-[node name="IsActionJustPressed" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed/Sequence"]
+[node name="IsActionJustPressed" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 12 )
 action = "click"
 
-[node name="BufferAttack" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed/Sequence"]
+[node name="BufferAttack" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Suceed/Sequence"]
 script = ExtResource( 26 )
 
-[node name="UpdateItemZ" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
+[node name="UpdateItemZ" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
 script = ExtResource( 25 )
 
-[node name="Selector" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
+[node name="Selector" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence"]
 script = ExtResource( 4 )
 
-[node name="CurrentAttackIsRunning" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Selector"]
+[node name="CurrentAttackIsRunning" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Selector"]
 script = ExtResource( 10 )
 
-[node name="ResolveCombo" type="Node" parent="BehaviorTree/Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Selector"]
+[node name="ResolveCombo" type="Node" parent="Selector/Attack - Sequence/ChargeOrRegular - Selector/FinishAttack - Repeat/Sequence/Selector"]
 script = ExtResource( 28 )
 
-[node name="Damaged - Sequence" type="Node" parent="BehaviorTree/Selector"]
+[node name="Damaged - Sequence" type="Node" parent="Selector"]
 script = ExtResource( 6 )
 
-[node name="IsDamaged" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+[node name="IsDamaged" type="Node" parent="Selector/Damaged - Sequence"]
 script = ExtResource( 32 )
 
-[node name="SetTimer" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+[node name="SetTimer" type="Node" parent="Selector/Damaged - Sequence"]
 script = ExtResource( 16 )
 time = 0.25
 
-[node name="GetDamageVector" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+[node name="GetDamageVector" type="Node" parent="Selector/Damaged - Sequence"]
 script = ExtResource( 31 )
 
-[node name="Repeat" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+[node name="Repeat" type="Node" parent="Selector/Damaged - Sequence"]
 script = ExtResource( 11 )
 
-[node name="Sequence" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat"]
+[node name="Sequence" type="Node" parent="Selector/Damaged - Sequence/Repeat"]
 script = ExtResource( 6 )
 
-[node name="CheckTimer" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+[node name="CheckTimer" type="Node" parent="Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 14 )
 
-[node name="InterpolateVelocity" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+[node name="InterpolateVelocity" type="Node" parent="Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 33 )
 
-[node name="Move" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence/Repeat/Sequence"]
+[node name="Move" type="Node" parent="Selector/Damaged - Sequence/Repeat/Sequence"]
 script = ExtResource( 7 )
 
-[node name="SetDamagedFalse" type="Node" parent="BehaviorTree/Selector/Damaged - Sequence"]
+[node name="SetDamagedFalse" type="Node" parent="Selector/Damaged - Sequence"]
 script = ExtResource( 34 )
 
-[node name="MoveOrIdle - Sequence" type="Node" parent="BehaviorTree/Selector"]
+[node name="MoveOrIdle - Sequence" type="Node" parent="Selector"]
 script = ExtResource( 6 )
 
-[node name="Interact" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+[node name="Interact" type="Node" parent="Selector/MoveOrIdle - Sequence"]
 script = ExtResource( 8 )
 
-[node name="Selector - Move or Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+[node name="Selector - Move or Idle" type="Node" parent="Selector/MoveOrIdle - Sequence"]
 script = ExtResource( 4 )
 
-[node name="Sequence - Move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
+[node name="Sequence - Move" type="Node" parent="Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
 script = ExtResource( 6 )
 
-[node name="GetVelocity" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="GetVelocity" type="Node" parent="Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 2 )
 
-[node name="GetDirection" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="GetDirection" type="Node" parent="Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 24 )
 
-[node name="Move" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
+[node name="Move" type="Node" parent="Selector/MoveOrIdle - Sequence/Selector - Move or Idle/Sequence - Move"]
 script = ExtResource( 7 )
 
-[node name="Idle" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
+[node name="Idle" type="Node" parent="Selector/MoveOrIdle - Sequence/Selector - Move or Idle"]
 script = ExtResource( 5 )
 
-[node name="UpdateItemDirection" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+[node name="Suceed" type="Node" parent="Selector/MoveOrIdle - Sequence"]
+script = ExtResource( 21 )
+
+[node name="Sequence" type="Node" parent="Selector/MoveOrIdle - Sequence/Suceed"]
+script = ExtResource( 6 )
+
+[node name="IsItemHeld" type="Node" parent="Selector/MoveOrIdle - Sequence/Suceed/Sequence"]
+script = ExtResource( 22 )
+
+[node name="UpdateItemDirection" type="Node" parent="Selector/MoveOrIdle - Sequence/Suceed/Sequence"]
 script = ExtResource( 23 )
 
-[node name="UpdateItemZ" type="Node" parent="BehaviorTree/Selector/MoveOrIdle - Sequence"]
+[node name="UpdateItemZ" type="Node" parent="Selector/MoveOrIdle - Sequence/Suceed/Sequence"]
 script = ExtResource( 25 )

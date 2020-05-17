@@ -9,7 +9,6 @@ func tick(bb: Dictionary) -> int:
 	var vec_to_target = bb.target.global_position - bb.entity.global_position
 
 	if vec_to_target.length() < distance:
-		print("Closer than ", distance, " to target")
 		return OK
 
 	return FAILED

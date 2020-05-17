@@ -11,7 +11,7 @@ func _ready():
 	# set camera to follow the player
 	var remote_transform = RemoteTransform2D.new()
 	player.add_child(remote_transform)
-	remote_transform.remote_path = Helpers.get_relative_path_from(remote_transform, $"Camera2D")
+	remote_transform.remote_path = Global.get_relative_path_from(remote_transform, $"Camera2D")
 
 	# connect player damage to health bar
 	var _err = player.get_node("Health").connect("damaged", $"HUD/StatusMarginContainer/ProgressBar", "change_health")

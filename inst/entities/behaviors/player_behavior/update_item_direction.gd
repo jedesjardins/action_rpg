@@ -1,11 +1,12 @@
 extends BTNode
 
 # always returns OK since it's passive
-func tick(blackboard: Dictionary) -> int:
-	assert(blackboard.has("direction"))
+func tick(bb: Dictionary) -> int:
+	assert(bb.has("direction"))
+	assert(bb.has("direction_string"))
 
-	if blackboard.has("item"):
-		var ap = blackboard.item.get_children()[0].get_node("AnimationPlayer")
-		ap.play("held_" + blackboard.direction_string[blackboard.direction])
+	if bb.item:
+		var ap = bb.item.get_node("AnimationPlayer")
+		ap.play("held_" + bb.direction_string[bb.direction])
 
 	return OK

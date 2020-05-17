@@ -19,7 +19,7 @@ func get_velocity():
 func tick(blackboard: Dictionary) -> int:
 	assert(blackboard.has("entity"))
 
-	blackboard.velocity = get_velocity() * blackboard.entity.walk_speed
+	blackboard.velocity = get_velocity() * blackboard.entity.configuration.walk_speed
 	if blackboard.velocity.length() == 0:
 		return FAILED
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://infra/scripts/child_area.gd" type="Script" id=1]
+[ext_resource path="res://infra/scripts/hurtbox.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/knight.png" type="Texture" id=2]
 [ext_resource path="res://infra/entity/entity.gd" type="Script" id=3]
 [ext_resource path="res://infra/entity/hand.gd" type="Script" id=4]
@@ -2888,9 +2888,6 @@ tracks/6/keys = {
 
 [node name="Knight" type="KinematicBody2D"]
 script = ExtResource( 3 )
-appearance_path = NodePath("Sprite")
-hurtbox_path = NodePath("Hurtbox")
-hand_path = NodePath("Hand")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )

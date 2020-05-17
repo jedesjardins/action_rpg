@@ -1,7 +1,7 @@
 tool
-extends BaseBehavior
 
 class_name InteractingAIBehavior
+extends BaseBehavior
 
 export var ai_script_path: NodePath
 export var interact_script_path: NodePath
@@ -16,16 +16,16 @@ func _ready():
 	interact_script = get_node(interact_script_path)
 	blackboard.interact_script = interact_script
 	blackboard.direction_string = {
-		Helpers.Direction.DOWN: "down",
-		Helpers.Direction.DOWN_RIGHT: "down_right",
-		Helpers.Direction.RIGHT: "down_right",
-		Helpers.Direction.UP_RIGHT: "up_right",
-		Helpers.Direction.UP: "up",
-		Helpers.Direction.UP_LEFT: "up_left",
-		Helpers.Direction.LEFT: "down_left",
-		Helpers.Direction.DOWN_LEFT: "down_left"
+		Global.Direction.DOWN: "down",
+		Global.Direction.DOWN_RIGHT: "down_right",
+		Global.Direction.RIGHT: "down_right",
+		Global.Direction.UP_RIGHT: "up_right",
+		Global.Direction.UP: "up",
+		Global.Direction.UP_LEFT: "up_left",
+		Global.Direction.LEFT: "down_left",
+		Global.Direction.DOWN_LEFT: "down_left"
 	}
-	blackboard.direction = Helpers.Direction.DOWN
+	blackboard.direction = Global.Direction.DOWN
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -37,15 +37,14 @@ func _physics_process(delta):
 
 func set_entity(node: Node):
 	if entity != null:
-		entity.disconnect("entered_area", self, "entered_area")
-		entity.disconnect("exited_area", self, "exited_area")
+		entity.hurtbox.disconnect("area_entered", self, "on_Hurtbox_area_entered")
 
 	.set_entity(node) # call inherited function
 	blackboard.entity = node
 
 	interact_script.set_ignore(entity)
 	interact_script.set_trigger(entity.get_trigger())
-	var _err = entity.hurtbox.connect("area_entered", self, "damaged")
+	var _err = entity.hurtbox.connect("area_entered", self, "on_Hurtbox_area_entered")
 
 func _get_configuration_warning():
 #	if not ai_script_path:
@@ -56,5 +55,5 @@ func _get_configuration_warning():
 
 	return ""
 
-func damaged(_area):
-	entity.get_appearance().flash()
+func on_Hurtbox_area_entered(_area):
+	entity.sprite.flash()

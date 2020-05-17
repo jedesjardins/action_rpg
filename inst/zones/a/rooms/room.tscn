@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://inst/zones/a/switch_zone.gd" type="Script" id=1]
 [ext_resource path="res://infra/scripts/spawner.gd" type="Script" id=2]
-[ext_resource path="res://infra/scripts/weapon.gd" type="Script" id=3]
-[ext_resource path="res://inst/zones/a/rooms/damage_box.gd" type="Script" id=4]
+[ext_resource path="res://inst/items/falchion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inst/entities/slime/slime.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -14,8 +13,6 @@ extents = Vector2( 190, 5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 19, 20 )
-
-[sub_resource type="RectangleShape2D" id=4]
 
 [node name="Room" type="Node2D"]
 
@@ -72,30 +69,12 @@ shape = SubResource( 3 )
 position = Vector2( 230, 399 )
 script = ExtResource( 2 )
 spawn_scene_path = "res://inst/entities/physics_bodies/base_human/base_human.tscn"
+spawn_on_ready = true
+keep_loaded = false
 
-[node name="Weapon" type="Node2D" parent="."]
-position = Vector2( 141, 187 )
-script = ExtResource( 3 )
-json_path = "res://data/items/falchion.json"
-
-[node name="ColorRect4" type="ColorRect" parent="."]
-margin_left = 261.0
-margin_top = 165.0
-margin_right = 281.0
-margin_bottom = 185.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Area2D" type="Area2D" parent="ColorRect4"]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect4/Area2D"]
-position = Vector2( 10, 10 )
-shape = SubResource( 4 )
+[node name="Falchion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 106, 200 )
 
 [node name="Slime" parent="." instance=ExtResource( 5 )]
 position = Vector2( 208, 55 )
-json_path = "res://data/entities/slime.json"
+configuration_path = "res://data/entities/slime.json"

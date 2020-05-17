@@ -1,11 +1,17 @@
 extends Area2D
 
+var Log = Logger.SubLogger.new(Logger.Level.TRACE, "switch_zone.gd")
+
 func _ready():
 	var _err = connect("body_entered", self, "switch_to_b")
 
-func switch_to_b(_body):
-	print("SWITCH TO B TRIGGERED")
-	var game_state = get_node(Helpers.get_root_path_of(self))
+func switch_to_b(body):
+	if not body.is_in_group("player"):
+		return
+
+	Log.info("Switch to Zone B Triggered", "switch_to_b(_body)")
+
+	var game_state = get_node(Global.get_root_path_of(self))
 	var current_zone = game_state.get_node("Zones/ZoneA")
 
 	yield(get_tree(), "idle_frame")

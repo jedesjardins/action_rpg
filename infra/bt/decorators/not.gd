@@ -1,8 +1,9 @@
+tool
+
+class_name Not
 extends Decorator
 
 # negates OK to FAILED and vice versa, passes through ERR_BUSY
-class_name Not
-
 func tick(blackboard: Dictionary) -> int:
 	assert(get_child_count() == 1)
 

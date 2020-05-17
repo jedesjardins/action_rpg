@@ -1,8 +1,12 @@
 tool
 extends Node2D
 
+signal text_shown
+
 const MAX_CHAR_LINE_WIDTH = 44
 const TEXT_SPEED = 10 # letters per second
+
+enum TextState {NONE, SHOWING_TEXT, WAITING_TO_FINISH, FINISHED}
 
 export var top_line_text: String
 export var bottom_line_text: String
@@ -17,18 +21,13 @@ var bottom_line_split: PoolStringArray
 var current_line = 0
 var current_split = 0
 var next_char = 0
-
-enum TextState {NONE, SHOWING_TEXT, WAITING_TO_FINISH, FINISHED}
 var state = TextState.NONE
-
 var trigger: FuncRef
 
 class Triggers:
 
 	static func on_enter_pressed():
 		return Input.is_action_just_pressed('ui_accept')
-
-signal text_shown
 
 func show_text(top: String, bottom: String):
 	assert(top.length() <= MAX_CHAR_LINE_WIDTH)
@@ -120,25 +119,25 @@ func reveal_text(delta):
 	if reveal_characters_float >= 1:
 		var reveal_characters = floor(reveal_characters_float)
 		accumulated_time -= reveal_characters / (TEXT_SPEED * text_speed_scale)
-		
+
 		while reveal_characters > 0:
 			var split = get_current_split() # string representing the current word
-		
+
 			if split == null:
 				state = TextState.WAITING_TO_FINISH
 				accumulated_time = 0
 				break # yah done
-			
+
 			var substr_length = reveal_characters
-			
+
 			# if we display past the end of the string, cap at the current_string
 			if next_char + substr_length > split.length():
 				substr_length = split.length() - next_char
-			
+
 			var last_char = next_char
 			reveal_characters -= substr_length
 			next_char += substr_length
-			
+
 			var append_string = split.substr(last_char, substr_length)
 			add_to_labels(append_string)
 
@@ -158,7 +157,7 @@ func _process(delta):
 			if trigger and trigger.call_func():
 				state = TextState.FINISHED
 				return
-			
+
 			accumulated_time += delta
 			var ellipses_shown = (int(floor(accumulated_time)) % 3) + 1
 			if ellipses_shown != ellipsis_label.text.length():

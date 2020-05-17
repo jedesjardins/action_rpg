@@ -5,7 +5,7 @@
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://inst/scenes/basic_scene/held_item_texture.gd" type="Script" id=4]
 [ext_resource path="res://resources/textures/pokemon_tiles.png" type="Texture" id=5]
-[ext_resource path="res://inst/scenes/basic_scene/player_health.gd" type="Script" id=6]
+[ext_resource path="res://inst/scenes/basic_scene/health_component.gd" type="Script" id=6]
 [ext_resource path="res://inst/entities/cactus/cactus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://infra/entity/interacting_ai.gd" type="Script" id=8]
 [ext_resource path="res://inst/scenes/basic_scene/basic_scene.gd" type="Script" id=9]
@@ -224,18 +224,14 @@ tile_data = PoolIntArray( 262146, 6, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0
 
 [node name="Knight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 200, 200 )
-behavior_path = NodePath("PlayerBehavior")
 
 [node name="PlayerBehavior" parent="Knight" instance=ExtResource( 21 )]
-health_path = NodePath("../Health")
 
 [node name="Health" type="Node" parent="Knight"]
 script = ExtResource( 6 )
 
 [node name="base_human2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 236, 180 )
-trigger_path = NodePath("Trigger")
-behavior_path = NodePath("InteractingAIBehavior")
 
 [node name="Trigger" type="Area2D" parent="base_human2"]
 collision_layer = 8
@@ -341,12 +337,10 @@ shape = SubResource( 9 )
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2( 225, 174 )
 script = ExtResource( 22 )
-json_path = "res://data/items/dumb_sword.json"
 
 [node name="Weapon2" type="Node2D" parent="."]
 position = Vector2( 141, 187 )
 script = ExtResource( 22 )
-json_path = "res://data/items/falchion.json"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

@@ -1,7 +1,7 @@
 tool
-extends Node2D
 
 class_name BaseBehavior
+extends Node2D
 
 var entity: Node setget set_entity, get_entity
 

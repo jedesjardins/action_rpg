@@ -6,6 +6,15 @@ var current_material
 func _ready():
 	set_process(false)
 
+func _process(delta):
+	time += delta
+	current_material.set_shader_param("elapsed_time", time)
+
+	if time > 1:
+		current_material = null
+		set_material(null)
+		set_process(false)
+
 func highlight():
 	current_material = ShaderMaterial.new()
 	var shader = load("res://resources/shaders/outline.shader")
@@ -29,12 +38,5 @@ func flash():
 	current_material.set_shader_param("elapsed_time", time)
 	set_material(current_material)
 
-func _process(delta):
-	time += delta
-	current_material.set_shader_param("elapsed_time", time)
 
-	if time > 1:
-		current_material = null
-		set_material(null)
-		set_process(false)
 

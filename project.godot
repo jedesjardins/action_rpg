@@ -34,16 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/behavior_tree.gd"
 }, {
-"base": "Area2D",
-"class": "ChildArea",
-"language": "GDScript",
-"path": "res://infra/scripts/child_area.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "ChildPhysicsBody",
-"language": "GDScript",
-"path": "res://infra/entity/child_physics_body.gd"
-}, {
 "base": "BTNode",
 "class": "Composite",
 "language": "GDScript",
@@ -54,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/bt/decorator.gd"
 }, {
-"base": "ChildPhysicsBody",
+"base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://infra/entity/entity.gd"
@@ -74,15 +64,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/entity/hand.gd"
 }, {
-"base": "Node",
-"class": "Helpers",
-"language": "GDScript",
-"path": "res://infra/global_functions.gd"
-}, {
-"base": "ChildArea",
+"base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
 "path": "res://infra/scripts/hitbox.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://infra/scripts/hurtbox.gd"
 }, {
 "base": "TriggerScript",
 "class": "InteractScript",
@@ -139,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://infra/scripts/base_trigger.gd"
 }, {
-"base": "InteractScript",
+"base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://infra/scripts/weapon.gd"
@@ -160,16 +150,14 @@ _global_script_class_icons={
 "BTNode": "",
 "BaseBehavior": "",
 "BehaviorTree": "",
-"ChildArea": "",
-"ChildPhysicsBody": "",
 "Composite": "",
 "Decorator": "",
 "Entity": "",
 "Fail": "",
 "GameState": "",
 "Hand": "",
-"Helpers": "",
 "Hitbox": "",
+"Hurtbox": "",
 "InteractScript": "",
 "InteractingAIBehavior": "",
 "Not": "",
@@ -190,6 +178,11 @@ _global_script_class_icons={
 
 config/name="Game"
 run/main_scene="res://infra/main.tscn"
+
+[autoload]
+
+Logger="*res://infra/logger.gd"
+Global="*res://infra/global_functions.gd"
 
 [display]
 

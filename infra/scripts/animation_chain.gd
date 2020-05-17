@@ -1,5 +1,7 @@
 extends Node
 
+# TODO: remove this
+
 class_name AnimationChain
 
 signal finished
@@ -12,11 +14,11 @@ var current_animation
 func _init(ap: AnimationPlayer):
 	animation_player = ap
 
-	var err = animation_player.connect("animation_started", self, "interrupt")
+	var err = animation_player.connect("animation_started", self, "on_AnimationPlayer_animation_started")
 	if err:
 		print("Error initializing AnimationChain")
 
-func interrupt(new_animation: String):
+func on_AnimationPlayer_animation_started(new_animation: String):
 	if is_playing and new_animation != current_animation:
 		print("interrupted by ", new_animation)
 		is_interrupted = true
