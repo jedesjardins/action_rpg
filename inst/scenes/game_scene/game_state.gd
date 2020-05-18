@@ -9,7 +9,7 @@ var Log = Logger.SubLogger.new(Logger.Level.TRACE, "game_state.gd")
 
 func _ready():
 	# add player to player group
-	player = $"Entities/Knight"
+	player = $"Entities/Man"
 	player.add_to_group("player", true)
 
 	# move the player to the current zone

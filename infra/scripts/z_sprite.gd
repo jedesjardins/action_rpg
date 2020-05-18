@@ -1,6 +1,6 @@
-extends Sprite
 
 class_name ZSprite
+extends Sprite
 
 func highlight():
 	var current_material = ShaderMaterial.new()
@@ -13,8 +13,11 @@ func unhighlight():
 	set_material(null)
 	set_process(false)
 
-func _process(_delta):
-	# TODO: This may get buggy as things get closer to the top edge of the screen
-	#       could fix with a negative offset to continue to order things "above" the screen
+func _ready():
 	z_index = int(max(0, int(get_global_transform_with_canvas().get_origin().y)))
 
+	if get_parent() is Weapon:
+		var _err = get_parent().connect("dropped", self, "on_Parent_dropped")
+
+func _on_Parent_dropped():
+	z_index = int(max(0, int(get_global_transform_with_canvas().get_origin().y)))
