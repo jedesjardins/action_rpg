@@ -10,7 +10,7 @@
 [ext_resource path="res://resources/textures/interact.png" type="Texture" id=8]
 [ext_resource path="res://inst/entities/behaviors/player_behavior/player_behavior.tscn" type="PackedScene" id=9]
 [ext_resource path="res://inst/entities/physics_bodies/knight/knight.tscn" type="PackedScene" id=10]
-[ext_resource path="res://inst/zones/a/zone_a.tscn" type="PackedScene" id=11]
+[ext_resource path="res://inst/zones/courtyard/courtyard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://inst/entities/physics_bodies/man/man.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
@@ -76,6 +76,7 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="StatusMarginContainer" type="MarginContainer" parent="HUD"]
 margin_right = 4.0
@@ -154,7 +155,7 @@ current = true
 
 [node name="Zones" type="Node2D" parent="."]
 
-[node name="ZoneA" parent="Zones" instance=ExtResource( 11 )]
+[node name="Courtyard" parent="Zones" instance=ExtResource( 11 )]
 
 [node name="Entities" type="Node2D" parent="."]
 

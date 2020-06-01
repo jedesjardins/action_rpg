@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://infra/main.gd" type="Script" id=1]
-[ext_resource path="res://inst/scenes/main_menu_scene/main_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inst/scenes/game_scene/game.tscn" type="PackedScene" id=2]
 [ext_resource path="res://infra/state_manager.gd" type="Script" id=3]
 
 [sub_resource type="ViewportTexture" id=1]
@@ -23,8 +23,7 @@ physics_object_picking = true
 pause_mode = 2
 script = ExtResource( 3 )
 
-[node name="MainMenu" parent="Viewport/StateManager" instance=ExtResource( 2 )]
-pause_mode = 2
+[node name="GameState" parent="Viewport/StateManager" instance=ExtResource( 2 )]
 
 [node name="ViewportSprite" type="Sprite" parent="."]
 pause_mode = 2
