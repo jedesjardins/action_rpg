@@ -7,8 +7,8 @@ func tick(bb: Dictionary) -> int:
 	var hand = bb.entity.get_node("Hand")
 
 	if bb.item and bb.item.has_node("Sprite"):
-		var z = bb.entity.get_global_transform_with_canvas().get_origin().y
-		
+		var z = bb.entity.get_node("Sprite").z_index
+
 		bb.item.get_node("Sprite").z_index = z + hand.z_modifier
 
 	return OK

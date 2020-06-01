@@ -9,12 +9,12 @@ var Log = Logger.SubLogger.new(Logger.Level.TRACE, "game_state.gd")
 
 func _ready():
 	# add player to player group
-	player = $"Entities/Knight"
+	player = $"Entities/Man"
 	player.add_to_group("player", true)
 
 	# move the player to the current zone
 	player.get_parent().remove_child(player)
-	$"Zones/ZoneA".add_child(player)
+	$"Zones/Courtyard".add_child(player)
 
 	# set camera to follow the player
 	var remote_transform = RemoteTransform2D.new()
